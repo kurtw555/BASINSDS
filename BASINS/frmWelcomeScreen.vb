@@ -1,0 +1,380 @@
+'********************************************************************************************************
+'File Name: frmWelcomeScreen.vb
+'Description: MapWindow Welcome Screen
+'********************************************************************************************************
+'The contents of this file are subject to the Mozilla Public License Version 1.1 (the "License"); 
+'you may not use this file except in compliance with the License. You may obtain a copy of the License at 
+'http://www.mozilla.org/MPL/ 
+'Software distributed under the License is distributed on an "AS IS" basis, WITHOUT WARRANTY OF 
+'ANY KIND, either express or implied. See the License for the specificlanguage governing rights and 
+'limitations under the License. 
+'
+'The Original Code is MapWindow Open Source. 
+'
+'The Initial Developer of this version of the Original Code is Daniel P. Ames using portions created by 
+'Utah State University and the Idaho National Engineering and Environmental Lab that were released as 
+'public domain in March 2004.  
+'
+'Contributor(s): (Open source contributors should list themselves and their modifications here). 
+'2/3/2005 - made spacing of text relative if no recent projexts, added TODOs (jlk)
+'3/16/2005 - adapted for BASINS welcome
+'********************************************************************************************************
+Imports System.Windows.Forms.SendKeys
+Imports System.Windows.Forms
+Imports System.Resources
+Imports MapWinUtility
+Imports atcUtility
+Imports System.Reflection
+#If GISProvider = "DotSpatial" Then
+Imports DotSpatial.Controls
+#Else
+Imports MapWindow.Interfaces
+#End If
+
+Public Class frmWelcomeScreen
+    Inherits System.Windows.Forms.Form
+
+#If GISProvider = "DotSpatial" Then
+    Private lProject As SerializationManager
+    'Private lAppInfo As AppInfo
+#Else
+    Private lProject As Project
+    Private lAppInfo As AppInfo
+#End If
+
+#Region " Windows Form Designer generated code "
+#If GISProvider = "DotSpatial" Then
+    <CLSCompliant(False)>
+    Public Sub New(ByVal aProject As SerializationManager, ByVal aAppInfo As Object)
+#Else
+    <CLSCompliant(False)>
+    Public Sub New(ByVal aProject As Project, ByVal aAppInfo As AppInfo)
+#End If
+        MyBase.New()
+
+        'This call is required by the Windows Form Designer.
+        InitializeComponent()
+
+        lProject = aProject
+#If GISProvider = "DotSpatial" Then
+#Else
+        lAppInfo = aAppInfo
+#End If
+    End Sub
+
+    'Form overrides dispose to clean up the component list.
+    Protected Overloads Overrides Sub Dispose(ByVal aDisposing As Boolean)
+        If aDisposing Then
+            If Not (components Is Nothing) Then
+                components.Dispose()
+            End If
+        End If
+        MyBase.Dispose(aDisposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    Friend WithEvents lblOpenProject As System.Windows.Forms.LinkLabel
+    Friend WithEvents btnClose As System.Windows.Forms.Button
+    Friend WithEvents cboShowDlg As System.Windows.Forms.CheckBox
+    Friend WithEvents lblProject1 As System.Windows.Forms.LinkLabel
+    Friend WithEvents lblProject2 As System.Windows.Forms.LinkLabel
+    Friend WithEvents lblProject3 As System.Windows.Forms.LinkLabel
+    Friend WithEvents lblProject4 As System.Windows.Forms.LinkLabel
+    Friend WithEvents lblBuildNew As System.Windows.Forms.LinkLabel
+    Friend WithEvents lblHelp As System.Windows.Forms.LinkLabel
+    Friend WithEvents picProgramLogo As System.Windows.Forms.PictureBox
+    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmWelcomeScreen))
+        Me.lblBuildNew = New System.Windows.Forms.LinkLabel()
+        Me.lblOpenProject = New System.Windows.Forms.LinkLabel()
+        Me.cboShowDlg = New System.Windows.Forms.CheckBox()
+        Me.btnClose = New System.Windows.Forms.Button()
+        Me.lblProject1 = New System.Windows.Forms.LinkLabel()
+        Me.lblProject2 = New System.Windows.Forms.LinkLabel()
+        Me.lblProject3 = New System.Windows.Forms.LinkLabel()
+        Me.lblProject4 = New System.Windows.Forms.LinkLabel()
+        Me.picProgramLogo = New System.Windows.Forms.PictureBox()
+        Me.lblHelp = New System.Windows.Forms.LinkLabel()
+        CType(Me.picProgramLogo, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
+        '
+        'lblBuildNew
+        '
+        resources.ApplyResources(Me.lblBuildNew, "lblBuildNew")
+        Me.lblBuildNew.Name = "lblBuildNew"
+        Me.lblBuildNew.TabStop = True
+        '
+        'lblOpenProject
+        '
+        resources.ApplyResources(Me.lblOpenProject, "lblOpenProject")
+        Me.lblOpenProject.Name = "lblOpenProject"
+        Me.lblOpenProject.TabStop = True
+        '
+        'cboShowDlg
+        '
+        resources.ApplyResources(Me.cboShowDlg, "cboShowDlg")
+        Me.cboShowDlg.Name = "cboShowDlg"
+        '
+        'btnClose
+        '
+        Me.btnClose.BackColor = System.Drawing.SystemColors.Control
+        Me.btnClose.DialogResult = System.Windows.Forms.DialogResult.OK
+        resources.ApplyResources(Me.btnClose, "btnClose")
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.UseVisualStyleBackColor = False
+        '
+        'lblProject1
+        '
+        resources.ApplyResources(Me.lblProject1, "lblProject1")
+        Me.lblProject1.Name = "lblProject1"
+        Me.lblProject1.TabStop = True
+        Me.lblProject1.UseCompatibleTextRendering = True
+        '
+        'lblProject2
+        '
+        resources.ApplyResources(Me.lblProject2, "lblProject2")
+        Me.lblProject2.Name = "lblProject2"
+        Me.lblProject2.TabStop = True
+        Me.lblProject2.UseCompatibleTextRendering = True
+        '
+        'lblProject3
+        '
+        resources.ApplyResources(Me.lblProject3, "lblProject3")
+        Me.lblProject3.Name = "lblProject3"
+        Me.lblProject3.TabStop = True
+        Me.lblProject3.UseCompatibleTextRendering = True
+        '
+        'lblProject4
+        '
+        resources.ApplyResources(Me.lblProject4, "lblProject4")
+        Me.lblProject4.Name = "lblProject4"
+        Me.lblProject4.TabStop = True
+        Me.lblProject4.UseCompatibleTextRendering = True
+        '
+        'picProgramLogo
+        '
+        resources.ApplyResources(Me.picProgramLogo, "picProgramLogo")
+        Me.picProgramLogo.Name = "picProgramLogo"
+        Me.picProgramLogo.TabStop = False
+        '
+        'lblHelp
+        '
+        resources.ApplyResources(Me.lblHelp, "lblHelp")
+        Me.lblHelp.Name = "lblHelp"
+        Me.lblHelp.TabStop = True
+        '
+        'frmWelcomeScreen
+        '
+        resources.ApplyResources(Me, "$this")
+        Me.BackColor = System.Drawing.Color.White
+        Me.CancelButton = Me.btnClose
+        Me.Controls.Add(Me.lblHelp)
+        Me.Controls.Add(Me.picProgramLogo)
+        Me.Controls.Add(Me.lblProject4)
+        Me.Controls.Add(Me.lblProject3)
+        Me.Controls.Add(Me.lblProject2)
+        Me.Controls.Add(Me.lblProject1)
+        Me.Controls.Add(Me.btnClose)
+        Me.Controls.Add(Me.cboShowDlg)
+        Me.Controls.Add(Me.lblOpenProject)
+        Me.Controls.Add(Me.lblBuildNew)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.KeyPreview = True
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.Name = "frmWelcomeScreen"
+        CType(Me.picProgramLogo, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+
+    End Sub
+
+#End Region
+
+    Private Sub lblBuildNew_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles lblBuildNew.LinkClicked
+        Me.Visible = False
+        Application.DoEvents()
+        LoadNationalProject()
+        Me.Close()
+    End Sub
+
+    Private Sub lblOpenProject_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles lblOpenProject.LinkClicked
+        Dim lOpenFileDialog As New OpenFileDialog
+
+        With lOpenFileDialog
+#If GISProvider = "DotSpatial" Then
+            If lProject IsNot Nothing Then
+                '.Filter = "MapWindow Project Files (*.mwprj)|*.mwprj"
+                .Filter = "DotSpatial Project Files (*.dspx)|*.dspx|MapWindow Project Files (*.mwprj)|*.mwprj"
+                .CheckFileExists = True
+                .InitialDirectory = lProject.CurrentProjectDirectory
+                If .ShowDialog(Me) = System.Windows.Forms.DialogResult.OK Then
+                    lProject.OpenProject(.FileName)
+                    Me.DialogResult = System.Windows.Forms.DialogResult.OK
+                    Me.Close()
+                End If
+            End If
+#Else
+            .Filter = "MapWindow Project Files (*.mwprj)|*.mwprj"
+            .CheckFileExists = True
+            .InitialDirectory = lAppInfo.DefaultDir
+            If .ShowDialog(Me) = System.Windows.Forms.DialogResult.OK Then
+                lProject.Load(.FileName)
+                Me.DialogResult = System.Windows.Forms.DialogResult.OK
+                Me.Close()
+            End If
+#End If
+        End With
+    End Sub
+
+    Private Sub cboShowDlg_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboShowDlg.CheckedChanged
+#If GISProvider = "DotSpatial" Then
+#Else
+        lAppInfo.ShowWelcomeScreen = cboShowDlg.Checked
+#End If
+    End Sub
+
+    Private Sub lbProject_LinkClicked(ByVal sender As System.Object,
+                                      ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) _
+        Handles lblProject1.LinkClicked, lblProject2.LinkClicked, lblProject3.LinkClicked, lblProject4.LinkClicked
+
+        Dim fileName As String = CStr(CType(sender, Label).Tag)
+        Dim lProjectOpenOK As Boolean
+#If GISProvider = "DotSpatial" Then
+        Try
+            lProject.OpenProject(fileName)
+            lProjectOpenOK = True
+        Catch ex As Exception
+            lProjectOpenOK = False
+        End Try
+#Else
+            lProjectOpenOK = lProject.Load(fileName) 
+#End If
+        If lProjectOpenOK Then
+            Logger.Dbg("Loaded Project '" & fileName & "'")
+            Logger.Status("HIDE")
+            Me.DialogResult = System.Windows.Forms.DialogResult.OK
+            Me.Close()
+        Else
+            Logger.Msg("Could not load '" & fileName & "'", "Could Not Load Project")
+        End If
+    End Sub
+
+    Private Sub frmWelcomeScreen_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        Me.Text = "Welcome to " & g_AppNameLong
+#If GISProvider = "DotSpatial" Then
+
+        'picProgramLogo.Image = My.Resources.header_graphic_usgsIdentifier_white.jpg
+        'KW
+        Dim assembly = System.Reflection.Assembly.GetExecutingAssembly()
+        Dim stream = assembly.GetManifestResourceStream("BASINS.Resources.header_graphic_usgsIdentifier_white.jpg")
+        'KW
+        'picProgramLogo.Image = New System.Drawing.Bitmap(stream)
+        'picProgramLogo.Width = picProgramLogo.Image.Width
+#Else
+        Me.Icon = g_MapWin.ApplicationInfo.FormIcon
+        If g_MapWin.ApplicationInfo.SplashPicture IsNot Nothing AndAlso g_MapWin.ApplicationInfo.SplashPicture.Width > 32 Then
+            picProgramLogo.Width = g_MapWin.ApplicationInfo.SplashPicture.Width
+            picProgramLogo.Image = g_MapWin.ApplicationInfo.SplashPicture
+        End If
+#End If
+
+#If GISProvider = "DotSpatial" Then
+#Else
+        cboShowDlg.Checked = lAppInfo.ShowWelcomeScreen
+#End If
+
+        lblBuildNew.Text = "Build New Project"
+        lblBuildNew.LinkArea = New LinkArea(0, lblBuildNew.Text.Length)
+
+        lblHelp.Text = "View Documentation"
+        lblHelp.LinkArea = New LinkArea(0, lblHelp.Text.Length)
+
+        lblOpenProject.Text = "Open Existing Project"
+        lblOpenProject.LinkArea = New LinkArea(0, lblOpenProject.Text.Length)
+
+        'clear recent project labels of designer text
+        lblProject1.Visible = False
+        lblProject2.Visible = False
+        lblProject3.Visible = False
+        lblProject4.Visible = False
+
+        'check to see if there were any recent projects
+        Dim lRecentCount As Integer = 0
+        Dim lCurrent As Integer = 0
+        Dim lProjectName As String
+        Dim lProjectId As String
+        Dim lblProject As Label
+#If GISProvider = "DotSpatial" Then
+        Dim recentFiles As New ArrayList()
+        For Each lfile As String In DotSpatial.Data.Properties.Settings.Default.RecentFiles
+            If Not String.IsNullOrEmpty(lfile) Then
+                If lfile.EndsWith("dspx") Then
+                    recentFiles.Add(lfile)
+                End If
+            End If
+        Next
+
+        While lRecentCount < 4 And lCurrent < recentFiles.Count
+            lProjectName = recentFiles(lCurrent)
+            lProjectId = System.IO.Path.GetFileNameWithoutExtension(lProjectName)
+            If FileExists(lProjectName) AndAlso LCase(lProjectId) <> "national" Then
+                Select Case lRecentCount
+                    Case 0 : lblProject = lblProject1
+                    Case 1 : lblProject = lblProject2
+                    Case 2 : lblProject = lblProject3
+                    Case Else : lblProject = lblProject4
+                End Select
+                lblProject.Text = lProjectId
+                lblProject.Tag = lProjectName
+                lblProject.Visible = True
+                lRecentCount += 1
+            End If
+            lCurrent += 1
+        End While
+#Else
+        While lRecentCount < 4 And lCurrent < lProject.RecentProjects.Count
+            lProjectName = CType(lProject.RecentProjects(lCurrent), String)
+            lProjectId = System.IO.Path.GetFileNameWithoutExtension(lProjectName)
+            If FileExists(lProjectName) AndAlso LCase(lProjectId) <> "national" Then
+                Select Case lRecentCount
+                    Case 0 : lblProject = lblProject1
+                    Case 1 : lblProject = lblProject2
+                    Case 2 : lblProject = lblProject3
+                    Case Else : lblProject = lblProject4
+                End Select
+                lblProject.Text = lProjectId
+                lblProject.Tag = lProjectName
+                lblProject.Visible = True
+                lRecentCount += 1
+            End If
+            lCurrent += 1
+        End While
+#End If
+    End Sub
+
+    Private Sub btnClose_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnClose.Click
+        Me.Close()
+    End Sub
+
+    Private Sub lblConvert_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs)
+        Logger.Msg("Select the BASINS 3.x Project to convert from the PullDown Menu that appears when you click OK", MsgBoxStyle.OkOnly, "BASINS 4.5")
+        Me.Close()
+        SendKeys.Send("%FB")
+    End Sub
+
+    Private Sub lblBasinsHelp_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lblHelp.Click
+        ShowHelp("")
+    End Sub
+
+    Private Sub frm_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyValue = System.Windows.Forms.Keys.F1 Then
+            ShowHelp("")
+        End If
+    End Sub
+End Class

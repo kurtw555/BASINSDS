@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>USGSHydroToolbox</RootNamespace>
+    <AssemblyName>USGSHydroToolbox</AssemblyName>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\atcD4EMLauncher\atcD4EMLauncher-DS.vbproj" />
+    <ProjectReference Include="..\atcIntegratedDesignFlow\atcIDF-DS.vbproj" />
+    <ProjectReference Include="..\atcSeasonalAttributes\atcSeasonalAttributes-DS.vbproj" />
+    <ProjectReference Include="..\atcSeasons\atcSeasons-DS.vbproj" />
+    <ProjectReference Include="..\atcSynopticAnalysis\atcSynopticAnalysis-DS.vbproj" />
+    <ProjectReference Include="..\atcTimeseriesNdayHighLow\atcTimeseriesNdayHighLow-DS.vbproj" />
+    <ProjectReference Include="..\atcTimeseriesRDB\atcTimeseriesRDB-DS.vbproj" />
+    <ProjectReference Include="..\atcTimeseriesScript\atcTimeseriesScript-DS.vbproj" />
+    <ProjectReference Include="..\atcUSGSBaseflow\atcUSGSBaseflow-DS.vbproj" />
+    <ProjectReference Include="..\atcUSGSDF2P\atcUSGSDF2P-DS.vbproj" />
+    <ProjectReference Include="..\atcUSGSRecess\atcUSGSRecess-DS.vbproj" />
+    <ProjectReference Include="..\atcUSGSRora\atcUSGSRora-DS.vbproj" />
+    <ProjectReference Include="..\BASINS\ToolboxMWPlugin-DS.vbproj" />
+    <ProjectReference Include="..\D4EMDownloadData\D4EMDownloadData-DS.vbproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DotSpatial.Controls" Version="4.0.656" />
+    <PackageReference Include="DotSpatial.Data" Version="4.0.656" />
+    <PackageReference Include="DotSpatial.Serialization" Version="4.0.656" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="7.0.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.421302">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DotSpatial.Data.Rasters.GdalExtension">
+      <HintPath>..\bin\Debug\Windows Extensions\DotSpatial.Data.Rasters.GdalExtension\DotSpatial.Data.Rasters.GdalExtension.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

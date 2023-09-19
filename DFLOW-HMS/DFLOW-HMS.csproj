@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>DFLOW_HMS</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <BaseOutputPath>D:\BASINSDS\bin\Debug\net6.0-windows\BASINS\net6.0-windows</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\atcBatchProcessing\atcBatchProcessing-DS.vbproj" />
+    <ProjectReference Include="..\DFLOW\DFLOWAnalysis-DS.vbproj" />
+  </ItemGroup>
+
+</Project>
