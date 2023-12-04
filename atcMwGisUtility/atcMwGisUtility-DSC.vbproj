@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
+    <AssemblyName>atcMwGisUtility</AssemblyName>
     <ProjectType>Local</ProjectType>
     <AssemblyKeyContainerName>
-    </AssemblyKeyContainerName>
-    <AssemblyName>atcMwGisUtility</AssemblyName>
+    </AssemblyKeyContainerName>    
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>

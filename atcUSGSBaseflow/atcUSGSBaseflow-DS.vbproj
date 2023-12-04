@@ -51,14 +51,6 @@
     <NoWarn>41999,42016,42017,42018,42019,42032,42036,42353,42354,42355</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotSpatial.Controls">
-      <HintPath>..\bin\Debug\DotSpatial.Controls.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DotSpatial.Extensions">
-      <HintPath>..\Bin\Debug\DotSpatial.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Update="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -133,6 +125,8 @@
     <ProjectReference Include="..\ZedGraph\ZedGraph.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DotSpatial.Controls" Version="4.0.656" />
+    <PackageReference Include="DotSpatial.Extensions" Version="4.0.656" />
     <PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
