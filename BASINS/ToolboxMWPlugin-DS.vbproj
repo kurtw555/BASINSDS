@@ -1,15 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
-  <Import Project="..\packages\ILMerge.3.0.29\build\ILMerge.props" Condition="Exists('..\packages\ILMerge.3.0.29\build\ILMerge.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.21022</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9B3BB48B-2CAF-4E49-A900-5E08217DA078}</ProjectGuid>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon>
-    </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>ToolboxMWPlugin</AssemblyName>
@@ -21,18 +13,8 @@
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
-    <OptionCompare>Binary</OptionCompare>
-    <OptionExplicit>On</OptionExplicit>
-    <OptionStrict>Off</OptionStrict>
     <RootNamespace>BASINS</RootNamespace>
-    <StartupObject>BASINS.%28None%29</StartupObject>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
     <MyType>Windows</MyType>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -48,9 +30,9 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
@@ -59,17 +41,9 @@
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>ProgramName = "USGS Hydrologic Toolbox",GISProvider = "DotSpatial"</DefineConstants>
-    <DefineDebug>true</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <DebugSymbols>true</DebugSymbols>
-    <Optimize>false</Optimize>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <WarningLevel>1</WarningLevel>
     <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
-    <DebugType>full</DebugType>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
@@ -80,117 +54,35 @@
     <DefineConstants>
     </DefineConstants>
     <DefineDebug>false</DefineDebug>
-    <DefineTrace>true</DefineTrace>
     <DebugSymbols>true</DebugSymbols>
-    <Optimize>true</Optimize>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <WarningLevel>1</WarningLevel>
     <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DefineDebug>true</DefineDebug>
-    <DefineTrace>true</DefineTrace>
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
     <BaseAddress>285212672</BaseAddress>
     <DocumentationFile>ToolboxMWPlugin.xml</DocumentationFile>
-    <WarningLevel>1</WarningLevel>
     <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
     <DefineConstants>ProgramName = "USGS SW Toolbox"</DefineConstants>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugSymbols>true</DebugSymbols>
-    <DefineTrace>true</DefineTrace>
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
     <BaseAddress>285212672</BaseAddress>
     <DocumentationFile>ToolboxMWPlugin.xml</DocumentationFile>
-    <Optimize>true</Optimize>
-    <WarningLevel>1</WarningLevel>
     <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotSpatial.Compatibility">
-      <HintPath>..\bin\Debug\DotSpatial.Compatibility.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DotSpatial.Controls">
-      <HintPath>..\Bin\Debug\DotSpatial.Controls.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DotSpatial.Data, Version=2.0.0.465, Culture=neutral, PublicKeyToken=c29dbf30e059ca9d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Bin\Debug\DotSpatial.Data.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DotSpatial.Extensions">
-      <HintPath>..\Bin\Debug\DotSpatial.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DotSpatial.Symbology, Version=2.0.0.465, Culture=neutral, PublicKeyToken=6178c08da7998387, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\Debug\DotSpatial.Symbology.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System">
+    <Reference Update="System">
       <Name>System</Name>
     </Reference>
-    <Reference Include="System.Drawing">
+    <Reference Update="System.Drawing">
       <Name>System.Drawing</Name>
     </Reference>
-    <Reference Include="System.Windows.Forms">
-      <Name>System.Windows.Forms</Name>
-    </Reference>
-    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Import Include="Microsoft.VisualBasic" />
-    <Import Include="System" />
-    <Import Include="System.Collections" />
-    <Import Include="System.Diagnostics" />
     <Import Include="System.Windows.Forms" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AssemblyInfo.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="atcBasinsPlugIn.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="frmAbout.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmBuildNew.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmWelcomeScreen.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="modBasinsPlugin.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="modDownload.vb" />
-    <EmbeddedResource Include="frmAbout.resx">
-      <DependentUpon>frmAbout.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmBuildNew.resx">
-      <DependentUpon>frmBuildNew.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmWelcomeScreen.resx">
-      <DependentUpon>frmWelcomeScreen.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="My Project\" />
@@ -228,46 +120,49 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\atcD4EMLauncher\atcD4EMLauncher-DS.vbproj">
-      <Project>{6cde2fe3-deba-46ba-b395-8f71f87159b0}</Project>
-      <Name>atcD4EMLauncher-DS</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\MapWinUtility\MapWinUtility-DS.vbproj">
-      <Project>{33e88992-742f-4d13-823f-35d6a07b1aa1}</Project>
-      <Name>MapWinUtility-DS</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcData\atcData-DS.vbproj">
-      <Project>{a9a00cad-9ead-4228-ab08-6dc3baf253aa}</Project>
-      <Name>atcData-DS</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcProjector\atcProjector-DS.vbproj">
-      <Project>{863771d3-ea5b-45d2-8416-b75e9ada8d7b}</Project>
-      <Name>atcProjector-DS</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcUtility\atcUtility-DS.vbproj">
-      <Project>{67027820-9036-481e-80f6-077e5085f59d}</Project>
-      <Name>atcUtility-DS</Name>
-      <Private>False</Private>
-    </ProjectReference>
+    <ProjectReference Include="..\atcD4EMLauncher\atcD4EMLauncher-DS.vbproj" />
+    <ProjectReference Include="..\atcMwGisUtility\atcMwGisUtility-DSC.vbproj" />
+    <ProjectReference Include="..\MapWinUtility\MapWinUtility-DS.vbproj" />
+    <ProjectReference Include="..\atcData\atcData-DS.vbproj" />
+    <ProjectReference Include="..\atcProjector\atcProjector-DS.vbproj" />
+    <ProjectReference Include="..\atcUtility\atcUtility-DS.vbproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Remove="frmButtons.vb" />
+    <Compile Remove="frmScript.vb" />
+    <Compile Remove="Images.Designer.vb" />
+    <Compile Remove="modDownload-D4EMnew.vb" />
+    <Compile Remove="modDownload.vb" />
+    <EmbeddedResource Remove="frmButtons.resx" />
+    <EmbeddedResource Remove="frmScript.resx" />
+    <EmbeddedResource Remove="Images.resx" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\ILMerge.3.0.29\build\ILMerge.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILMerge.3.0.29\build\ILMerge.props'))" />
-  </Target>
+  <PropertyGroup />
+  <ItemGroup>
+    <None Remove="Resources\dotspatial-small.bmp" />
+    <None Remove="Resources\header_graphic_usgsIdentifier_white.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\dotspatial-small.bmp" />
+    <EmbeddedResource Include="Resources\header_graphic_usgsIdentifier_white.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DotSpatial.Controls" Version="4.0.656" />
+    <PackageReference Include="DotSpatial.Data" Version="4.0.656" />
+    <PackageReference Include="DotSpatial.Extensions" Version="4.0.656" />
+    <PackageReference Include="DotSpatial.Serialization" Version="4.0.656" />
+    <PackageReference Include="DotSpatial.Symbology" Version="4.0.656" />
+    <PackageReference Include="GitVersion.MsBuild" Version="6.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.421302">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="8.0.8" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="8.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.8" />
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
+  </ItemGroup>
 </Project>

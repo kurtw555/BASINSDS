@@ -31,7 +31,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -109,29 +109,9 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MapWinUtility\MapWinUtility-DSC.vbproj">
-      <Project>{33e88992-742f-4d13-823f-35d6a07b1aa1}</Project>
-      <Name>MapWinUtility-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcControls\atcControls-DSC.vbproj">
-      <Project>{b219575f-1541-41db-9fa4-d9d7cd62b4a5}</Project>
-      <Name>atcControls-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
     <ProjectReference Include="..\atcMwGisUtility\atcMwGisUtility-DSC.vbproj">
       <Project>{350d3be7-35a4-4b09-9d28-dde2f6b716cd}</Project>
       <Name>atcMwGisUtility-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcUtility\atcUtility-DSC.vbproj">
-      <Project>{67027820-9036-481e-80f6-077e5085f59d}</Project>
-      <Name>atcUtility-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcData\atcData-DSC.vbproj">
-      <Project>{a9a00cad-9ead-4228-ab08-6dc3baf253aa}</Project>
-      <Name>atcData-DSC</Name>
       <Private>False</Private>
     </ProjectReference>
     <Reference Include="DotSpatial.Controls, Version=2.0.0.465, Culture=neutral, PublicKeyToken=4d9e49339a7d240c, processorArchitecture=MSIL">

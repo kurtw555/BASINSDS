@@ -1,4 +1,5 @@
 'OBJECTID,ICNUM,CPNM,IDC,CROPNAME,BIO_E,HVSTI,BLAI,FRGRW1,LAIMX1,FRGRW2,LAIMX2,DLAI,CHTMX,RDMX,T_OPT,T_BASE,CNYLD,CPYLD,BN1,BN2,BN3,BP1,BP2,BP3,WSYF,USLE_C,GSI,VPDFR,FRGMAX,WAVP,CO2HI,BIOEHI,RSDCO_PL,OV_N,CN2A,CN2B,CN2C,CN2D,FERTFIELD,ALAI_MIN,BIO_LEAF,MAT_YRS,BMX_TREES,EXT_COEF
+Imports System.Data
 Partial Class SwatInput
     Private pCrop As clsCrop = New clsCrop(Me)
     ReadOnly Property Crop() As clsCrop
@@ -176,7 +177,7 @@ Partial Class SwatInput
             '    Try
             '        DropTable(pTableName, pSwatInput.CnSwatInput)
 
-            '        Dim lConnection As New ADODB.Connection
+            '        Dim lConnection As New SqliteConnection
             '        lConnection.Open(pSwatInput.CnSwatParm.ConnectionString)
 
             '        'Open the Catalog

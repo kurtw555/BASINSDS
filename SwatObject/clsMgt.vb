@@ -1,3 +1,6 @@
+Imports System.Data
+Imports System.Data.SQLite
+
 Partial Class SwatInput
     Private pMgt As clsMgt = New clsMgt(Me)
     ReadOnly Property Mgt() As clsMgt
@@ -39,13 +42,13 @@ Partial Class SwatInput
         Public HUSC As Integer
         Public ISCROP As Integer
 
-        Public Sub New(ByVal aSUBBASIN As Double, _
-                       ByVal aHRU As Double, _
-                       ByVal aLANDUSE As String, _
-                       ByVal aSOIL As String, _
+        Public Sub New(ByVal aSUBBASIN As Double,
+                       ByVal aHRU As Double,
+                       ByVal aLANDUSE As String,
+                       ByVal aSOIL As String,
                        ByVal aSLOPE_CD As String)
             SUBBASIN = aSUBBASIN
-            Hru = aHRU
+            HRU = aHRU
             LANDUSE = aLANDUSE
             SOIL = aSOIL
             SLOPE_CD = aSLOPE_CD
@@ -57,7 +60,7 @@ Partial Class SwatInput
 
         Public Function AddSQL() As String
             Return "INSERT INTO mgt1 ( SUBBASIN , HRU , LANDUSE , SOIL , SLOPE_CD , IGRO , PLANT_ID , LAI_INIT , BIO_INIT , PHU_PLT , BIOMIX , CN2 , USLE_P , BIO_MIN , FILTERW , IURBAN , URBLU , IRRSC , IRRNO , FLOWMIN , DIVMAX , FLOWFR , DDRAIN , TDRAIN , GDRAIN , NROT , HUSC , ISCROP  ) " _
-                 & "Values ('" & SUBBASIN & "', '" & Hru & "', '" & LANDUSE & "', '" & SOIL & "', '" & SLOPE_CD & "', '" & IGRO & "', '" & PLANT_ID & "', '" & LAI_INIT & "', '" & BIO_INIT & "', '" & PHU_PLT & "', '" & BIOMIX & "', '" & CN2 & "', '" & USLE_P & "', '" & BIO_MIN & "', '" & FILTERW & "', '" & IURBAN & "', '" & URBLU & "', '" & IRRSC & "', '" & IRRNO & "', '" & FLOWMIN & "', '" & DIVMAX & "', '" & FLOWFR & "', '" & DDRAIN & "', '" & TDRAIN & "', '" & GDRAIN & "', '" & NROT & "', '" & HUSC & "', '" & ISCROP & "'  )"
+                 & "Values ('" & SUBBASIN & "', '" & HRU & "', '" & LANDUSE & "', '" & SOIL & "', '" & SLOPE_CD & "', '" & IGRO & "', '" & PLANT_ID & "', '" & LAI_INIT & "', '" & BIO_INIT & "', '" & PHU_PLT & "', '" & BIOMIX & "', '" & CN2 & "', '" & USLE_P & "', '" & BIO_MIN & "', '" & FILTERW & "', '" & IURBAN & "', '" & URBLU & "', '" & IRRSC & "', '" & IRRNO & "', '" & FLOWMIN & "', '" & DIVMAX & "', '" & FLOWFR & "', '" & DDRAIN & "', '" & TDRAIN & "', '" & GDRAIN & "', '" & NROT & "', '" & HUSC & "', '" & ISCROP & "'  )"
         End Function
 
         Public Shared ReadOnly Property Units() As Dictionary(Of String, String)
@@ -96,7 +99,7 @@ Partial Class SwatInput
 
                 Return unitsDictionary
 
-            End Get                  
+            End Get
         End Property
 
     End Class
@@ -155,10 +158,10 @@ Partial Class SwatInput
             PopulateObject(aRow, Me)
         End Sub
 
-        Public Sub New(ByVal aSUBBASIN As Double, _
-                       ByVal aHRU As Double, _
-                       ByVal aLANDUSE As String, _
-                       ByVal aSOIL As String, _
+        Public Sub New(ByVal aSUBBASIN As Double,
+                       ByVal aHRU As Double,
+                       ByVal aLANDUSE As String,
+                       ByVal aSOIL As String,
                        ByVal aSLOPE_CD As String)
             SUBBASIN = aSUBBASIN
             HRU = aHRU
@@ -227,7 +230,7 @@ Partial Class SwatInput
                 DropTable(pTable1Name, pSwatInput.CnSwatInput)
 
                 'Open the connection
-                Dim lConnection As ADODB.Connection = pSwatInput.OpenADOConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
 
                 'Open the Catalog
                 Dim lCatalog As New ADOX.Catalog
@@ -296,7 +299,7 @@ Partial Class SwatInput
                 DropTable(pTable2Name, pSwatInput.CnSwatInput)
 
                 'Open the connection
-                Dim lConnection As ADODB.Connection = pSwatInput.OpenADOConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
 
                 'Open the Catalog
                 Dim lCatalog As New ADOX.Catalog

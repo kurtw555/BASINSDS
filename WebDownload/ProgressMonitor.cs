@@ -20,46 +20,46 @@ namespace WorldWind.Net.Monitor
 		private System.Windows.Forms.ColumnHeader columnHeader2;
 		private System.Windows.Forms.ColumnHeader columnHeader4;
 		private System.Windows.Forms.ColumnHeader columnHeader5;
-		private System.Windows.Forms.ContextMenu contextMenu;
-		private System.Windows.Forms.MenuItem menuItemSpacer1;
-		private System.Windows.Forms.MenuItem menuItemCopy;
-		private System.Windows.Forms.MenuItem menuItemOpenUrl;
-		private System.Windows.Forms.MenuItem menuItemViewDir;
-		private System.Windows.Forms.MenuItem menuItemClear;
+		private System.Windows.Forms.ContextMenuStrip contextMenu;
+		private System.Windows.Forms.ToolStripMenuItem menuItemSpacer1;
+		private System.Windows.Forms.ToolStripMenuItem menuItemCopy;
+		private System.Windows.Forms.ToolStripMenuItem menuItemOpenUrl;
+		private System.Windows.Forms.ToolStripMenuItem menuItemViewDir;
+		private System.Windows.Forms.ToolStripMenuItem menuItemClear;
 		private System.Windows.Forms.ColumnHeader columnHeader6;
-		private System.Windows.Forms.MenuItem menuItemHeaders;
-		private System.Windows.Forms.MenuItem menuItemSpacer2;
+		private System.Windows.Forms.ToolStripMenuItem menuItemHeaders;
+		private System.Windows.Forms.ToolStripMenuItem menuItemSpacer2;
 		private System.Windows.Forms.ColumnHeader columnHeader7;
-		private System.Windows.Forms.MainMenu mainMenu1;
-		private System.Windows.Forms.MenuItem menuItemEdit;
-		private System.Windows.Forms.MenuItem menuItem6;
-		private System.Windows.Forms.MenuItem menuItem7;
-		private System.Windows.Forms.MenuItem menuItem9;
-		private System.Windows.Forms.MenuItem menuItemRun;
+		private System.Windows.Forms.MenuStrip mainMenu1;
+		private System.Windows.Forms.ToolStripMenuItem menuItemEdit;
+		private System.Windows.Forms.ToolStripMenuItem menuItem6;
+		private System.Windows.Forms.ToolStripMenuItem menuItem7;
+		private System.Windows.Forms.ToolStripMenuItem menuItem9;
+		private System.Windows.Forms.ToolStripMenuItem menuItemRun;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
-		private System.Windows.Forms.MenuItem menuItemEditCopy;
-		private System.Windows.Forms.MenuItem menuItemEditDelete;
-		private System.Windows.Forms.MenuItem menuItemEditClear;
+		private System.Windows.Forms.ToolStripMenuItem menuItemEditCopy;
+		private System.Windows.Forms.ToolStripMenuItem menuItemEditDelete;
+		private System.Windows.Forms.ToolStripMenuItem menuItemEditClear;
 		private bool isRunning = true;
-		private System.Windows.Forms.MenuItem menuItemSpacer3;
+		private System.Windows.Forms.ToolStripMenuItem menuItemSpacer3;
 		private const int maxItems = 50;
-		private System.Windows.Forms.MenuItem menuItem4;
-		private System.Windows.Forms.MenuItem menuItemWriteLog;
+		private System.Windows.Forms.ToolStripMenuItem menuItem4;
+		private System.Windows.Forms.ToolStripMenuItem menuItemWriteLog;
 		private bool logToFile;
 		private System.Windows.Forms.ColumnHeader columnHeader8;
-		private System.Windows.Forms.MenuItem menuItemTools;
-		private System.Windows.Forms.MenuItem menuItemFile;
-		private System.Windows.Forms.MenuItem menuItemFileClose;
-		private System.Windows.Forms.MenuItem menuItemFileRetry;
-		private System.Windows.Forms.MenuItem menuItemSeparator3;
-		private System.Windows.Forms.MenuItem menuItemToolsDetails;
-		private System.Windows.Forms.MenuItem menuItemToolsViewUrl;
-		private System.Windows.Forms.MenuItem menuItemToolsViewDirectory;
+		private System.Windows.Forms.ToolStripMenuItem menuItemTools;
+		private System.Windows.Forms.ToolStripMenuItem menuItemFile;
+		private System.Windows.Forms.ToolStripMenuItem menuItemFileClose;
+		private System.Windows.Forms.ToolStripMenuItem menuItemFileRetry;
+		private System.Windows.Forms.ToolStripMenuItem menuItemSeparator3;
+		private System.Windows.Forms.ToolStripMenuItem menuItemToolsDetails;
+		private System.Windows.Forms.ToolStripMenuItem menuItemToolsViewUrl;
+		private System.Windows.Forms.ToolStripMenuItem menuItemToolsViewDirectory;
 		private const string logCategory = "HTTP";
-		private System.Windows.Forms.MenuItem menuItemEditSelectAll;
+		private System.Windows.Forms.ToolStripMenuItem menuItemEditSelectAll;
 		private System.Windows.Forms.ColumnHeader columnHeader3;
 		private ArrayList retryDownloads = new ArrayList();
 		// Sorting disabled
@@ -289,35 +289,35 @@ namespace WorldWind.Net.Monitor
 			this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
 			this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
 			this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-			this.contextMenu = new System.Windows.Forms.ContextMenu();
-			this.menuItemHeaders = new System.Windows.Forms.MenuItem();
-			this.menuItemSpacer1 = new System.Windows.Forms.MenuItem();
-			this.menuItemOpenUrl = new System.Windows.Forms.MenuItem();
-			this.menuItemViewDir = new System.Windows.Forms.MenuItem();
-			this.menuItemSpacer2 = new System.Windows.Forms.MenuItem();
-			this.menuItemCopy = new System.Windows.Forms.MenuItem();
-			this.menuItemClear = new System.Windows.Forms.MenuItem();
-			this.mainMenu1 = new System.Windows.Forms.MainMenu();
-			this.menuItemFile = new System.Windows.Forms.MenuItem();
-			this.menuItemFileRetry = new System.Windows.Forms.MenuItem();
-			this.menuItemSeparator3 = new System.Windows.Forms.MenuItem();
-			this.menuItemFileClose = new System.Windows.Forms.MenuItem();
-			this.menuItemEdit = new System.Windows.Forms.MenuItem();
-			this.menuItemEditCopy = new System.Windows.Forms.MenuItem();
-			this.menuItemEditDelete = new System.Windows.Forms.MenuItem();
-			this.menuItem6 = new System.Windows.Forms.MenuItem();
-			this.menuItemEditSelectAll = new System.Windows.Forms.MenuItem();
-			this.menuItem7 = new System.Windows.Forms.MenuItem();
-			this.menuItemEditClear = new System.Windows.Forms.MenuItem();
-			this.menuItem9 = new System.Windows.Forms.MenuItem();
-			this.menuItemRun = new System.Windows.Forms.MenuItem();
-			this.menuItem4 = new System.Windows.Forms.MenuItem();
-			this.menuItemWriteLog = new System.Windows.Forms.MenuItem();
-			this.menuItemTools = new System.Windows.Forms.MenuItem();
-			this.menuItemToolsDetails = new System.Windows.Forms.MenuItem();
-			this.menuItemSpacer3 = new System.Windows.Forms.MenuItem();
-			this.menuItemToolsViewUrl = new System.Windows.Forms.MenuItem();
-			this.menuItemToolsViewDirectory = new System.Windows.Forms.MenuItem();
+			this.contextMenu = new System.Windows.Forms.ContextMenuStrip();
+			this.menuItemHeaders = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemSpacer1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemOpenUrl = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemViewDir = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemSpacer2 = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemClear = new System.Windows.Forms.ToolStripMenuItem();
+			this.mainMenu1 = new System.Windows.Forms.MenuStrip();
+			this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemFileRetry = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemSeparator3 = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemFileClose = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemEditCopy = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemEditDelete = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemEditSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemEditClear = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemRun = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemWriteLog = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemTools = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemToolsDetails = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemSpacer3 = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemToolsViewUrl = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuItemToolsViewDirectory = new System.Windows.Forms.ToolStripMenuItem();
 			this.SuspendLayout();
 			// 
 			// listView
@@ -331,7 +331,7 @@ namespace WorldWind.Net.Monitor
 																					   this.columnHeader6,
 																					   this.columnHeader7,
 																					   this.columnHeader3});
-			this.listView.ContextMenu = this.contextMenu;
+			this.listView.ContextMenuStrip = this.contextMenu;
 			this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.listView.FullRowSelect = true;
 			this.listView.GridLines = true;
@@ -387,7 +387,7 @@ namespace WorldWind.Net.Monitor
 			// 
 			// contextMenu
 			// 
-			this.contextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripMenuItem[] {
 																						this.menuItemHeaders,
 																						this.menuItemSpacer1,
 																						this.menuItemOpenUrl,
@@ -395,52 +395,52 @@ namespace WorldWind.Net.Monitor
 																						this.menuItemSpacer2,
 																						this.menuItemCopy,
 																						this.menuItemClear});
-			this.contextMenu.Popup += new System.EventHandler(this.contextMenu_Popup);
+			//this.contextMenuClick += new System.EventHandler(this.contextMenu_Popup);
 			// 
 			// menuItemHeaders
 			// 
-			this.menuItemHeaders.DefaultItem = true;
-			this.menuItemHeaders.Index = 0;
+			//this.menuItemHeaders.DefaultItem = true;
+			//this.menuItemHeaders.Index = 0;
 			this.menuItemHeaders.Text = "View request &details";
 			this.menuItemHeaders.Click += new System.EventHandler(this.menuItemHeaders_Click);
 			// 
 			// menuItemSpacer1
 			// 
-			this.menuItemSpacer1.Index = 1;
+			//this.menuItemSpacer1.Index = 1;
 			this.menuItemSpacer1.Text = "-";
 			// 
 			// menuItemOpenUrl
 			// 
-			this.menuItemOpenUrl.Index = 2;
+			//this.menuItemOpenUrl.Index = 2;
 			this.menuItemOpenUrl.Text = "Open &Url in web browser";
 			this.menuItemOpenUrl.Click += new System.EventHandler(this.menuItemOpenUrl_Click);
 			// 
 			// menuItemViewDir
 			// 
-			this.menuItemViewDir.Index = 3;
+			//this.menuItemViewDir.Index = 3;
 			this.menuItemViewDir.Text = "&View destination directory";
 			this.menuItemViewDir.Click += new System.EventHandler(this.menuItemViewDir_Click);
 			// 
 			// menuItemSpacer2
 			// 
-			this.menuItemSpacer2.Index = 4;
+			//this.menuItemSpacer2.Index = 4;
 			this.menuItemSpacer2.Text = "-";
 			// 
 			// menuItemCopy
 			// 
-			this.menuItemCopy.Index = 5;
+			//this.menuItemCopy.Index = 5;
 			this.menuItemCopy.Text = "&Copy information";
 			this.menuItemCopy.Click += new System.EventHandler(this.menuItemCopy_Click);
 			// 
 			// menuItemClear
 			// 
-			this.menuItemClear.Index = 6;
+			//this.menuItemClear.Index = 6;
 			this.menuItemClear.Text = "&Clear list";
 			this.menuItemClear.Click += new System.EventHandler(this.menuItemClear_Click);
 			// 
 			// mainMenu1
 			// 
-			this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			this.mainMenu1.Items.AddRange(new System.Windows.Forms.ToolStripMenuItem[] {
 																					  this.menuItemFile,
 																					  this.menuItemEdit,
 																					  this.menuItem9,
@@ -448,37 +448,37 @@ namespace WorldWind.Net.Monitor
 			// 
 			// menuItemFile
 			// 
-			this.menuItemFile.Index = 0;
-			this.menuItemFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			//this.menuItemFile.Index = 0;
+			this.menuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripMenuItem[] {
 																						 this.menuItemFileRetry,
 																						 this.menuItemSeparator3,
 																						 this.menuItemFileClose});
 			this.menuItemFile.Text = "&File";
-			this.menuItemFile.Popup += new System.EventHandler(this.menuItemFile_Popup);
+			this.menuItemFile.Click += new System.EventHandler(this.menuItemFile_Popup);
 			// 
 			// menuItemFileRetry
 			// 
-			this.menuItemFileRetry.Index = 0;
-			this.menuItemFileRetry.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
+			//this.menuItemFileRetry.Index = 0;
+			this.menuItemFileRetry.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R;
 			this.menuItemFileRetry.Text = "&Retry download";
 			this.menuItemFileRetry.Click += new System.EventHandler(this.menuItemFileRetry_Click);
 			// 
 			// menuItemSeparator3
 			// 
-			this.menuItemSeparator3.Index = 1;
+			//this.menuItemSeparator3.Index = 1;
 			this.menuItemSeparator3.Text = "-";
 			// 
 			// menuItemFileClose
 			// 
-			this.menuItemFileClose.Index = 2;
-			this.menuItemFileClose.Shortcut = System.Windows.Forms.Shortcut.CtrlF4;
+			//this.menuItemFileClose.Index = 2;
+			this.menuItemFileClose.ShortcutKeys = System.Windows.Forms.Keys.F4 | System.Windows.Forms.Keys.ControlKey;
 			this.menuItemFileClose.Text = "&Close";
 			this.menuItemFileClose.Click += new System.EventHandler(this.menuItemFileClose_Click);
 			// 
 			// menuItemEdit
 			// 
-			this.menuItemEdit.Index = 1;
-			this.menuItemEdit.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			//this.menuItemEdit.Index = 1;
+			this.menuItemEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripMenuItem[] {
 																						 this.menuItemEditCopy,
 																						 this.menuItemEditDelete,
 																						 this.menuItem6,
@@ -486,50 +486,50 @@ namespace WorldWind.Net.Monitor
 																						 this.menuItem7,
 																						 this.menuItemEditClear});
 			this.menuItemEdit.Text = "&Edit";
-			this.menuItemEdit.Popup += new System.EventHandler(this.menuItemEdit_Popup);
+			this.menuItemEdit.Click += new System.EventHandler(this.menuItemEdit_Popup);
 			// 
 			// menuItemEditCopy
 			// 
-			this.menuItemEditCopy.Index = 0;
-			this.menuItemEditCopy.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
+			//this.menuItemEditCopy.Index = 0;
+			this.menuItemEditCopy.ShortcutKeys = System.Windows.Forms.Keys.ControlKey | System.Windows.Forms.Keys.C;
 			this.menuItemEditCopy.Text = "&Copy";
 			this.menuItemEditCopy.Click += new System.EventHandler(this.menuItemCopy_Click);
 			// 
 			// menuItemEditDelete
 			// 
-			this.menuItemEditDelete.Index = 1;
-			this.menuItemEditDelete.Shortcut = System.Windows.Forms.Shortcut.Del;
+			//this.menuItemEditDelete.Index = 1;
+			this.menuItemEditDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
 			this.menuItemEditDelete.Text = "&Delete";
 			this.menuItemEditDelete.Click += new System.EventHandler(this.menuItemEditDelete_Click);
 			// 
 			// menuItem6
 			// 
-			this.menuItem6.Index = 2;
+			//this.menuItem6.Index = 2;
 			this.menuItem6.Text = "-";
 			// 
 			// menuItemEditSelectAll
 			// 
-			this.menuItemEditSelectAll.Index = 3;
-			this.menuItemEditSelectAll.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
+			//this.menuItemEditSelectAll.Index = 3;
+			this.menuItemEditSelectAll.ShortcutKeys = System.Windows.Forms.Keys.A | System.Windows.Forms.Keys.Control;
 			this.menuItemEditSelectAll.Text = "Select &All";
 			this.menuItemEditSelectAll.Click += new System.EventHandler(this.menuItemSelectAll_Click);
 			// 
 			// menuItem7
 			// 
-			this.menuItem7.Index = 4;
+			//this.menuItem7.Index = 4;
 			this.menuItem7.Text = "-";
 			// 
 			// menuItemEditClear
 			// 
-			this.menuItemEditClear.Index = 5;
-			this.menuItemEditClear.Shortcut = System.Windows.Forms.Shortcut.AltBksp;
+			//this.menuItemEditClear.Index = 5;
+			this.menuItemEditClear.ShortcutKeys = System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Back;
 			this.menuItemEditClear.Text = "&Clear";
 			this.menuItemEditClear.Click += new System.EventHandler(this.menuItemClear_Click);
 			// 
 			// menuItem9
 			// 
-			this.menuItem9.Index = 2;
-			this.menuItem9.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			//this.menuItem9.Index = 2;
+			this.menuItem9.DropDownItems.AddRange(new System.Windows.Forms.ToolStripMenuItem[] {
 																					  this.menuItemRun,
 																					  this.menuItem4,
 																					  this.menuItemWriteLog});
@@ -538,52 +538,52 @@ namespace WorldWind.Net.Monitor
 			// menuItemRun
 			// 
 			this.menuItemRun.Checked = true;
-			this.menuItemRun.Index = 0;
-			this.menuItemRun.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
+			//this.menuItemRun.Index = 0;
+			this.menuItemRun.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R;
 			this.menuItemRun.Text = "&Run";
 			this.menuItemRun.Click += new System.EventHandler(this.menuItemRun_Click);
 			// 
 			// menuItem4
 			// 
-			this.menuItem4.Index = 1;
+			//this.menuItem4.Index = 1;
 			this.menuItem4.Text = "-";
 			// 
 			// menuItemWriteLog
 			// 
-			this.menuItemWriteLog.Index = 2;
+			//this.menuItemWriteLog.Index = 2;
 			this.menuItemWriteLog.Text = "&Write Log";
 			this.menuItemWriteLog.Click += new System.EventHandler(this.menuItemWriteLog_Click);
 			// 
 			// menuItemTools
 			// 
-			this.menuItemTools.Index = 3;
-			this.menuItemTools.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+			//this.menuItemTools.Index = 3;
+			this.menuItemTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripMenuItem[] {
 																						  this.menuItemToolsDetails,
 																						  this.menuItemSpacer3,
 																						  this.menuItemToolsViewUrl,
 																						  this.menuItemToolsViewDirectory});
 			this.menuItemTools.Text = "&Tools";
-			this.menuItemTools.Popup += new System.EventHandler(this.menuItemTools_Popup);
+			this.menuItemTools.Click += new System.EventHandler(this.menuItemTools_Popup);
 			// 
 			// menuItemToolsDetails
 			// 
-			this.menuItemToolsDetails.Index = 0;
+			//this.menuItemToolsDetails.Index = 0;
 			this.menuItemToolsDetails.Text = "View request &details\tEnter";
 			// 
 			// menuItemSpacer3
 			// 
-			this.menuItemSpacer3.Index = 1;
+			//this.menuItemSpacer3.Index = 1;
 			this.menuItemSpacer3.Text = "-";
 			// 
 			// menuItemToolsViewUrl
 			// 
-			this.menuItemToolsViewUrl.Index = 2;
+			//this.menuItemToolsViewUrl.Index = 2;
 			this.menuItemToolsViewUrl.Text = "Open &Url in web browser";
 			this.menuItemToolsViewUrl.Click += new System.EventHandler(this.menuItemOpenUrl_Click);
 			// 
 			// menuItemToolsViewDirectory
 			// 
-			this.menuItemToolsViewDirectory.Index = 3;
+			//this.menuItemToolsViewDirectory.Index = 3;
 			this.menuItemToolsViewDirectory.Text = "&View destination directory";
 			this.menuItemToolsViewDirectory.Click += new System.EventHandler(this.menuItemViewDir_Click);
 			// 
@@ -593,7 +593,7 @@ namespace WorldWind.Net.Monitor
 			this.ClientSize = new System.Drawing.Size(768, 179);
 			this.Controls.Add(this.listView);
 			this.KeyPreview = true;
-			this.Menu = this.mainMenu1;
+			//this.MenuStrip = this.mainMenu1;
 			this.Name = "ProgressMonitor";
 			this.Text = "Download progress monitor";
 			this.ResumeLayout(false);

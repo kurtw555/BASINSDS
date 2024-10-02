@@ -1,3 +1,6 @@
+Imports System.Data
+Imports System.Data.SQLite
+
 Partial Class SwatInput
     Private pGw As clsGw = New clsGw(Me)
     ReadOnly Property Gw() As clsGw
@@ -26,10 +29,10 @@ Partial Class SwatInput
         Public GWSOLP As Double
         Public HLIFE_NGW As Double
 
-        Public Sub New(ByVal aSUBBASIN As Double, _
-                       ByVal aHRU As Double, _
-                       ByVal aLANDUSE As String, _
-                       ByVal aSOIL As String, _
+        Public Sub New(ByVal aSUBBASIN As Double,
+                       ByVal aHRU As Double,
+                       ByVal aLANDUSE As String,
+                       ByVal aSOIL As String,
                        ByVal aSLOPE_CD As String)
             SUBBASIN = aSUBBASIN
             HRU = aHRU
@@ -96,7 +99,7 @@ Partial Class SwatInput
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
                 'Open the connection
-                Dim lConnection As ADODB.Connection = pSwatInput.OpenADOConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
 
                 'Open the Catalog
                 Dim lCatalog As New ADOX.Catalog

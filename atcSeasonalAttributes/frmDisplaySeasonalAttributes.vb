@@ -28,7 +28,7 @@ Friend Class frmDisplaySeasonalAttributes
         For Each lDisplayPlugin As atcDataDisplay In lDisplayPlugins
             Dim lMenuText As String = lDisplayPlugin.Name
             If lMenuText.StartsWith("Analysis::") Then lMenuText = lMenuText.Substring(10)
-            mnuAnalysis.MenuItems.Add(lMenuText, New EventHandler(AddressOf mnuAnalysis_Click))
+            mnuAnalysis.DropDownItems.Add(lMenuText, Nothing, New EventHandler(AddressOf mnuAnalysis_Click))
         Next
 
         If pTimeseriesGroup.Count = 0 Then 'ask user to specify some Data
@@ -61,129 +61,129 @@ Friend Class frmDisplaySeasonalAttributes
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    Friend WithEvents MainMenu1 As System.Windows.Forms.MainMenu
-    Friend WithEvents mnuAnalysis As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFile As System.Windows.Forms.MenuItem
+    Friend WithEvents MainMenu1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents mnuAnalysis As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFile As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents agdMain As atcControls.atcGrid
-    Friend WithEvents mnuView As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuViewSeasonColumns As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuViewSeasonRows As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSave As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuEdit As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuEditCopy As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuSizeColumnsToContents As System.Windows.Forms.MenuItem
-    Friend WithEvents MenuItem1 As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSep1 As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSelectData As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSelectAttributes As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileForgetAttributes As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuHelp As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuView As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuViewSeasonColumns As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuViewSeasonRows As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSave As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuEdit As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuEditCopy As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuSizeColumnsToContents As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSep1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSelectData As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSelectAttributes As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileForgetAttributes As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuHelp As System.Windows.Forms.ToolStripMenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDisplaySeasonalAttributes))
-        Me.MainMenu1 = New System.Windows.Forms.MainMenu(Me.components)
-        Me.mnuFile = New System.Windows.Forms.MenuItem
-        Me.mnuFileSelectData = New System.Windows.Forms.MenuItem
-        Me.mnuFileSelectAttributes = New System.Windows.Forms.MenuItem
-        Me.mnuFileForgetAttributes = New System.Windows.Forms.MenuItem
-        Me.mnuFileSep1 = New System.Windows.Forms.MenuItem
-        Me.mnuFileSave = New System.Windows.Forms.MenuItem
-        Me.mnuEdit = New System.Windows.Forms.MenuItem
-        Me.mnuEditCopy = New System.Windows.Forms.MenuItem
-        Me.mnuView = New System.Windows.Forms.MenuItem
-        Me.mnuViewSeasonColumns = New System.Windows.Forms.MenuItem
-        Me.mnuViewSeasonRows = New System.Windows.Forms.MenuItem
-        Me.MenuItem1 = New System.Windows.Forms.MenuItem
-        Me.mnuSizeColumnsToContents = New System.Windows.Forms.MenuItem
-        Me.mnuAnalysis = New System.Windows.Forms.MenuItem
-        Me.mnuHelp = New System.Windows.Forms.MenuItem
+        Me.MainMenu1 = New System.Windows.Forms.MenuStrip()
+        Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSelectData = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSelectAttributes = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileForgetAttributes = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSep1 = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSave = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuEdit = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuEditCopy = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuView = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuViewSeasonColumns = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuViewSeasonRows = New System.Windows.Forms.ToolStripMenuItem
+        Me.MenuItem1 = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuSizeColumnsToContents = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuAnalysis = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuHelp = New System.Windows.Forms.ToolStripMenuItem
         Me.agdMain = New atcControls.atcGrid
         Me.SuspendLayout()
         '
         'MainMenu1
         '
-        Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuFile, Me.mnuEdit, Me.mnuView, Me.mnuAnalysis, Me.mnuHelp})
+        Me.MainMenu1.Items.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuFile, Me.mnuEdit, Me.mnuView, Me.mnuAnalysis, Me.mnuHelp})
         '
         'mnuFile
         '
-        Me.mnuFile.Index = 0
-        Me.mnuFile.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuFileSelectData, Me.mnuFileSelectAttributes, Me.mnuFileForgetAttributes, Me.mnuFileSep1, Me.mnuFileSave})
+        Me.mnuFile.MergeIndex = 0
+        Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuFileSelectData, Me.mnuFileSelectAttributes, Me.mnuFileForgetAttributes, Me.mnuFileSep1, Me.mnuFileSave})
         Me.mnuFile.Text = "File"
         '
         'mnuFileSelectData
         '
-        Me.mnuFileSelectData.Index = 0
+        Me.mnuFileSelectData.MergeIndex = 0
         Me.mnuFileSelectData.Text = "Select &Data"
         '
         'mnuFileSelectAttributes
         '
-        Me.mnuFileSelectAttributes.Index = 1
+        Me.mnuFileSelectAttributes.MergeIndex = 1
         Me.mnuFileSelectAttributes.Text = "Select &Additional Attributes"
         '
         'mnuFileForgetAttributes
         '
-        Me.mnuFileForgetAttributes.Index = 2
+        Me.mnuFileForgetAttributes.MergeIndex = 2
         Me.mnuFileForgetAttributes.Text = "Select Di&fferent Attributes"
         '
         'mnuFileSep1
         '
-        Me.mnuFileSep1.Index = 3
+        Me.mnuFileSep1.MergeIndex = 3
         Me.mnuFileSep1.Text = "-"
         '
         'mnuFileSave
         '
-        Me.mnuFileSave.Index = 4
-        Me.mnuFileSave.Shortcut = System.Windows.Forms.Shortcut.CtrlS
+        Me.mnuFileSave.MergeIndex = 4
+        Me.mnuFileSave.ShortcutKeys = System.Windows.Forms.Shortcut.CtrlS
         Me.mnuFileSave.Text = "Save Grid"
         '
         'mnuEdit
         '
-        Me.mnuEdit.Index = 1
-        Me.mnuEdit.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuEditCopy})
+        Me.mnuEdit.MergeIndex = 1
+        Me.mnuEdit.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuEditCopy})
         Me.mnuEdit.Text = "Edit"
         '
         'mnuEditCopy
         '
-        Me.mnuEditCopy.Index = 0
-        Me.mnuEditCopy.Shortcut = System.Windows.Forms.Shortcut.CtrlC
+        Me.mnuEditCopy.MergeIndex = 0
+        Me.mnuEditCopy.ShortcutKeys = System.Windows.Forms.Shortcut.CtrlC
         Me.mnuEditCopy.Text = "Copy"
         '
         'mnuView
         '
-        Me.mnuView.Index = 2
-        Me.mnuView.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuViewSeasonColumns, Me.mnuViewSeasonRows, Me.MenuItem1, Me.mnuSizeColumnsToContents})
+        Me.mnuView.MergeIndex = 2
+        Me.mnuView.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuViewSeasonColumns, Me.mnuViewSeasonRows, Me.MenuItem1, Me.mnuSizeColumnsToContents})
         Me.mnuView.Text = "View"
         '
         'mnuViewSeasonColumns
         '
         Me.mnuViewSeasonColumns.Checked = True
-        Me.mnuViewSeasonColumns.Index = 0
+        Me.mnuViewSeasonColumns.MergeIndex = 0
         Me.mnuViewSeasonColumns.Text = "Season Columns"
         '
         'mnuViewSeasonRows
         '
-        Me.mnuViewSeasonRows.Index = 1
+        Me.mnuViewSeasonRows.MergeIndex = 1
         Me.mnuViewSeasonRows.Text = "Season Rows"
         '
         'MenuItem1
         '
-        Me.MenuItem1.Index = 2
+        Me.MenuItem1.MergeIndex = 2
         Me.MenuItem1.Text = "-"
         '
         'mnuSizeColumnsToContents
         '
-        Me.mnuSizeColumnsToContents.Index = 3
+        Me.mnuSizeColumnsToContents.MergeIndex = 3
         Me.mnuSizeColumnsToContents.Text = "Size ColumnsTo Contents"
         '
         'mnuAnalysis
         '
-        Me.mnuAnalysis.Index = 3
+        Me.mnuAnalysis.MergeIndex = 3
         Me.mnuAnalysis.Text = "Analysis"
         '
         'mnuHelp
         '
-        Me.mnuHelp.Index = 4
-        Me.mnuHelp.Shortcut = System.Windows.Forms.Shortcut.F1
+        Me.mnuHelp.MergeIndex = 4
+        Me.mnuHelp.ShortcutKeys = System.Windows.Forms.Shortcut.F1
         Me.mnuHelp.Text = "Help"
         '
         'agdMain
@@ -206,7 +206,7 @@ Friend Class frmDisplaySeasonalAttributes
         Me.ClientSize = New System.Drawing.Size(497, 318)
         Me.Controls.Add(Me.agdMain)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Menu = Me.MainMenu1
+        'Me.Menu = Me.MainMenu1
         Me.Name = "frmDisplaySeasonalAttributes"
         Me.Text = "Seasonal Attributes"
         Me.ResumeLayout(False)

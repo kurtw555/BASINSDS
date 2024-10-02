@@ -1,3 +1,5 @@
+Imports System.Data
+Imports System.Data.SQLite
 Partial Class SwatInput
     Private pWgn As clsWgn = New clsWgn(Me)
     ReadOnly Property Wgn() As clsWgn
@@ -110,7 +112,7 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                Dim lConnection As ADODB.Connection = pSwatInput.OpenADOConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
 
                 'Open the Catalog
                 Dim lCatalog As New ADOX.Catalog
@@ -166,9 +168,11 @@ Partial Class SwatInput
             End Try
         End Function
 
-        Private Sub Append12DBColumnsSingle(ByVal aColumns As ADOX.Columns, ByVal aSection As String)
+        'Private Sub Append12DBColumnsSingle(ByVal aColumns As ADOX.Columns, ByVal aSection As String)
+        Private Sub Append12DBColumnsSingle(ByVal aColumns As DataColumnCollection, ByVal aSection As String)
             For i As Integer = 1 To 12
-                aColumns.Append(aSection & i, ADOX.DataTypeEnum.adSingle)
+                'aColumns.Append(aSection & i, ADOX.DataTypeEnum.adSingle)
+                aColumns.Add(aSection & i, ADOX.DataTypeEnum.adSingle)
             Next
         End Sub
 

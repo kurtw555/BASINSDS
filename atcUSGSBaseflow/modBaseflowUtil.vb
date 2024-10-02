@@ -1958,20 +1958,20 @@ Public Module modBaseflowUtil
         Dim lX(lNumProbabilityPoints) As Double
         Dim lLastIndex As Integer = lX.GetUpperBound(0)
         Dim lPane As ZedGraph.GraphPane = lZgc.MasterPane.PaneList(0)
-        Dim lXScale As ZedGraph.ProbabilityScale
+        'Dim lXScale As ZedGraph.ProbabilityScale
         With lPane.XAxis
-            If .Type <> ZedGraph.AxisType.Probability Then
-                .Type = ZedGraph.AxisType.Probability
-                With .MajorTic
-                    .IsInside = True
-                    .IsCrossInside = True
-                    .IsOutside = False
-                    .IsCrossOutside = False
-                End With
-                lXScale = .Scale
-                lXScale.standardDeviations = 3
-                'lXScale.IsReverse = True
-            End If
+            'If .Type <> ZedGraph.AxisType.Probability Then
+            '    .Type = ZedGraph.AxisType.Probability
+            '    With .MajorTic
+            '        .IsInside = True
+            '        .IsCrossInside = True
+            '        .IsOutside = False
+            '        .IsCrossOutside = False
+            '    End With
+            '    lXScale = .Scale
+            '    lXScale.standardDeviations = 3
+            'lXScale.IsReverse = True
+            'End If
 
             For lXindex As Integer = 0 To lLastIndex
                 lX(lXindex) = 100 * .Scale.DeLinearize(lXindex / CDbl(lLastIndex))

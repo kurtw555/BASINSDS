@@ -67,13 +67,15 @@ Public Class clsGraphFrequency
             lUSGSLabel.IsVisible = True
 
             With .XAxis
-                If .Type <> AxisType.Probability Then .Type = AxisType.Probability
-                With .MajorTic
-                    .IsInside = True
-                    .IsCrossInside = True
-                    .IsOutside = False
-                    .IsCrossOutside = False
-                End With
+                '### Fix
+                'If .Type <> AxisType.Probability Then .Type = AxisType.Probability
+                'With .MajorTic
+                '    .IsInside = True
+                '    .IsCrossInside = True
+                '    .IsOutside = False
+                '    .IsCrossOutside = False
+                'End With
+                '###
                 .Title.FontSpec.IsBold = False
                 '.Title.Text = "Percent Exceeded"
 
@@ -92,9 +94,11 @@ Public Class clsGraphFrequency
                 .Scale.MaxAuto = False
                 .Scale.Min = 0.01
                 .Scale.Max = 0.99
-                Dim lProbScale As ProbabilityScale = .Scale
-                lProbScale.LabelStyle = ProbabilityScale.ProbabilityLabelStyle.Percent
-                lProbScale.IsReverse = True
+                '### Fix
+                'Dim lProbScale As ProbabilityScale = .Scale
+                'lProbScale.LabelStyle = ProbabilityScale.ProbabilityLabelStyle.Percent
+                'lProbScale.IsReverse = True
+                '### Fix
             End With
 
             With .YAxis

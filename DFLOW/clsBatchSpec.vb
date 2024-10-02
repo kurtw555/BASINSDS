@@ -527,7 +527,7 @@ Public Class clsBatchSpec
             If aCreate Then
                 Try
                     Dim lDirInfo As New IO.DirectoryInfo(aPath)
-                    Dim ldSecurity As System.Security.AccessControl.DirectorySecurity = lDirInfo.GetAccessControl()
+                    'Dim ldSecurity As System.Security.AccessControl.DirectorySecurity = lDirInfo.GetAccessControl()
                     MkDirPath(aPath)
                 Catch ex As Exception
                     'RaiseEvent StatusUpdate("0,0,Cannot create output directory: " & vbCrLf & lOutputDir)

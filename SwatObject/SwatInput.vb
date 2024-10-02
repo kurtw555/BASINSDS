@@ -1,17 +1,24 @@
-Imports System.Data.OleDb
 Imports MapWinUtility
 Imports atcUtility
+Imports System.Data
+Imports Microsoft.Data.Sqlite
+Imports System.Data.OleDb
 
 ''' <summary>
 ''' Class containing input needed for execution of SWAT2005 and methods to write text input files
 ''' </summary>
 ''' <remarks>Proof of concept - NOT COMPLETE</remarks>
+
+
 Public Class SwatInput
 #Region "Class Variables"
-    Friend StatusBar As Windows.Forms.StatusBar = Nothing
-    Friend CnSwatParm As OleDbConnection
-    Friend CnSwatInput As OleDbConnection
-    Friend CnSwatSoils As OleDbConnection
+    Friend StatusBar As Windows.Forms.ToolStripStatusLabel = Nothing
+    'Friend CnSwatParm As OleDbConnection
+    Friend CnSwatParm As SqliteConnection
+    'Friend CnSwatInput As OleDbConnection
+    Friend CnSwatInput As SqliteConnection
+    'Friend CnSwatSoils As OleDbConnection
+    Friend CnSwatSoils As SqliteConnection
     Friend ProjectFolder As String = ""
     Friend TxtInOutFolder As String = ""
 
@@ -27,12 +34,12 @@ Public Class SwatInput
     ''' <param name="aOutputFolder"></param>
     ''' <param name="aStatusBar"></param>
     ''' <remarks></remarks>
-    Public Sub New(ByVal aSwatGDB As OleDbConnection, _
-                   ByVal aOutGDB As OleDbConnection, _
-                   ByVal aSwatSoilsDB As OleDbConnection, _
-                   ByVal aOutputFolder As String, _
-                   ByVal aScenario As String, _
-                   ByVal aStatusBar As Windows.Forms.StatusBar)
+    Public Sub New(ByVal aSwatGDB As SqliteConnection,
+                   ByVal aOutGDB As SqliteConnection,
+                   ByVal aSwatSoilsDB As SqliteConnection,
+                   ByVal aOutputFolder As String,
+                   ByVal aScenario As String,
+                   ByVal aStatusBar As Windows.Forms.ToolStripStatusLabel)
         Initialize(aSwatGDB, aOutGDB, aSwatSoilsDB, aOutputFolder, aScenario, aStatusBar)
     End Sub
 
@@ -44,12 +51,12 @@ Public Class SwatInput
     ''' <param name="aOutputFolder"></param>
     ''' <param name="aStatusBar"></param>
     ''' <remarks></remarks>
-    Public Sub Initialize(ByVal aSwatGDB As OleDbConnection, _
-                          ByVal aOutGDB As OleDbConnection, _
-                          ByVal aSwatSoilsDB As OleDbConnection, _
-                          ByVal aOutputFolder As String, _
-                          ByVal aScenario As String, _
-                          ByVal aStatusBar As Windows.Forms.StatusBar)
+    Public Sub Initialize(ByVal aSwatGDB As SqliteConnection,
+                          ByVal aOutGDB As SqliteConnection,
+                          ByVal aSwatSoilsDB As SqliteConnection,
+                          ByVal aOutputFolder As String,
+                          ByVal aScenario As String,
+                          ByVal aStatusBar As Windows.Forms.ToolStripStatusLabel)
         ProjectFolder = aOutputFolder
         If ProjectFolder.Length > 0 Then
             IO.Directory.CreateDirectory(ProjectFolder)
@@ -79,9 +86,9 @@ Public Class SwatInput
     ''' <param name="aOutGDB"></param>
     ''' <param name="aProjectFolder"></param>
     ''' <remarks>Opens database connections</remarks>
-    Public Sub New(ByVal aSwatGDB As String, _
-                   ByVal aOutGDB As String, _
-                   ByVal aProjectFolder As String, _
+    Public Sub New(ByVal aSwatGDB As String,
+                   ByVal aOutGDB As String,
+                   ByVal aProjectFolder As String,
                    ByVal aScenario As String)
 
         CnSwatParm = OpenOleDB(aSwatGDB)
@@ -182,8 +189,8 @@ Public Class SwatInput
     ''' <param name="aValueFieldName">Update field name</param>
     ''' <param name="aValue">New value</param>
     ''' <remarks></remarks>
-    Public Sub UpdateInputDB(ByVal aTableName As String, _
-                             ByVal aIdFieldName As String, ByVal aId As Integer, _
+    Public Sub UpdateInputDB(ByVal aTableName As String,
+                             ByVal aIdFieldName As String, ByVal aId As Integer,
                              ByVal aValueFieldName As String, ByVal aValue As String)
         Dim lSQL As String = ""
         Dim lNumber As Double
@@ -201,8 +208,8 @@ Public Class SwatInput
         lUpdateCommand.ExecuteNonQuery()
     End Sub
 
-    Public Sub UpdateInputDB(ByVal aTableName As String, _
-                             ByVal aWhereClause As String, _
+    Public Sub UpdateInputDB(ByVal aTableName As String,
+                             ByVal aWhereClause As String,
                              ByVal aValueFieldName As String, ByVal aValue As String)
         Dim lSQL As String = ""
         Dim lNumber As Double
@@ -221,7 +228,7 @@ Public Class SwatInput
     End Sub
 
 
-    Public Sub DeleteRowInputDB(ByVal aTableName As String, _
+    Public Sub DeleteRowInputDB(ByVal aTableName As String,
                                 ByVal aIdFieldName As String, ByVal aId As Integer)
         Dim lSQL As String = "DELETE FROM " & aTableName & " WHERE " & aIdFieldName & "=" & aId & ";"
         Dim lDeleteCommand As OleDbCommand = New OleDbCommand(lSQL, CnSwatInput)
@@ -316,16 +323,17 @@ Public Class SwatInput
         Return lResult
     End Function
 
-    Private Function OpenADOConnection() As ADODB.Connection
+    Private Function OpenSqliteConnection() As SqliteConnection
         'Open the connection
-        Dim lConnection As New ADODB.Connection
-        lConnection.Open(CnSwatInput.ConnectionString)
+        Dim lConnection As New SqliteConnection(CnSwatInput.ConnectionString)
+        'lConnection.Open(CnSwatInput.ConnectionString)
         Return lConnection
     End Function
-    Private Function OpenOleDB(ByVal aFileName As String) As OleDb.OleDbConnection
-        Dim lOleDbConnection As New OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & aFileName)
-        lOleDbConnection.Open()
-        Return lOleDbConnection
+    Private Function OpenOleDB(ByVal aFileName As String) As SqliteConnection
+        'Dim lOleDbConnection As New OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & aFileName)
+        Dim lConnection As New SQLiteConnection("Data Source=" + aFileName)
+        lConnection.Open()
+        Return lConnection
     End Function
 
     Public Function FieldUnits(ByVal aTableName As String, ByVal aFieldName As String) As String

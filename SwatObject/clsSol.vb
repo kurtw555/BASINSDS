@@ -1,3 +1,5 @@
+Imports System.Data
+Imports System.Data.SQLite
 Partial Class SwatInput
     Private pSol As clsSol = New clsSol(Me)
     ReadOnly Property Sol() As clsSol
@@ -32,10 +34,10 @@ Partial Class SwatInput
         Public USLE_K(9) As Double
         Public SOL_EC(9) As Double
 
-        Public Sub New(ByVal aSUBBASIN As Double, _
-                       ByVal aHRU As Double, _
-                       ByVal aLANDUSE As String, _
-                       ByVal aSOIL As String, _
+        Public Sub New(ByVal aSUBBASIN As Double,
+                       ByVal aHRU As Double,
+                       ByVal aLANDUSE As String,
+                       ByVal aSOIL As String,
                        ByVal aSLOPE_CD As String)
             SUBBASIN = aSUBBASIN
             HRU = aHRU
@@ -145,7 +147,7 @@ Partial Class SwatInput
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
                 'Open the connection
-                Dim lConnection As ADODB.Connection = pSwatInput.OpenADOConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
 
                 'Open the Catalog
                 Dim lCatalog As New ADOX.Catalog
@@ -177,18 +179,18 @@ Partial Class SwatInput
                     .Append("ANION_EXCL", ADOX.DataTypeEnum.adSingle)
                     .Append("SOL_CRK", ADOX.DataTypeEnum.adSingle)
                     .Append("TEXTURE", ADOX.DataTypeEnum.adVarWChar, 80)
-                    Append10DBColumnsDouble(lTable.Columns, _
-                                            "SOL_Z", _
-                                            "SOL_BD", _
-                                            "SOL_AWC", _
-                                            "SOL_K", _
-                                            "SOL_CBN", _
-                                            "CLAY", _
-                                            "SILT", _
-                                            "SAND", _
-                                            "ROCK", _
-                                            "SOL_ALB", _
-                                            "USLE_K", _
+                    Append10DBColumnsDouble(lTable.Columns,
+                                            "SOL_Z",
+                                            "SOL_BD",
+                                            "SOL_AWC",
+                                            "SOL_K",
+                                            "SOL_CBN",
+                                            "CLAY",
+                                            "SILT",
+                                            "SAND",
+                                            "ROCK",
+                                            "SOL_ALB",
+                                            "USLE_K",
                                             "SOL_EC")
                 End With
 
@@ -205,10 +207,10 @@ Partial Class SwatInput
             End Try
         End Function
 
-        Private Sub Append10DBColumnsDouble(ByVal aColumns As ADOX.Columns, ByVal ParamArray aSections() As String)
+        Private Sub Append10DBColumnsDouble(ByVal aColumns As DataColumnCollection, ByVal ParamArray aSections() As String)
             For i As Integer = 1 To 10
                 For Each lSection As String In aSections
-                    aColumns.Append(lSection & i, ADOX.DataTypeEnum.adDouble)
+                    aColumns.Add(lSection & i, GetType(Double))
                 Next
             Next
         End Sub

@@ -17,7 +17,7 @@ Friend Class frmDisplayFrequencyGrid
     Private pSource As atcFrequencyGridSource
     Private pSwapperSource As atcControls.atcGridSourceRowColumnSwapper
     Private pNday() As Double
-    Friend WithEvents mnuFileExportResults As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuFileExportResults As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents lblNote As System.Windows.Forms.Label
     Private pReturns() As Double
     Private pConditions As atcDataAttributes
@@ -45,7 +45,7 @@ Friend Class frmDisplayFrequencyGrid
             For Each lDisp As atcDataDisplay In DisplayPlugins
                 Dim lMenuText As String = lDisp.Name
                 If lMenuText.StartsWith("Analysis::") Then lMenuText = lMenuText.Substring(10)
-                mnuAnalysis.MenuItems.Add(lMenuText, New EventHandler(AddressOf mnuAnalysis_Click))
+                mnuAnalysis.DropDownItems.Add(lMenuText, Nothing, New EventHandler(AddressOf mnuAnalysis_Click))
             Next
         End If
 
@@ -74,145 +74,145 @@ Friend Class frmDisplayFrequencyGrid
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    Friend WithEvents MainMenu1 As System.Windows.Forms.MainMenu
-    Friend WithEvents mnuAnalysis As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFile As System.Windows.Forms.MenuItem
+    Friend WithEvents MainMenu1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents mnuAnalysis As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFile As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents agdMain As atcControls.atcGrid
-    Friend WithEvents mnuView As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuViewColumns As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuViewRows As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuViewHigh As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuViewLow As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuEdit As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuEditCopy As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSaveGrid As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuSizeColumnsToContents As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuViewSep1 As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuViewSep2 As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSaveReport As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSaveViewNDay As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuHelp As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuView As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuViewColumns As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuViewRows As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuViewHigh As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuViewLow As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuEdit As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuEditCopy As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSaveGrid As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuSizeColumnsToContents As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuViewSep1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuViewSep2 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSaveReport As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSaveViewNDay As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuHelp As System.Windows.Forms.ToolStripMenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDisplayFrequencyGrid))
-        Me.MainMenu1 = New System.Windows.Forms.MainMenu(Me.components)
-        Me.mnuFile = New System.Windows.Forms.MenuItem
-        Me.mnuFileSaveGrid = New System.Windows.Forms.MenuItem
-        Me.mnuFileSaveReport = New System.Windows.Forms.MenuItem
-        Me.mnuFileSaveViewNDay = New System.Windows.Forms.MenuItem
-        Me.mnuFileExportResults = New System.Windows.Forms.MenuItem
-        Me.mnuEdit = New System.Windows.Forms.MenuItem
-        Me.mnuEditCopy = New System.Windows.Forms.MenuItem
-        Me.mnuView = New System.Windows.Forms.MenuItem
-        Me.mnuViewColumns = New System.Windows.Forms.MenuItem
-        Me.mnuViewRows = New System.Windows.Forms.MenuItem
-        Me.mnuViewSep1 = New System.Windows.Forms.MenuItem
-        Me.mnuViewHigh = New System.Windows.Forms.MenuItem
-        Me.mnuViewLow = New System.Windows.Forms.MenuItem
-        Me.mnuViewSep2 = New System.Windows.Forms.MenuItem
-        Me.mnuSizeColumnsToContents = New System.Windows.Forms.MenuItem
-        Me.mnuAnalysis = New System.Windows.Forms.MenuItem
-        Me.mnuHelp = New System.Windows.Forms.MenuItem
+        Me.MainMenu1 = New System.Windows.Forms.MenuStrip()
+        Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSaveGrid = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSaveReport = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSaveViewNDay = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileExportResults = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuEdit = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuEditCopy = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuView = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuViewColumns = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuViewRows = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuViewSep1 = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuViewHigh = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuViewLow = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuViewSep2 = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuSizeColumnsToContents = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuAnalysis = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuHelp = New System.Windows.Forms.ToolStripMenuItem
         Me.agdMain = New atcControls.atcGrid
         Me.lblNote = New System.Windows.Forms.Label
         Me.SuspendLayout()
         '
         'MainMenu1
         '
-        Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuFile, Me.mnuEdit, Me.mnuView, Me.mnuAnalysis, Me.mnuHelp})
+        Me.MainMenu1.Items.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuFile, Me.mnuEdit, Me.mnuView, Me.mnuAnalysis, Me.mnuHelp})
         '
         'mnuFile
         '
-        Me.mnuFile.Index = 0
-        Me.mnuFile.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuFileSaveGrid, Me.mnuFileSaveReport, Me.mnuFileSaveViewNDay, Me.mnuFileExportResults})
+        Me.mnuFile.MergeIndex = 0
+        Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuFileSaveGrid, Me.mnuFileSaveReport, Me.mnuFileSaveViewNDay, Me.mnuFileExportResults})
         Me.mnuFile.Text = "File"
         '
         'mnuFileSaveGrid
         '
-        Me.mnuFileSaveGrid.Index = 0
-        Me.mnuFileSaveGrid.Shortcut = System.Windows.Forms.Shortcut.CtrlS
+        Me.mnuFileSaveGrid.MergeIndex = 0
+        Me.mnuFileSaveGrid.ShortcutKeys = System.Windows.Forms.Shortcut.CtrlS
         Me.mnuFileSaveGrid.Text = "Save Grid"
         '
         'mnuFileSaveReport
         '
-        Me.mnuFileSaveReport.Index = 1
+        Me.mnuFileSaveReport.MergeIndex = 1
         Me.mnuFileSaveReport.Text = "Save Report"
         '
         'mnuFileSaveViewNDay
         '
-        Me.mnuFileSaveViewNDay.Index = 2
+        Me.mnuFileSaveViewNDay.MergeIndex = 2
         Me.mnuFileSaveViewNDay.Text = "Save/View N-Day"
         '
         'mnuFileExportResults
         '
-        Me.mnuFileExportResults.Index = 3
+        Me.mnuFileExportResults.MergeIndex = 3
         Me.mnuFileExportResults.Text = "Export Results"
         '
         'mnuEdit
         '
-        Me.mnuEdit.Index = 1
-        Me.mnuEdit.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuEditCopy})
+        Me.mnuEdit.MergeIndex = 1
+        Me.mnuEdit.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuEditCopy})
         Me.mnuEdit.Text = "Edit"
         '
         'mnuEditCopy
         '
-        Me.mnuEditCopy.Index = 0
-        Me.mnuEditCopy.Shortcut = System.Windows.Forms.Shortcut.CtrlC
+        Me.mnuEditCopy.MergeIndex = 0
+        Me.mnuEditCopy.ShortcutKeys = System.Windows.Forms.Shortcut.CtrlC
         Me.mnuEditCopy.Text = "Copy"
         '
         'mnuView
         '
-        Me.mnuView.Index = 2
-        Me.mnuView.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuViewColumns, Me.mnuViewRows, Me.mnuViewSep1, Me.mnuViewHigh, Me.mnuViewLow, Me.mnuViewSep2, Me.mnuSizeColumnsToContents})
+        Me.mnuView.MergeIndex = 2
+        Me.mnuView.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuViewColumns, Me.mnuViewRows, Me.mnuViewSep1, Me.mnuViewHigh, Me.mnuViewLow, Me.mnuViewSep2, Me.mnuSizeColumnsToContents})
         Me.mnuView.Text = "View"
         '
         'mnuViewColumns
         '
         Me.mnuViewColumns.Checked = True
-        Me.mnuViewColumns.Index = 0
+        Me.mnuViewColumns.MergeIndex = 0
         Me.mnuViewColumns.Text = "Columns"
         '
         'mnuViewRows
         '
-        Me.mnuViewRows.Index = 1
+        Me.mnuViewRows.MergeIndex = 1
         Me.mnuViewRows.Text = "Rows"
         '
         'mnuViewSep1
         '
-        Me.mnuViewSep1.Index = 2
+        Me.mnuViewSep1.MergeIndex = 2
         Me.mnuViewSep1.Text = "-"
         '
         'mnuViewHigh
         '
         Me.mnuViewHigh.Checked = True
-        Me.mnuViewHigh.Index = 3
+        Me.mnuViewHigh.MergeIndex = 3
         Me.mnuViewHigh.Text = "High"
         '
         'mnuViewLow
         '
-        Me.mnuViewLow.Index = 4
+        Me.mnuViewLow.MergeIndex = 4
         Me.mnuViewLow.Text = "Low"
         '
         'mnuViewSep2
         '
-        Me.mnuViewSep2.Index = 5
+        Me.mnuViewSep2.MergeIndex = 5
         Me.mnuViewSep2.Text = "-"
         '
         'mnuSizeColumnsToContents
         '
-        Me.mnuSizeColumnsToContents.Index = 6
+        Me.mnuSizeColumnsToContents.MergeIndex = 6
         Me.mnuSizeColumnsToContents.Text = "Size Columns To Contents"
         '
         'mnuAnalysis
         '
-        Me.mnuAnalysis.Index = 3
+        Me.mnuAnalysis.MergeIndex = 3
         Me.mnuAnalysis.Text = "Analysis"
         '
         'mnuHelp
         '
-        Me.mnuHelp.Index = 4
-        Me.mnuHelp.Shortcut = System.Windows.Forms.Shortcut.F1
-        Me.mnuHelp.ShowShortcut = False
+        Me.mnuHelp.MergeIndex = 4
+        Me.mnuHelp.ShortcutKeys = System.Windows.Forms.Shortcut.F1
+        Me.mnuHelp.ShowShortcutKeys = False
         Me.mnuHelp.Text = "Help"
         '
         'agdMain
@@ -251,7 +251,7 @@ Friend Class frmDisplayFrequencyGrid
         Me.Controls.Add(Me.lblNote)
         Me.Controls.Add(Me.agdMain)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Menu = Me.MainMenu1
+        'Me.Menu = Me.MainMenu1
         Me.Name = "frmDisplayFrequencyGrid"
         Me.Text = "Frequency Statistics"
         Me.ResumeLayout(False)

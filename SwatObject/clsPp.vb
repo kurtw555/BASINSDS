@@ -62,7 +62,7 @@
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
                 'Open the connection
-                Dim lConnection As ADODB.Connection = pSwatInput.OpenADOConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.OpenADOConnection()
 
                 'Open the Catalog
                 Dim lCatalog As New ADOX.Catalog

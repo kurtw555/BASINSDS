@@ -9,6 +9,8 @@ Imports System.Collections
 Imports System.ComponentModel
 Imports System.IO
 Imports System.Windows.Forms
+Imports ZedGraph
+
 
 Public Class frmGraphBar
 

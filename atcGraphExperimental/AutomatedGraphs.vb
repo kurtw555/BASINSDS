@@ -405,8 +405,9 @@ Public Module AutomatedGraphs
                         If Not System.IO.Directory.Exists(GraphDirectory) Then
                             System.IO.Directory.CreateDirectory(GraphDirectory)
                         End If
-                        lZgc.SaveIn(lOutFileName)
-
+                        '### Fix
+                        'lZgc.SaveIn(lOutFileName)
+                        '### Fix
                         Dim newlistofattributes() As String = {"Location", "Constituent", "ID"}
                         atcData.atcDataManager.DisplayAttributesSet(newlistofattributes)
                         Dim lList As New atcList.atcListPlugin

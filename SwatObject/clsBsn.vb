@@ -1,3 +1,7 @@
+Imports System.Data
+Imports System.Data.SQLite
+
+
 Partial Class SwatInput
     Private pBsn As clsBsn = New clsBsn(Me)
     ReadOnly Property Bsn() As clsBsn
@@ -101,7 +105,7 @@ Partial Class SwatInput
             Get
                 Dim unitsDictionary As New Dictionary(Of String, String)
 
- 
+
 
                 unitsDictionary.Add("SFTMP", "C")
                 unitsDictionary.Add("SMTMP", "C")
@@ -206,7 +210,8 @@ Partial Class SwatInput
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
                 'Open the connection
-                Dim lConnection As ADODB.Connection = pSwatInput.OpenADOConnection()
+                'Dim lConnection As SqliteConnection = pSwatInput.OpenADOConnection()
+                Dim lConnection As SQLiteConnection = pSwatInput.OpenSqliteConnection()
 
                 'Open the Catalog
                 Dim lCatalog As New ADOX.Catalog

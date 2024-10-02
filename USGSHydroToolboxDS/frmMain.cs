@@ -384,8 +384,8 @@ namespace USGSHydroToolbox
             header.Add(new MenuContainerItem(SampleMenuKey, "tsgen", Utilities.TSToolDescription(ETSTool.GTS)));
             //header.Add(new MenuContainerItem(SampleMenuKey, "tsgen_tst1", "tst1", Utilities.TSToolDescription(ETSTool.MATH)));
             //header.Add(new MenuContainerItem(SampleMenuKey, "tsgen_tst2", "tst2", Utilities.TSToolDescription(ETSTool.SUBSET)));
-            header.Add(new MenuContainerItem(SampleMenuKey, "tsgen", "tst1", Utilities.TSToolDescription(ETSTool.MATH)));
-            header.Add(new MenuContainerItem(SampleMenuKey, "tsgen", "tst2", Utilities.TSToolDescription(ETSTool.SUBSET)));
+            header.Add(new MenuContainerItem(SampleMenuKey, "tst1", Utilities.TSToolDescription(ETSTool.MATH)));
+            header.Add(new MenuContainerItem(SampleMenuKey, "tst2", Utilities.TSToolDescription(ETSTool.SUBSET)));
 
             var TsMathOperations = Utilities.TSMathOperationNames(ETSMathOperationType.ALL);
             foreach (var Key in TsMathOperations)
@@ -461,7 +461,8 @@ namespace USGSHydroToolbox
             }
             else if (act.Contains("Subset") && act.Contains("Filter"))
             {
-                atcDataManager.UserSelectDataOptions.Add("ShowFilterOption", false);
+                //KW
+                //atcDataManager.UserSelectDataOptions.Add("ShowFilterOption", false);
                 var lform = new frmFilterData();
                 atcTimeseriesGroup processed = lform.AskUser((atcTimeseriesGroup)atcDataManager.UserSelectData());
                 var spec = "Split Filter";

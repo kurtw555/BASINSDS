@@ -32,7 +32,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
@@ -382,11 +382,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\atcControls\atcControls-DSC.vbproj">
-      <Project>{b219575f-1541-41db-9fa4-d9d7cd62b4a5}</Project>
-      <Name>atcControls-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
     <ProjectReference Include="..\atcUtility\atcUtility-DSC.vbproj">
       <Project>{67027820-9036-481e-80f6-077e5085f59d}</Project>
       <Name>atcUtility-DSC</Name>

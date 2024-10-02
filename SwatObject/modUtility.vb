@@ -1,7 +1,8 @@
+Imports System.Data
 Imports System.Data.OleDb
 Imports MapWinUtility
 Imports MapWinUtility.Strings
-
+Imports Microsoft.Data.Sqlite
 
 Module modUtility
 
@@ -111,8 +112,11 @@ Module modUtility
         Return lDataSet.Tables(lTableName)
     End Function
 
-    Public Function ExecuteNonQuery(ByVal aSQL As String, ByVal aConnection As OleDbConnection) As Boolean
-        Dim lCommand As New System.Data.OleDb.OleDbCommand(aSQL, aConnection)
+    'Public Function ExecuteNonQuery(ByVal aSQL As String, ByVal aConnection As OleDbConnection) As Boolean
+    Public Function ExecuteNonQuery(ByVal aSQL As String, ByVal aConnection As SqliteConnection) As Boolean
+        'Dim lCommand As New System.Data.OleDb.OleDbCommand(aSQL, aConnection)
+        Dim lCommand = aConnection.CreateCommand()
+        lCommand.CommandText = aSQL
         lCommand.CommandTimeout = 30
         Dim lStartTime As Date = Date.Now
         'Dim lLogged As Boolean = False
@@ -138,7 +142,7 @@ TryExecute:
     End Function
 
     'Function find whether a table exist or not
-    Friend Function IsTableExist(ByVal strTable As String, ByVal aConnection As OleDb.OleDbConnection) As Boolean
+    Friend Function IsTableExist(ByVal strTable As String, ByVal aConnection As SqliteConnection) As Boolean
         Try
 
             Dim schemaTable As DataTable = aConnection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, New Object() {Nothing, Nothing, Nothing, "TABLE"})
@@ -214,7 +218,8 @@ TryExecute:
         ExecuteNonQuery(lSQL.Substring(0, lSQL.Length - 2) & ");", aConnection)
     End Function
 
-    Friend Function DropTable(ByVal tableName As String, ByVal aConnection As OleDb.OleDbConnection) As Boolean
+    'Friend Function DropTable(ByVal tableName As String, ByVal aConnection As OleDb.OleDbConnection) As Boolean
+    Friend Function DropTable(ByVal tableName As String, ByVal aConnection As SqliteConnection) As Boolean
         If IsTableExist(tableName, aConnection) Then
             ExecuteNonQuery("DROP TABLE " & tableName & ";", aConnection)
         End If

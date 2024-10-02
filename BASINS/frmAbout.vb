@@ -338,9 +338,14 @@ Public Class frmAbout
     Public Sub ShowAbout()
         Try
 #If GISProvider = "DotSpatial" Then
-            picProgramLogo.Image = My.Resources.Images.header_graphic_usgsIdentifier_white
+
+            Dim res() As String = GetType(frmAbout).Assembly.GetManifestResourceNames()
+            'picProgramLogo.Image = My.Resources.header_graphic_usgsIdentifier_white
+            'KW
+            picProgramLogo.Image = New System.Drawing.Bitmap(GetType(frmAbout).Assembly.GetManifestResourceStream("header_graphic_usgsIdentifier_white.jpg"))
             picProgramLogo.Width = picProgramLogo.Image.Width
-            picMapWindow.Image = My.Resources.Images.dotspatial_small
+            'picMapWindow.Image = My.Resources.dotspatial_small
+            picMapWindow.Image = New System.Drawing.Bitmap(GetType(frmAbout).Assembly.GetManifestResourceStream("dotspatial-small.bmp"))
             picMapWindow.Width = picMapWindow.Image.Width
 #Else
             Try

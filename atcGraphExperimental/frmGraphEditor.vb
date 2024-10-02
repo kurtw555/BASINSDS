@@ -170,9 +170,10 @@ Public Class frmGraphEditor
             radioAxisLogarithmic.Enabled = False
             radioAxisProbability.Enabled = False
             Select Case aAxis.Type
-                Case AxisType.DateDual
-                    panelProbability.Visible = False
-                    radioAxisTime.Checked = True
+                '### Fix
+                'Case AxisType.DateDual
+                '   panelProbability.Visible = False
+               ' radioAxisTime.Checked = True
                 Case AxisType.Linear
                     panelProbability.Visible = False
                     radioAxisLinear.Enabled = True
@@ -183,20 +184,21 @@ Public Class frmGraphEditor
                     radioAxisLinear.Enabled = True
                     radioAxisLogarithmic.Enabled = True
                     radioAxisLogarithmic.Checked = True
-                Case AxisType.Probability
-                    panelProbability.Visible = True
-                    radioAxisProbability.Checked = True
-                    panelAxisType.Visible = False
-                    Dim lProbScale As ZedGraph.ProbabilityScale = aAxis.Scale
-                    Select Case lProbScale.LabelStyle
-                        Case ProbabilityScale.ProbabilityLabelStyle.Percent
-                            radioProbablilityPercent.Checked = True
-                        Case ProbabilityScale.ProbabilityLabelStyle.Fraction
-                            radioProbablilityFraction.Checked = True
-                        Case ProbabilityScale.ProbabilityLabelStyle.ReturnInterval
-                            radioProbablilityReturnPeriod.Checked = True
-                    End Select
-                    txtProbabilityDeviations.Text = DoubleToString(lProbScale.standardDeviations)
+                    '### Fix
+                    'Case AxisType.Probability
+                    '    panelProbability.Visible = True
+                    '    radioAxisProbability.Checked = True
+                    '    panelAxisType.Visible = False
+                    '    Dim lProbScale As ZedGraph.ProbabilityScale = aAxis.Scale
+                    '    Select Case lProbScale.LabelStyle
+                    '        Case ProbabilityScale.ProbabilityLabelStyle.Percent
+                    '            radioProbablilityPercent.Checked = True
+                    '        Case ProbabilityScale.ProbabilityLabelStyle.Fraction
+                    '            radioProbablilityFraction.Checked = True
+                    '        Case ProbabilityScale.ProbabilityLabelStyle.ReturnInterval
+                    '            radioProbablilityReturnPeriod.Checked = True
+                    '    End Select
+                    '    txtProbabilityDeviations.Text = DoubleToString(lProbScale.standardDeviations)
             End Select
             SetControlsMinMax(aAxis)
             chkRangeReverse.Checked = aAxis.Scale.IsReverse
@@ -243,18 +245,18 @@ Public Class frmGraphEditor
                     If aAxis.Type <> AxisType.Linear Then .Type = AxisType.Linear
                 ElseIf radioAxisLogarithmic.Checked Then
                     If aAxis.Type <> AxisType.Log Then .Type = AxisType.Log
-                ElseIf radioAxisProbability.Checked Then
-                    Dim lProbScale As ZedGraph.ProbabilityScale = aAxis.Scale
-                    If radioProbablilityPercent.Checked Then
-                        lProbScale.LabelStyle = ProbabilityScale.ProbabilityLabelStyle.Percent
-                    ElseIf radioProbablilityFraction.Checked Then
-                        lProbScale.LabelStyle = ProbabilityScale.ProbabilityLabelStyle.Fraction
-                    ElseIf radioProbablilityReturnPeriod.Checked Then
-                        lProbScale.LabelStyle = ProbabilityScale.ProbabilityLabelStyle.ReturnInterval
-                    End If
-                    If Double.TryParse(txtProbabilityDeviations.Text, lTemp) Then
-                        lProbScale.standardDeviations = lTemp
-                    End If
+                    'ElseIf radioAxisProbability.Checked Then
+                    '    Dim lProbScale As ZedGraph.ProbabilityScale = aAxis.Scale
+                    '    If radioProbablilityPercent.Checked Then
+                    '        lProbScale.LabelStyle = ProbabilityScale.ProbabilityLabelStyle.Percent
+                    '    ElseIf radioProbablilityFraction.Checked Then
+                    '        lProbScale.LabelStyle = ProbabilityScale.ProbabilityLabelStyle.Fraction
+                    '    ElseIf radioProbablilityReturnPeriod.Checked Then
+                    '        lProbScale.LabelStyle = ProbabilityScale.ProbabilityLabelStyle.ReturnInterval
+                    '    End If
+                    '    If Double.TryParse(txtProbabilityDeviations.Text, lTemp) Then
+                    '        lProbScale.standardDeviations = lTemp
+                    '    End If
                     'lProbScale.Exceedance = chkProbabilityExceedance.Checked
                 End If
 

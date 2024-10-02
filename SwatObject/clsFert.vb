@@ -1,4 +1,5 @@
 'OBJECTID,IFNUM,FERTNM,FMINN,FMINP,FORGN,FORGP,FNH3N,BACTPDB,BACTLPDB,BACTKDDB,FERTNAME,MANURE
+Imports System.Data
 Partial Class SwatInput
     Private pFert As clsFert = New clsFert(Me)
     ReadOnly Property Fert() As clsFert

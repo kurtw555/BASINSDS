@@ -1,3 +1,5 @@
+Imports System.Data
+Imports System.Data.SQLite
 Partial Class SwatInput
     ''' <summary>
     ''' Swq input section
@@ -53,33 +55,33 @@ Partial Class SwatInput
     Public Class clsSwq
         Private pSwatInput As SwatInput
         Private pTableName As String = "swq"
-        Private pItemLabels() As String = {"", "", _
-             "    | RS1:   Local algal settling rate in the reach at 20ºC [m/day]", _
-             "    | RS2:   Benthic (sediment) source rate for dissolved phosphorus in the reach at 20ºC [mg dissolved P/[m2·day]]", _
-             "    | RS3:   Benthic source rate for NH4-N in the reach at 20ºC [mg NH4-N/[m2·day]]", _
-             "    | RS4:   Rate coefficient for organic N settling in the reach at 20ºC [day-1]", _
-             "    | RS5: Organic phosphorus settling rate in the reach at 20ºC [day-1]", _
-             "    | RS6: Rate coefficient for settling of arbitrary non-conservative constituent in the reach at 20ºC [day-1]", _
-             "    | RS7:   Benthic source rate for arbitrary non-conservative constituent in the reach at 20º C [mg ANC/[m2·day]]", _
-             "    | RK1:   Carbonaceous biological oxygen demand deoxygenation rate coefficient in the reach at 20º C [day-1]", _
-             "    | RK2:   Oxygen reaeration rate in accordance with Fickian diffusion in the reach at 20º C [day-1]", _
-             "    | RK3:   Rate of loss of carbonaceous biological oxygen demand due to settling in the reach at 20º C [day-1]", _
-             "    | RK4:   Benthic oxygen demand rate in the reach at 20º C [mg O2/[m2·day]]", _
-             "    | RK5:   Coliform die-off rate in the reach at 20º C [day-1]", _
-             "    | RK6:   Decay rate for arbitrary non-conservative constituent in the reach at 20º C [day-1]", _
-             "    | BC1:   Rate constant for biological oxidation of NH4 to NO2 in the reach at 20º C [day-1]", _
-             "    | BC2:   Rate constant for biological oxidation of NO2 to NO3 in the reach at 20º C [day-1]", _
-             "    | BC3:   Rate constant for hydrolysis of organic N to NH4 in the reach at 20º C [day-1]", _
-             "    | BC4:   Rate constant for mineralization of organic P to dissolved P in the reach at 20º C [day-1]", _
-             "    | CHPST_REA: Pesticide reaction coefficient in reach [day-1]", _
-             "    | CHPST_VOL: Pesticide volatilization coefficient in reach [m/day]", _
-             "    | CHPST_KOC: Pesticide partition coefficient between water and air in reach [m3/day]", _
-             "    | CHPST_STL: Settling velocity for pesticide sorbed to sediment [m/day]", _
-             "    | CHPST_RSP: Resuspension velocity for pesticide sorbed to sediment [m/day]", _
-             "    | CHPST_MIX: Mixing velocity (diffusion/dispersion) for pesticide in reach [m/day]", _
-             "    | SEDPST_CONC: Initial pesticide concentration in reach bed sediment [mg/m3 sediment]", _
-             "    | SEDPST_REA: Pesticide reaction coefficient in reach bed sediment [day-1]", _
-             "    | SEDPST_BRY: Pesticide burial velocity in reach bed sediment [m/day]", _
+        Private pItemLabels() As String = {"", "",
+             "    | RS1:   Local algal settling rate in the reach at 20ºC [m/day]",
+             "    | RS2:   Benthic (sediment) source rate for dissolved phosphorus in the reach at 20ºC [mg dissolved P/[m2·day]]",
+             "    | RS3:   Benthic source rate for NH4-N in the reach at 20ºC [mg NH4-N/[m2·day]]",
+             "    | RS4:   Rate coefficient for organic N settling in the reach at 20ºC [day-1]",
+             "    | RS5: Organic phosphorus settling rate in the reach at 20ºC [day-1]",
+             "    | RS6: Rate coefficient for settling of arbitrary non-conservative constituent in the reach at 20ºC [day-1]",
+             "    | RS7:   Benthic source rate for arbitrary non-conservative constituent in the reach at 20º C [mg ANC/[m2·day]]",
+             "    | RK1:   Carbonaceous biological oxygen demand deoxygenation rate coefficient in the reach at 20º C [day-1]",
+             "    | RK2:   Oxygen reaeration rate in accordance with Fickian diffusion in the reach at 20º C [day-1]",
+             "    | RK3:   Rate of loss of carbonaceous biological oxygen demand due to settling in the reach at 20º C [day-1]",
+             "    | RK4:   Benthic oxygen demand rate in the reach at 20º C [mg O2/[m2·day]]",
+             "    | RK5:   Coliform die-off rate in the reach at 20º C [day-1]",
+             "    | RK6:   Decay rate for arbitrary non-conservative constituent in the reach at 20º C [day-1]",
+             "    | BC1:   Rate constant for biological oxidation of NH4 to NO2 in the reach at 20º C [day-1]",
+             "    | BC2:   Rate constant for biological oxidation of NO2 to NO3 in the reach at 20º C [day-1]",
+             "    | BC3:   Rate constant for hydrolysis of organic N to NH4 in the reach at 20º C [day-1]",
+             "    | BC4:   Rate constant for mineralization of organic P to dissolved P in the reach at 20º C [day-1]",
+             "    | CHPST_REA: Pesticide reaction coefficient in reach [day-1]",
+             "    | CHPST_VOL: Pesticide volatilization coefficient in reach [m/day]",
+             "    | CHPST_KOC: Pesticide partition coefficient between water and air in reach [m3/day]",
+             "    | CHPST_STL: Settling velocity for pesticide sorbed to sediment [m/day]",
+             "    | CHPST_RSP: Resuspension velocity for pesticide sorbed to sediment [m/day]",
+             "    | CHPST_MIX: Mixing velocity (diffusion/dispersion) for pesticide in reach [m/day]",
+             "    | SEDPST_CONC: Initial pesticide concentration in reach bed sediment [mg/m3 sediment]",
+             "    | SEDPST_REA: Pesticide reaction coefficient in reach bed sediment [day-1]",
+             "    | SEDPST_BRY: Pesticide burial velocity in reach bed sediment [m/day]",
              "    | SEDPST_ACT: Depth of active sediment layer for pesticide [m]"}
 
         Friend Sub New(ByVal aSwatInput As SwatInput)
@@ -92,7 +94,7 @@ Partial Class SwatInput
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
                 'Open the connection
-                Dim lConnection As ADODB.Connection = pSwatInput.OpenADOConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
 
                 'Open the Catalog
                 Dim lCatalog As New ADOX.Catalog

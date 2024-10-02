@@ -21,8 +21,10 @@
 '********************************************************************************************************
 Imports System.Windows.Forms.SendKeys
 Imports System.Windows.Forms
+Imports System.Resources
 Imports MapWinUtility
 Imports atcUtility
+Imports System.Reflection
 #If GISProvider = "DotSpatial" Then
 Imports DotSpatial.Controls
 #Else
@@ -236,7 +238,7 @@ Public Class frmWelcomeScreen
 #End If
     End Sub
 
-    Private Sub lbProject_LinkClicked(ByVal sender As System.Object, _
+    Private Sub lbProject_LinkClicked(ByVal sender As System.Object,
                                       ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) _
         Handles lblProject1.LinkClicked, lblProject2.LinkClicked, lblProject3.LinkClicked, lblProject4.LinkClicked
 
@@ -266,7 +268,16 @@ Public Class frmWelcomeScreen
 
         Me.Text = "Welcome to " & g_AppNameLong
 #If GISProvider = "DotSpatial" Then
-        picProgramLogo.Image = My.Resources.Images.header_graphic_usgsIdentifier_white
+
+        'picProgramLogo.Image = My.Resources.header_graphic_usgsIdentifier_white.jpg
+        'KW
+        Dim assembly = System.Reflection.Assembly.GetExecutingAssembly()
+        Dim names = assembly.GetManifestResourceNames()
+        Dim mytype = GetType(frmWelcomeScreen)
+        Dim ns = mytype.Namespace
+        Dim stream = assembly.GetManifestResourceStream("BASINS.header_graphic_usgsIdentifier_white.jpg")
+        'KW
+        picProgramLogo.Image = New System.Drawing.Bitmap(stream)
         picProgramLogo.Width = picProgramLogo.Image.Width
 #Else
         Me.Icon = g_MapWin.ApplicationInfo.FormIcon

@@ -196,7 +196,8 @@ Public Class frmResult
         If aSpecification = "" Then
             lGraphForm.Show()
         Else
-            lZgc.SaveIn(aSpecification)
+            'lZgc.SaveIn(aSpecification)
+            lZgc.SaveAs(aSpecification)
         End If
         Return True
     End Function
@@ -269,7 +270,8 @@ Public Class frmResult
         If aSpecification = "" Then
             lGraphForm.Show()
         Else
-            lZgc.SaveIn(aSpecification)
+            'lZgc.SaveIn(aSpecification)
+            lZgc.SaveAs(aSpecification)
         End If
         Return True
     End Function

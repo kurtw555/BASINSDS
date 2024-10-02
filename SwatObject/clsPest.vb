@@ -1,4 +1,5 @@
 'OBJECTID,IPNUM,PNAME,SKOC,WOF,HLIFE_F,HLIFE_S,AP_EF,WSOL,HENRY,PESTNAME
+Imports System.Data
 Partial Class SwatInput
     Private pPest As clsPest = New clsPest(Me)
     ReadOnly Property Pest() As clsPest

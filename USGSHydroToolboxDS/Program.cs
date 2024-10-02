@@ -16,6 +16,7 @@ namespace USGSHydroToolbox
         {
             Utilities.LoadDataSourcePlugins();
             Application.EnableVisualStyles();
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());
         }

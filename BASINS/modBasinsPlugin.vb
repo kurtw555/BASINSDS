@@ -7,6 +7,7 @@ Imports MapWinUtility
 Imports DotSpatial.Controls
 Imports DotSpatial.Data
 Imports DotSpatial.Extensions
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 #Else
 #End If
 Imports atcMwGisUtility
@@ -21,8 +22,10 @@ Public Module modBasinsPlugin
 #If GISProvider = "DotSpatial" Then
     Public g_MapWin As AppManager
     Public g_MainWin As Form
-    Friend g_Menus As Menu
-    Friend g_StatusBar As StatusBar
+    'Friend g_Menus As Menu
+    Friend g_Menus As ToolStrip
+    'Friend g_StatusBar As StatusBar
+    Friend g_StatusBar As StatusStrip
     Friend g_Toolbar As ToolBar
     Friend g_Plugins As Object
     Friend g_Project As SerializationManager

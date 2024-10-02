@@ -398,15 +398,15 @@ FoundMatch:
         Select Case aAxisTypeName
             Case "Date" : Return AxisType.Date
             Case "DateAsOrdinal" : Return AxisType.DateAsOrdinal
-            Case "DateDual" : Return AxisType.DateDual
+            'Case "DateDual" : Return AxisType.DateDual
             Case "Exponent" : Return AxisType.Exponent
             Case "Linear" : Return AxisType.Linear
             Case "LinearAsOrdinal" : Return AxisType.LinearAsOrdinal
             Case "Log" : Return AxisType.Log
             Case "Ordinal" : Return AxisType.Ordinal
-            Case "Probability" : Return AxisType.Probability
+            'Case "Probability" : Return AxisType.Probability
             Case "Text" : Return AxisType.Text
-            Case Else : Return AxisType.DateDual
+                'Case Else : Return AxisType.DateDual
         End Select
     End Function
 
@@ -1139,8 +1139,8 @@ FoundMatch:
         'apply specs from json
         atcGraph.ApplySpecsFromJSON(aJsonFileName, lZgc)
 
-        'save it to a file
-        lZgc.SaveIn(aOutputFileName)
+        'save it to a file        
+        lZgc.SaveAs(aOutputFileName)
         lZgc.Dispose()
 
     End Sub

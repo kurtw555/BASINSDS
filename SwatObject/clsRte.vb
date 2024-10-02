@@ -1,3 +1,5 @@
+Imports System.Data
+Imports System.Data.SQLite
 Partial Class SwatInput
     Private pRte As clsRte = New clsRte(Me)
     ReadOnly Property Rte() As clsRte
@@ -53,7 +55,7 @@ Partial Class SwatInput
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
                 'Open the connection
-                Dim lConnection As ADODB.Connection = pSwatInput.OpenADOConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
 
                 'Open the Catalog
                 Dim lCatalog As New ADOX.Catalog

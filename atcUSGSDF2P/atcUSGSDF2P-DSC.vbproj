@@ -11,7 +11,7 @@
     <AssemblyName>atcUSGSDF2P</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -125,6 +125,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -170,33 +171,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\atcData\atcData-DSC.vbproj">
-      <Project>{a9a00cad-9ead-4228-ab08-6dc3baf253aa}</Project>
-      <Name>atcData-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcGraphExperimental\atcGraph-DSC.vbproj">
-      <Project>{d52e1a9c-e219-4df7-9ca8-b4fd1b28cec9}</Project>
-      <Name>atcGraph-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcTimeseriesBaseflow\atcTimeseriesBaseflow-DSC.vbproj">
-      <Project>{f9a4070c-1faf-4d17-a8e6-7eb19d414b05}</Project>
-      <Name>atcTimeseriesBaseflow-DSC</Name>
-    </ProjectReference>
     <ProjectReference Include="..\atcUSGSUtility\atcUSGSUtility-DSC.vbproj">
       <Project>{4DBC8159-1072-41FA-9242-933E12A88EE6}</Project>
       <Name>atcUSGSUtility-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcUtility\atcUtility-DSC.vbproj">
-      <Project>{67027820-9036-481E-80F6-077E5085F59D}</Project>
-      <Name>atcUtility-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\MapWinUtility\MapWinUtility-DSC.vbproj">
-      <Project>{3c991ae4-9edb-4c24-baf3-42f7303d7df3}</Project>
-      <Name>MapWinUtility-DSC</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

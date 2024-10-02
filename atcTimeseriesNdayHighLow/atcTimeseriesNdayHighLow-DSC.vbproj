@@ -31,7 +31,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -195,24 +195,9 @@
     <Folder Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\atcData\atcData-DSC.vbproj">
-      <Project>{a9a00cad-9ead-4228-ab08-6dc3baf253aa}</Project>
-      <Name>atcData-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
     <ProjectReference Include="..\atcTimeseriesMath\atcTimeseriesMath-DSC.vbproj">
       <Project>{bd299eb7-7a62-4ef9-8806-86e9288c498f}</Project>
       <Name>atcTimeseriesMath-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcUtility\atcUtility-DSC.vbproj">
-      <Project>{67027820-9036-481e-80f6-077e5085f59d}</Project>
-      <Name>atcUtility-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\MapWinUtility\MapWinUtility-DSC.vbproj">
-      <Project>{3c991ae4-9edb-4c24-baf3-42f7303d7df3}</Project>
-      <Name>MapWinUtility-DSC</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

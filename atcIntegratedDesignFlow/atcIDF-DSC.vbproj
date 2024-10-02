@@ -15,7 +15,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -200,6 +200,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -277,31 +278,6 @@
       <Name>atcTimeseriesNdayHighLow-DSC</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\MapWinUtility\MapWinUtility-DSC.vbproj">
-      <Project>{33e88992-742f-4d13-823f-35d6a07b1aa1}</Project>
-      <Name>MapWinUtility-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcBatchProcessing\atcBatchProcessing-DSC.vbproj">
-      <Project>{7e95fcaa-7b7c-4585-8ee2-58db97ed9110}</Project>
-      <Name>atcBatchProcessing-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcControls\atcControls-DSC.vbproj">
-      <Project>{b219575f-1541-41db-9fa4-d9d7cd62b4a5}</Project>
-      <Name>atcControls-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcData\atcData-DSC.vbproj">
-      <Project>{a9a00cad-9ead-4228-ab08-6dc3baf253aa}</Project>
-      <Name>atcData-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcGraphExperimental\atcGraph-DSC.vbproj">
-      <Project>{d52e1a9c-e219-4df7-9ca8-b4fd1b28cec9}</Project>
-      <Name>atcGraph-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
     <ProjectReference Include="..\atcList\atcList-DSC.vbproj">
       <Project>{a1a87cb8-8b9e-4c90-9549-c065357e499f}</Project>
       <Name>atcList-DSC</Name>
@@ -315,11 +291,6 @@
     <ProjectReference Include="..\atcUSGSUtility\atcUSGSUtility-DSC.vbproj">
       <Project>{4dbc8159-1072-41fa-9242-933e12a88ee6}</Project>
       <Name>atcUSGSUtility-DSC</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\atcUtility\atcUtility-DSC.vbproj">
-      <Project>{67027820-9036-481e-80f6-077e5085f59d}</Project>
-      <Name>atcUtility-DSC</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

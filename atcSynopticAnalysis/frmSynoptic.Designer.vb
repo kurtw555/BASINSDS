@@ -29,25 +29,25 @@ Partial Class frmSynoptic
         Me.cboGapUnits = New System.Windows.Forms.ComboBox
         Me.lblGap = New System.Windows.Forms.Label
         Me.txtGap = New System.Windows.Forms.TextBox
-        Me.MainMenu1 = New System.Windows.Forms.MainMenu(Me.components)
-        Me.mnuFile = New System.Windows.Forms.MenuItem
-        Me.mnuFileSelectData = New System.Windows.Forms.MenuItem
-        Me.mnuFileSelectAttributes = New System.Windows.Forms.MenuItem
-        Me.mnuFileSep1 = New System.Windows.Forms.MenuItem
-        Me.mnuFileSave = New System.Windows.Forms.MenuItem
-        Me.mnuFileSaveAll = New System.Windows.Forms.MenuItem
-        Me.mnuEdit = New System.Windows.Forms.MenuItem
-        Me.mnuEditCopy = New System.Windows.Forms.MenuItem
-        Me.mnuView = New System.Windows.Forms.MenuItem
-        Me.mnuAttributeRows = New System.Windows.Forms.MenuItem
-        Me.mnuAttributeColumns = New System.Windows.Forms.MenuItem
-        Me.mnuViewSep1 = New System.Windows.Forms.MenuItem
-        Me.mnuSizeColumnsToContents = New System.Windows.Forms.MenuItem
-        Me.mnuChooseColumns = New System.Windows.Forms.MenuItem
-        Me.mnuGraph = New System.Windows.Forms.MenuItem
-        Me.mnuReverseGroupOrder = New System.Windows.Forms.MenuItem
-        Me.mnuAnalysis = New System.Windows.Forms.MenuItem
-        Me.mnuHelp = New System.Windows.Forms.MenuItem
+        Me.MainMenu1 = New System.Windows.Forms.MenuStrip()
+        Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSelectData = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSelectAttributes = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSep1 = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSave = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSaveAll = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuEdit = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuEditCopy = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuView = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuAttributeRows = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuAttributeColumns = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuViewSep1 = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuSizeColumnsToContents = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuChooseColumns = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuGraph = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuReverseGroupOrder = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuAnalysis = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuHelp = New System.Windows.Forms.ToolStripMenuItem
         Me.lblDuringEvent = New System.Windows.Forms.Label
         Me.lblPercentInEvents = New System.Windows.Forms.Label
         Me.cboAboveBelow = New System.Windows.Forms.ComboBox
@@ -130,103 +130,103 @@ Partial Class frmSynoptic
         '
         'MainMenu1
         '
-        Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuFile, Me.mnuEdit, Me.mnuView, Me.mnuAnalysis, Me.mnuHelp})
+        Me.MainMenu1.Items.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuFile, Me.mnuEdit, Me.mnuView, Me.mnuAnalysis, Me.mnuHelp})
         '
         'mnuFile
         '
-        Me.mnuFile.Index = 0
-        Me.mnuFile.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuFileSelectData, Me.mnuFileSelectAttributes, Me.mnuFileSep1, Me.mnuFileSave, Me.mnuFileSaveAll})
+        Me.mnuFile.MergeIndex = 0
+        Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuFileSelectData, Me.mnuFileSelectAttributes, Me.mnuFileSep1, Me.mnuFileSave, Me.mnuFileSaveAll})
         Me.mnuFile.Text = "File"
         '
         'mnuFileSelectData
         '
-        Me.mnuFileSelectData.Index = 0
+        Me.mnuFileSelectData.MergeIndex = 0
         Me.mnuFileSelectData.Text = "Select &Data"
         '
         'mnuFileSelectAttributes
         '
-        Me.mnuFileSelectAttributes.Index = 1
+        Me.mnuFileSelectAttributes.MergeIndex = 1
         Me.mnuFileSelectAttributes.Text = "Select &Attributes"
         '
         'mnuFileSep1
         '
-        Me.mnuFileSep1.Index = 2
+        Me.mnuFileSep1.MergeIndex = 2
         Me.mnuFileSep1.Text = "-"
         '
         'mnuFileSave
         '
-        Me.mnuFileSave.Index = 3
-        Me.mnuFileSave.Shortcut = System.Windows.Forms.Shortcut.CtrlS
+        Me.mnuFileSave.MergeIndex = 3
+        Me.mnuFileSave.ShortcutKeys = System.Windows.Forms.Shortcut.CtrlS
         Me.mnuFileSave.Text = "Save"
         '
         'mnuFileSaveAll
         '
-        Me.mnuFileSaveAll.Index = 4
+        Me.mnuFileSaveAll.MergeIndex = 4
         Me.mnuFileSaveAll.Text = "Save All Groupings"
         '
         'mnuEdit
         '
-        Me.mnuEdit.Index = 1
-        Me.mnuEdit.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuEditCopy})
+        Me.mnuEdit.MergeIndex = 1
+        Me.mnuEdit.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuEditCopy})
         Me.mnuEdit.Text = "Edit"
         '
         'mnuEditCopy
         '
-        Me.mnuEditCopy.Index = 0
-        Me.mnuEditCopy.Shortcut = System.Windows.Forms.Shortcut.CtrlC
+        Me.mnuEditCopy.MergeIndex = 0
+        Me.mnuEditCopy.ShortcutKeys = System.Windows.Forms.Shortcut.CtrlC
         Me.mnuEditCopy.Text = "Copy"
         '
         'mnuView
         '
-        Me.mnuView.Index = 2
-        Me.mnuView.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuAttributeRows, Me.mnuAttributeColumns, Me.mnuViewSep1, Me.mnuSizeColumnsToContents, Me.mnuChooseColumns, Me.mnuGraph, Me.mnuReverseGroupOrder})
+        Me.mnuView.MergeIndex = 2
+        Me.mnuView.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuAttributeRows, Me.mnuAttributeColumns, Me.mnuViewSep1, Me.mnuSizeColumnsToContents, Me.mnuChooseColumns, Me.mnuGraph, Me.mnuReverseGroupOrder})
         Me.mnuView.Text = "View"
         '
         'mnuAttributeRows
         '
         Me.mnuAttributeRows.Checked = True
-        Me.mnuAttributeRows.Index = 0
+        Me.mnuAttributeRows.MergeIndex = 0
         Me.mnuAttributeRows.Text = "Attribute Rows"
         '
         'mnuAttributeColumns
         '
-        Me.mnuAttributeColumns.Index = 1
+        Me.mnuAttributeColumns.MergeIndex = 1
         Me.mnuAttributeColumns.Text = "Attribute Columns"
         '
         'mnuViewSep1
         '
-        Me.mnuViewSep1.Index = 2
+        Me.mnuViewSep1.MergeIndex = 2
         Me.mnuViewSep1.Text = "-"
         '
         'mnuSizeColumnsToContents
         '
-        Me.mnuSizeColumnsToContents.Index = 3
+        Me.mnuSizeColumnsToContents.MergeIndex = 3
         Me.mnuSizeColumnsToContents.Text = "Size Columns To Contents"
         '
         'mnuChooseColumns
         '
-        Me.mnuChooseColumns.Index = 4
+        Me.mnuChooseColumns.MergeIndex = 4
         Me.mnuChooseColumns.Text = "Choose Columns"
         '
         'mnuGraph
         '
-        Me.mnuGraph.Index = 5
+        Me.mnuGraph.MergeIndex = 5
         Me.mnuGraph.Text = "Graph Synoptic Results"
         '
         'mnuReverseGroupOrder
         '
-        Me.mnuReverseGroupOrder.Index = 6
+        Me.mnuReverseGroupOrder.MergeIndex = 6
         Me.mnuReverseGroupOrder.Text = "Reverse Group Order"
         '
         'mnuAnalysis
         '
-        Me.mnuAnalysis.Index = 3
+        Me.mnuAnalysis.MergeIndex = 3
         Me.mnuAnalysis.Text = "Analysis"
         '
         'mnuHelp
         '
-        Me.mnuHelp.Index = 4
-        Me.mnuHelp.Shortcut = System.Windows.Forms.Shortcut.F1
+        Me.mnuHelp.MergeIndex = 4
+        Me.mnuHelp.ShortcutKeys = System.Windows.Forms.Shortcut.F1
         Me.mnuHelp.Text = "Help"
         '
         'lblDuringEvent
@@ -273,7 +273,7 @@ Partial Class frmSynoptic
         Me.Controls.Add(Me.cboGroupBy)
         Me.Controls.Add(Me.lblGroupBy)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Menu = Me.MainMenu1
+        'Me.Menu = Me.MainMenu1
         Me.Name = "frmSynoptic"
         Me.Text = "Synoptic Analysis"
         Me.ResumeLayout(False)
@@ -288,26 +288,26 @@ Partial Class frmSynoptic
     Friend WithEvents cboGapUnits As System.Windows.Forms.ComboBox
     Friend WithEvents lblGap As System.Windows.Forms.Label
     Friend WithEvents txtGap As System.Windows.Forms.TextBox
-    Friend WithEvents MainMenu1 As System.Windows.Forms.MainMenu
-    Friend WithEvents mnuFile As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSelectData As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSelectAttributes As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSep1 As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSave As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuEdit As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuEditCopy As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuView As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuAttributeRows As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuAttributeColumns As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuViewSep1 As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuSizeColumnsToContents As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuAnalysis As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuHelp As System.Windows.Forms.MenuItem
+    Friend WithEvents MainMenu1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents mnuFile As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSelectData As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSelectAttributes As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSep1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSave As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuEdit As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuEditCopy As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuView As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuAttributeRows As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuAttributeColumns As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuViewSep1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuSizeColumnsToContents As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuAnalysis As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuHelp As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents lblDuringEvent As System.Windows.Forms.Label
-    Friend WithEvents mnuFileSaveAll As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuChooseColumns As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuGraph As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuFileSaveAll As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuChooseColumns As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuGraph As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents lblPercentInEvents As System.Windows.Forms.Label
     Friend WithEvents cboAboveBelow As System.Windows.Forms.ComboBox
-    Friend WithEvents mnuReverseGroupOrder As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuReverseGroupOrder As System.Windows.Forms.ToolStripMenuItem
 End Class

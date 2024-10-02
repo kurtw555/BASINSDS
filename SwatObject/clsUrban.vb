@@ -1,4 +1,5 @@
 'OBJECTID,IUNUM,URBNAME,URBFLNM,FIMP,FCIMP,CURBDEN,URBCOEF,DIRTMX,THALF,TNCONC,TPCONC,TNO3CONC,OV_N,CN2A,CN2B,CN2C,CN2D,URBCN2
+Imports System.Data
 Partial Class SwatInput
     Private pUrban As clsUrban = New clsUrban(Me)
     ReadOnly Property Urban() As clsUrban

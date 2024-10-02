@@ -1,3 +1,5 @@
+Imports System.Data
+Imports System.Data.SQLite
 Partial Class SwatInput
     ''' <summary>
     ''' SubBasin (SUB) input section
@@ -128,37 +130,37 @@ Partial Class SwatInput
         '                                   "HUMINC1", "HUMINC2", "HUMINC3", "HUMINC4", "HUMINC5", "HUMINC6", "HUMINC7", "HUMINC8", "HUMINC9", "HUMINC10", "HUMINC11", "HUMINC12", _
         '                                   "HRUTOT", "IPOT", "FCST_REG"}
 
-        Friend Shared FieldNames() As String = {"SUBBASIN", "SUB_KM", "SUB_LAT", "SUB_ELEV", "IRGAGE", "ITGAGE", "ISGAGE", "IHGAGE", "IWGAGE", _
-                                                   "ELEVB", _
-                                                   "ELEVB_FR", _
-                                                   "SNOEB", _
-                                                   "PLAPS", "TLAPS", "SNO_SUB", "CH_L1", "CH_S1", "CH_W1", "CH_K1", "CH_N1", "CO2", _
-                                                   "RFINC", _
-                                                   "TMPINC", _
-                                                   "RADINC", _
-                                                   "HUMINC", _
+        Friend Shared FieldNames() As String = {"SUBBASIN", "SUB_KM", "SUB_LAT", "SUB_ELEV", "IRGAGE", "ITGAGE", "ISGAGE", "IHGAGE", "IWGAGE",
+                                                   "ELEVB",
+                                                   "ELEVB_FR",
+                                                   "SNOEB",
+                                                   "PLAPS", "TLAPS", "SNO_SUB", "CH_L1", "CH_S1", "CH_W1", "CH_K1", "CH_N1", "CO2",
+                                                   "RFINC",
+                                                   "TMPINC",
+                                                   "RADINC",
+                                                   "HUMINC",
                                                    "HRUTOT", "IPOT", "FCST_REG"}
 
-        Friend Shared FieldCounts() As Integer = {1, 1, 1, 1, 1, 1, 1, 1, 1, _
-                                                   10, _
-                                                   10, _
-                                                   10, _
-                                                   1, 1, 1, 1, 1, 1, 1, 1, 1, _
-                                                   12, _
-                                                   12, _
-                                                   12, _
-                                                   12, _
+        Friend Shared FieldCounts() As Integer = {1, 1, 1, 1, 1, 1, 1, 1, 1,
+                                                   10,
+                                                   10,
+                                                   10,
+                                                   1, 1, 1, 1, 1, 1, 1, 1, 1,
+                                                   12,
+                                                   12,
+                                                   12,
+                                                   12,
                                                    1, 1, 1}
 
-        Friend Shared FieldTypes() As ADOX.DataTypeEnum = {ADOX.DataTypeEnum.adDouble, ADOX.DataTypeEnum.adDouble, ADOX.DataTypeEnum.adDouble, ADOX.DataTypeEnum.adInteger, ADOX.DataTypeEnum.adInteger, ADOX.DataTypeEnum.adInteger, ADOX.DataTypeEnum.adInteger, ADOX.DataTypeEnum.adInteger, ADOX.DataTypeEnum.adDouble, _
-                                   ADOX.DataTypeEnum.adSingle, _
-                                   ADOX.DataTypeEnum.adSingle, _
-                                   ADOX.DataTypeEnum.adSingle, _
-                                   ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, _
-                                   ADOX.DataTypeEnum.adSingle, _
-                                   ADOX.DataTypeEnum.adSingle, _
-                                   ADOX.DataTypeEnum.adSingle, _
-                                   ADOX.DataTypeEnum.adSingle, _
+        Friend Shared FieldTypes() As ADOX.DataTypeEnum = {ADOX.DataTypeEnum.adDouble, ADOX.DataTypeEnum.adDouble, ADOX.DataTypeEnum.adDouble, ADOX.DataTypeEnum.adInteger, ADOX.DataTypeEnum.adInteger, ADOX.DataTypeEnum.adInteger, ADOX.DataTypeEnum.adInteger, ADOX.DataTypeEnum.adInteger, ADOX.DataTypeEnum.adDouble,
+                                   ADOX.DataTypeEnum.adSingle,
+                                   ADOX.DataTypeEnum.adSingle,
+                                   ADOX.DataTypeEnum.adSingle,
+                                   ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle, ADOX.DataTypeEnum.adSingle,
+                                   ADOX.DataTypeEnum.adSingle,
+                                   ADOX.DataTypeEnum.adSingle,
+                                   ADOX.DataTypeEnum.adSingle,
+                                   ADOX.DataTypeEnum.adSingle,
                                    ADOX.DataTypeEnum.adInteger, ADOX.DataTypeEnum.adInteger, ADOX.DataTypeEnum.adInteger}
 
         Public Function Items() As IEnumerable
@@ -187,7 +189,7 @@ Partial Class SwatInput
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
                 'Open the connection
-                Dim lConnection As ADODB.Connection = pSwatInput.OpenADOConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
 
                 'Open the Catalog
                 Dim lCatalog As New ADOX.Catalog

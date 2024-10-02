@@ -30,7 +30,7 @@ Friend Class atcDataTreeForm
             For Each ldisp As atcDataDisplay In DisplayPlugins
                 Dim lMenuText As String = ldisp.Name
                 If lMenuText.StartsWith("Analysis::") Then lMenuText = lMenuText.Substring(10)
-                mnuAnalysis.MenuItems.Add(lMenuText, New EventHandler(AddressOf mnuAnalysis_Click))
+                mnuAnalysis.DropDownItems.Add(lMenuText, Nothing, New EventHandler(AddressOf mnuAnalysis_Click))
             Next
         Else 'user declined to specify Data
             Me.Close()
@@ -53,128 +53,128 @@ Friend Class atcDataTreeForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    Friend WithEvents mnuFile As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSave As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuView As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuExpand As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuCollapse As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuDefault As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuAnalysis As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuMain As System.Windows.Forms.MainMenu
-    Friend WithEvents mnuDataCount As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuEditCopy As System.Windows.Forms.MenuItem
-    Friend WithEvents MenuItem1 As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSelectData As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuShowMore As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuShowLess As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuShowAll As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuHelp As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuFile As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSave As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuView As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuExpand As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuCollapse As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuDefault As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuAnalysis As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuMain As System.Windows.Forms.MenuStrip
+    Friend WithEvents mnuDataCount As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuEditCopy As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSelectData As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuShowMore As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuShowLess As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuShowAll As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuHelp As System.Windows.Forms.ToolStripMenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(atcDataTreeForm))
-        Me.mnuFile = New System.Windows.Forms.MenuItem
-        Me.mnuFileSelectData = New System.Windows.Forms.MenuItem
-        Me.mnuFileSave = New System.Windows.Forms.MenuItem
-        Me.mnuEditCopy = New System.Windows.Forms.MenuItem
-        Me.mnuView = New System.Windows.Forms.MenuItem
-        Me.mnuExpand = New System.Windows.Forms.MenuItem
-        Me.mnuCollapse = New System.Windows.Forms.MenuItem
-        Me.mnuDefault = New System.Windows.Forms.MenuItem
-        Me.mnuDataCount = New System.Windows.Forms.MenuItem
-        Me.mnuShowMore = New System.Windows.Forms.MenuItem
-        Me.mnuShowLess = New System.Windows.Forms.MenuItem
-        Me.mnuShowAll = New System.Windows.Forms.MenuItem
-        Me.mnuAnalysis = New System.Windows.Forms.MenuItem
-        Me.mnuMain = New System.Windows.Forms.MainMenu(Me.components)
-        Me.MenuItem1 = New System.Windows.Forms.MenuItem
-        Me.mnuHelp = New System.Windows.Forms.MenuItem
+        Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSelectData = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSave = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuEditCopy = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuView = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuExpand = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuCollapse = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuDefault = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuDataCount = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuShowMore = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuShowLess = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuShowAll = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuAnalysis = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuMain = New System.Windows.Forms.MenuStrip
+        Me.MenuItem1 = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuHelp = New System.Windows.Forms.ToolStripMenuItem
         Me.SuspendLayout()
         '
         'mnuFile
         '
-        Me.mnuFile.Index = 0
-        Me.mnuFile.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuFileSelectData, Me.mnuFileSave})
+        Me.mnuFile.MergeIndex = 0
+        Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuFileSelectData, Me.mnuFileSave})
         Me.mnuFile.Text = "File"
         '
         'mnuFileSelectData
         '
-        Me.mnuFileSelectData.Index = 0
+        Me.mnuFileSelectData.MergeIndex = 0
         Me.mnuFileSelectData.Text = "Select &Data"
         '
         'mnuFileSave
         '
-        Me.mnuFileSave.Index = 1
-        Me.mnuFileSave.Shortcut = System.Windows.Forms.Shortcut.CtrlS
+        Me.mnuFileSave.MergeIndex = 1
+        Me.mnuFileSave.ShortcutKeys = System.Windows.Forms.Shortcut.CtrlS
         Me.mnuFileSave.Text = "Save"
         '
         'mnuEditCopy
         '
-        Me.mnuEditCopy.Index = 0
-        Me.mnuEditCopy.Shortcut = System.Windows.Forms.Shortcut.CtrlC
+        Me.mnuEditCopy.MergeIndex = 0
+        Me.mnuEditCopy.ShortcutKeys = System.Windows.Forms.Shortcut.CtrlC
         Me.mnuEditCopy.Text = "Copy"
         '
         'mnuView
         '
-        Me.mnuView.Index = 2
-        Me.mnuView.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuExpand, Me.mnuCollapse, Me.mnuDefault, Me.mnuDataCount})
+        Me.mnuView.MergeIndex = 2
+        Me.mnuView.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuExpand, Me.mnuCollapse, Me.mnuDefault, Me.mnuDataCount})
         Me.mnuView.Text = "View"
         '
         'mnuExpand
         '
-        Me.mnuExpand.Index = 0
+        Me.mnuExpand.MergeIndex = 0
         Me.mnuExpand.Text = "Expand"
         '
         'mnuCollapse
         '
-        Me.mnuCollapse.Index = 1
+        Me.mnuCollapse.MergeIndex = 1
         Me.mnuCollapse.Text = "Collapse"
         '
         'mnuDefault
         '
-        Me.mnuDefault.Index = 2
+        Me.mnuDefault.MergeIndex = 2
         Me.mnuDefault.Text = "Default"
         '
         'mnuDataCount
         '
-        Me.mnuDataCount.Index = 3
-        Me.mnuDataCount.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuShowMore, Me.mnuShowLess, Me.mnuShowAll})
+        Me.mnuDataCount.MergeIndex = 3
+        Me.mnuDataCount.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuShowMore, Me.mnuShowLess, Me.mnuShowAll})
         Me.mnuDataCount.Text = "Data to Show"
         '
         'mnuShowMore
         '
-        Me.mnuShowMore.Index = 0
+        Me.mnuShowMore.MergeIndex = 0
         Me.mnuShowMore.Text = "More"
         '
         'mnuShowLess
         '
-        Me.mnuShowLess.Index = 1
+        Me.mnuShowLess.MergeIndex = 1
         Me.mnuShowLess.Text = "Less"
         '
         'mnuShowAll
         '
-        Me.mnuShowAll.Index = 2
+        Me.mnuShowAll.MergeIndex = 2
         Me.mnuShowAll.Text = "All"
         '
         'mnuAnalysis
         '
-        Me.mnuAnalysis.Index = 3
+        Me.mnuAnalysis.MergeIndex = 3
         Me.mnuAnalysis.Text = "Analysis"
         '
         'mnuMain
         '
-        Me.mnuMain.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuFile, Me.MenuItem1, Me.mnuView, Me.mnuAnalysis, Me.mnuHelp})
+        Me.mnuMain.Items.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuFile, Me.MenuItem1, Me.mnuView, Me.mnuAnalysis, Me.mnuHelp})
         '
         'MenuItem1
         '
-        Me.MenuItem1.Index = 1
-        Me.MenuItem1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuEditCopy})
+        Me.MenuItem1.MergeIndex = 1
+        Me.MenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuEditCopy})
         Me.MenuItem1.Text = "Edit"
         '
         'mnuHelp
         '
-        Me.mnuHelp.Index = 4
-        Me.mnuHelp.Shortcut = System.Windows.Forms.Shortcut.F1
-        Me.mnuHelp.ShowShortcut = False
+        Me.mnuHelp.MergeIndex = 4
+        Me.mnuHelp.ShortcutKeys = System.Windows.Forms.Shortcut.F1
+        Me.mnuHelp.ShowShortcutKeys = False
         Me.mnuHelp.Text = "Help"
         '
         'atcDataTreeForm
@@ -182,7 +182,7 @@ Friend Class atcDataTreeForm
         Me.AutoScaleBaseSize = New System.Drawing.Size(6, 15)
         Me.ClientSize = New System.Drawing.Size(527, 544)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Menu = Me.mnuMain
+        'Me.Menu = Me.mnuMain
         Me.Name = "atcDataTreeForm"
         Me.Text = "Data Tree"
         Me.ResumeLayout(False)

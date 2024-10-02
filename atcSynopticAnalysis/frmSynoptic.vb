@@ -49,7 +49,7 @@ Public Class frmSynoptic
         For Each lDisp As atcDataDisplay In DisplayPlugins
             Dim lMenuText As String = lDisp.Name
             If lMenuText.StartsWith("Analysis::") Then lMenuText = lMenuText.Substring(10)
-            mnuAnalysis.MenuItems.Add(lMenuText, New EventHandler(AddressOf mnuAnalysis_Click))
+            mnuAnalysis.DropDownItems.Add(lMenuText, Nothing, New EventHandler(AddressOf mnuAnalysis_Click))
         Next
 
         If pDataGroup.Count = 0 Then 'ask user to specify some timeseries

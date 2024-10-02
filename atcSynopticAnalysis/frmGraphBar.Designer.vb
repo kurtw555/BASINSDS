@@ -25,14 +25,14 @@ Partial Class frmGraphBar
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmGraphBar))
         Me.zgc = New ZedGraph.ZedGraphControl
-        Me.MainMenu1 = New System.Windows.Forms.MainMenu(Me.components)
-        Me.mnuFile = New System.Windows.Forms.MenuItem
-        Me.mnuFileSave = New System.Windows.Forms.MenuItem
-        Me.mnuFilePrint = New System.Windows.Forms.MenuItem
-        Me.mnuEdit = New System.Windows.Forms.MenuItem
-        Me.mnuEditGraph = New System.Windows.Forms.MenuItem
-        Me.mnuEditSep1 = New System.Windows.Forms.MenuItem
-        Me.mnuEditCopy = New System.Windows.Forms.MenuItem
+        Me.MainMenu1 = New System.Windows.Forms.MenuStrip()
+        Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFileSave = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuFilePrint = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuEdit = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuEditGraph = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuEditSep1 = New System.Windows.Forms.ToolStripMenuItem
+        Me.mnuEditCopy = New System.Windows.Forms.ToolStripMenuItem
         Me.SuspendLayout()
         '
         'zgc
@@ -51,45 +51,45 @@ Partial Class frmGraphBar
         '
         'MainMenu1
         '
-        Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuFile, Me.mnuEdit})
+        Me.MainMenu1.Items.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuFile, Me.mnuEdit})
         '
         'mnuFile
         '
-        Me.mnuFile.Index = 0
-        Me.mnuFile.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuFileSave, Me.mnuFilePrint})
+        Me.mnuFile.MergeIndex = 0
+        Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuFileSave, Me.mnuFilePrint})
         Me.mnuFile.Text = "File"
         '
         'mnuFileSave
         '
-        Me.mnuFileSave.Index = 0
+        Me.mnuFileSave.MergeIndex = 0
         Me.mnuFileSave.Text = "Save"
         '
         'mnuFilePrint
         '
-        Me.mnuFilePrint.Index = 1
+        Me.mnuFilePrint.MergeIndex = 1
         Me.mnuFilePrint.Text = "Print"
         '
         'mnuEdit
         '
-        Me.mnuEdit.Index = 1
-        Me.mnuEdit.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuEditGraph, Me.mnuEditSep1, Me.mnuEditCopy})
+        Me.mnuEdit.MergeIndex = 1
+        Me.mnuEdit.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuEditGraph, Me.mnuEditSep1, Me.mnuEditCopy})
         Me.mnuEdit.Text = "Edit"
         '
         'mnuEditGraph
         '
-        Me.mnuEditGraph.Index = 0
+        Me.mnuEditGraph.MergeIndex = 0
         Me.mnuEditGraph.Text = "Graph"
         Me.mnuEditGraph.Visible = False
         '
         'mnuEditSep1
         '
-        Me.mnuEditSep1.Index = 1
+        Me.mnuEditSep1.MergeIndex = 1
         Me.mnuEditSep1.Text = "-"
         '
         'mnuEditCopy
         '
-        Me.mnuEditCopy.Index = 2
-        Me.mnuEditCopy.Shortcut = System.Windows.Forms.Shortcut.CtrlC
+        Me.mnuEditCopy.MergeIndex = 2
+        Me.mnuEditCopy.ShortcutKeys = System.Windows.Forms.Shortcut.CtrlC
         Me.mnuEditCopy.Text = "Copy"
         '
         'frmGraphBar
@@ -99,19 +99,19 @@ Partial Class frmGraphBar
         Me.ClientSize = New System.Drawing.Size(425, 397)
         Me.Controls.Add(Me.zgc)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Menu = Me.MainMenu1
+        'Me.Menu = Me.MainMenu1
         Me.Name = "frmGraphBar"
         Me.Text = "Graph"
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents zgc As ZedGraph.ZedGraphControl
-    Friend WithEvents MainMenu1 As System.Windows.Forms.MainMenu
-    Friend WithEvents mnuFile As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSave As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFilePrint As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuEdit As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuEditGraph As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuEditSep1 As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuEditCopy As System.Windows.Forms.MenuItem
+    Friend WithEvents MainMenu1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents mnuFile As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSave As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFilePrint As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuEdit As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuEditGraph As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuEditSep1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuEditCopy As System.Windows.Forms.ToolStripMenuItem
 End Class

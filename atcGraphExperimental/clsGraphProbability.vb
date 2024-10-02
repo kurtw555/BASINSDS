@@ -96,9 +96,10 @@ Public Class clsGraphProbability
             Dim lCommonConstituent As String = aDataGroup.CommonAttributeValue("Constituent", "")
             Dim lCommonUnits As String = aDataGroup.CommonAttributeValue("Units", "")
             Dim lCommonTimeUnitName As String = TimeUnitName(lCommonTimeUnit, lCommonTimeStep)
-            For Each lTimeseries As atcTimeseries In aDataGroup
-                AddDatasetCurve(lTimeseries, lCommonTimeUnitName, lCommonScenario, lCommonConstituent, lCommonLocation, lCommonUnits)
-            Next
+            '### Fix
+            'For Each lTimeseries As atcTimeseries In aDataGroup
+            'AddDatasetCurve(lTimeseries, lCommonTimeUnitName, lCommonScenario, lCommonConstituent, lCommonLocation, lCommonUnits)
+            'Next
             AxisTitlesFromCommonAttributes(pZgc.MasterPane.PaneList(0), lCommonTimeUnitName, lCommonScenario, lCommonConstituent, lCommonLocation, lCommonUnits)
             If lCommonConstituent = "GW LEVEL" Then
                 ScaleAxis(Datasets, pZgc.MasterPane.PaneList(0).YAxis)
@@ -108,10 +109,11 @@ Public Class clsGraphProbability
     End Property
 
     Overrides Sub pDataGroup_Added(ByVal aAdded As atcUtility.atcCollection)
-        For Each lTimeseries As atcTimeseries In aAdded
-            AddDatasetCurve(lTimeseries)
-        Next
-        pZgc.Refresh()
+        '### Fix
+        'For Each lTimeseries As atcTimeseries In aAdded
+        'AddDatasetCurve(lTimeseries)
+        'Next
+        'pZgc.Refresh()
     End Sub
 
     Overrides Sub pDataGroup_Removed(ByVal aRemoved As atcUtility.atcCollection)
@@ -140,91 +142,94 @@ Public Class clsGraphProbability
         End If
     End Sub
 
-    Private Sub AddDatasetCurve(ByVal aTimeseries As atcTimeseries, _
-                        Optional ByVal aCommonTimeUnitName As String = Nothing, _
-                        Optional ByVal aCommonScenario As String = Nothing, _
-                        Optional ByVal aCommonConstituent As String = Nothing, _
-                        Optional ByVal aCommonLocation As String = Nothing, _
-                        Optional ByVal aCommonUnits As String = Nothing)
-        Dim lScen As String = aTimeseries.Attributes.GetValue("scenario")
-        Dim lLoc As String = aTimeseries.Attributes.GetValue("location")
-        Dim lCons As String = aTimeseries.Attributes.GetValue("constituent")
-        Dim lCurveLabel As String = TSCurveLabel(aTimeseries, aCommonTimeUnitName, aCommonScenario, aCommonConstituent, aCommonLocation, aCommonUnits)
-        Dim lCurveColor As Color = GetMatchingColor(lScen & ":" & lLoc & ":" & lCons)
+    'Private Sub AddDatasetCurve(ByVal aTimeseries As atcTimeseries, _
+    '                    Optional ByVal aCommonTimeUnitName As String = Nothing, _
+    '                    Optional ByVal aCommonScenario As String = Nothing, _
+    '                    Optional ByVal aCommonConstituent As String = Nothing, _
+    '                    Optional ByVal aCommonLocation As String = Nothing, _
+    '                    Optional ByVal aCommonUnits As String = Nothing)
+    '    Dim lScen As String = aTimeseries.Attributes.GetValue("scenario")
+    '    Dim lLoc As String = aTimeseries.Attributes.GetValue("location")
+    '    Dim lCons As String = aTimeseries.Attributes.GetValue("constituent")
+    '    Dim lCurveLabel As String = TSCurveLabel(aTimeseries, aCommonTimeUnitName, aCommonScenario, aCommonConstituent, aCommonLocation, aCommonUnits)
+    '    Dim lCurveColor As Color = GetMatchingColor(lScen & ":" & lLoc & ":" & lCons)
 
-        Dim lCurve As LineItem = Nothing
+    '    Dim lCurve As LineItem = Nothing
 
-        Dim lX(pNumProbabilityPoints) As Double
-        Dim lLastIndex As Integer = lX.GetUpperBound(0)
-        Dim lPane As ZedGraph.GraphPane = pZgc.MasterPane.PaneList(0)
-        Dim lXScale As ProbabilityScale
-        With lPane.XAxis
-            If .Type <> AxisType.Probability Then
-                .Type = AxisType.Probability
-                With .MajorTic
-                    .IsInside = True
-                    .IsCrossInside = True
-                    .IsOutside = False
-                    .IsCrossOutside = False
-                End With
-                lXScale = .Scale
-                lXScale.standardDeviations = 3
-                'lXScale.IsReverse = True
-            End If
+    '    Dim lX(pNumProbabilityPoints) As Double
+    '    Dim lLastIndex As Integer = lX.GetUpperBound(0)
+    '    Dim lPane As ZedGraph.GraphPane = pZgc.MasterPane.PaneList(0)
+    '    '### Fix
+    '    'Dim lXScale As ProbabilityScale
+    '    'With lPane.XAxis
+    '    '    If .Type <> AxisType.Probability Then
+    '    '        .Type = AxisType.Probability
+    '    '        With .MajorTic
+    '    '            .IsInside = True
+    '    '            .IsCrossInside = True
+    '    '            .IsOutside = False
+    '    '            .IsCrossOutside = False
+    '    '        End With
+    '    '        lXScale = .Scale
+    '    '        lXScale.standardDeviations = 3
+    '    '        'lXScale.IsReverse = True
+    '    '    End If
 
-            For lXindex As Integer = 0 To lLastIndex
-                lX(lXindex) = 100 * .Scale.DeLinearize(lXindex / CDbl(lLastIndex))
-            Next
-        End With
-        Dim lAttributeName As String
-        Dim lIndex As Integer
-        Dim lXFracExceed() As Double
-        Dim lY() As Double
+    '    '    For lXindex As Integer = 0 To lLastIndex
+    '    '        lX(lXindex) = 100 * .Scale.DeLinearize(lXindex / CDbl(lLastIndex))
+    '    '    Next
+    '    'End With
+    '    '### Fix
+    '    Dim lAttributeName As String
+    '    Dim lIndex As Integer
+    '    Dim lXFracExceed() As Double
+    '    Dim lY() As Double
 
-        ReDim lY(lLastIndex)
-        ReDim lXFracExceed(lLastIndex)
+    '    ReDim lY(lLastIndex)
+    '    ReDim lXFracExceed(lLastIndex)
 
-        For lIndex = 0 To lLastIndex
-            If Exceedance Then
-                lXFracExceed(lIndex) = (100 - lX(lIndex)) / 100
-            Else
-                lXFracExceed(lIndex) = lX(lIndex) / 100
-            End If
-            lAttributeName = "%" & Format(lX(lIndex), "00.####")
-            lY(lIndex) = aTimeseries.Attributes.GetValue(lAttributeName)
-            'Logger.Dbg(lAttributeName & " = " & lY(lIndex) & _
-            '                            " : " & lX(lIndex) & _
-            '                            " : " & lXFracExceed(lIndex))
-        Next
-        lXScale = lPane.XAxis.Scale
-        lXScale.BaseTic = lXFracExceed(0)
-        If Exceedance Then
-            lPane.XAxis.Title.Text = "Percent Exceeded"
-        Else
-            lPane.XAxis.Title.Text = "Percent Not-Exceeded"
-        End If
-        With lPane.YAxis
-            .Type = AxisType.Log
-            .Scale.IsUseTenPower = False
-            '.Scale.Min = 10
-            If aTimeseries.Attributes.ContainsAttribute("Units") Then
-                .Title.Text = aTimeseries.Attributes.GetValue("Units")
-                .Title.IsVisible = True
-            End If
-        End With
+    '    For lIndex = 0 To lLastIndex
+    '        If Exceedance Then
+    '            lXFracExceed(lIndex) = (100 - lX(lIndex)) / 100
+    '        Else
+    '            lXFracExceed(lIndex) = lX(lIndex) / 100
+    '        End If
+    '        lAttributeName = "%" & Format(lX(lIndex), "00.####")
+    '        lY(lIndex) = aTimeseries.Attributes.GetValue(lAttributeName)
+    '        'Logger.Dbg(lAttributeName & " = " & lY(lIndex) & _
+    '        '                            " : " & lX(lIndex) & _
+    '        '                            " : " & lXFracExceed(lIndex))
+    '    Next
+    '    '### Fix
+    '    'lXScale = lPane.XAxis.Scale
+    '    'lXScale.BaseTic = lXFracExceed(0)
+    '    If Exceedance Then
+    '        lPane.XAxis.Title.Text = "Percent Exceeded"
+    '    Else
+    '        lPane.XAxis.Title.Text = "Percent Not-Exceeded"
+    '    End If
+    '    With lPane.YAxis
+    '        .Type = AxisType.Log
+    '        .Scale.IsUseTenPower = False
+    '        '.Scale.Min = 10
+    '        If aTimeseries.Attributes.ContainsAttribute("Units") Then
+    '            .Title.Text = aTimeseries.Attributes.GetValue("Units")
+    '            .Title.IsVisible = True
+    '        End If
+    '    End With
 
-        'Upper right corner of chart is better for this graph type
-        lPane.Legend.Location = New Location(0.95, 0.05, CoordType.ChartFraction, AlignH.Right, AlignV.Top)
-        'lPane.Legend.FontSpec.Size += 2
-        lPane.Legend.FontSpec.IsBold = True
+    '    'Upper right corner of chart is better for this graph type
+    '    lPane.Legend.Location = New Location(0.95, 0.05, CoordType.ChartFraction, AlignH.Right, AlignV.Top)
+    '    'lPane.Legend.FontSpec.Size += 2
+    '    lPane.Legend.FontSpec.IsBold = True
 
-        lCurve = lPane.AddCurve(lCurveLabel, lXFracExceed, lY, lCurveColor, SymbolType.None)
-        lCurve.Line.Width = 2
-        lCurve.Tag = aTimeseries.Serial & "|" & aTimeseries.Attributes.GetValue("ID") & "|" & aTimeseries.Attributes.GetValue("Data Source")
+    '    lCurve = lPane.AddCurve(lCurveLabel, lXFracExceed, lY, lCurveColor, SymbolType.None)
+    '    lCurve.Line.Width = 2
+    '    lCurve.Tag = aTimeseries.Serial & "|" & aTimeseries.Attributes.GetValue("ID") & "|" & aTimeseries.Attributes.GetValue("Data Source")
 
-        lCurve.Line.StepType = StepType.NonStep
-        SetYMax(lPane)
-    End Sub
+    '    lCurve.Line.StepType = StepType.NonStep
+    '    SetYMax(lPane)
+    'End Sub
 
     Private Sub SetYMax(ByVal aPane As ZedGraph.GraphPane)
         Dim lYMax As Double = 0.0001

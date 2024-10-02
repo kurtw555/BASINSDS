@@ -30,10 +30,10 @@ Public Class frmSWSTATDFlowBatch
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    Friend WithEvents MainMenu1 As System.Windows.Forms.MainMenu
-    Friend WithEvents mnuAnalysis As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFile As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuFileSelectData As System.Windows.Forms.MenuItem
+    Friend WithEvents MainMenu1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents mnuAnalysis As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFile As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuFileSelectData As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tabMain As System.Windows.Forms.TabControl
     Friend WithEvents tabSelectDates As System.Windows.Forms.TabPage
     Friend WithEvents tabNDay As System.Windows.Forms.TabPage
@@ -147,15 +147,15 @@ Public Class frmSWSTATDFlowBatch
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Label15 As System.Windows.Forms.Label
-    Friend WithEvents mnuHelp As System.Windows.Forms.MenuItem
+    Friend WithEvents mnuHelp As System.Windows.Forms.ToolStripMenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSWSTATDFlowBatch))
-        Me.MainMenu1 = New System.Windows.Forms.MainMenu(Me.components)
-        Me.mnuFile = New System.Windows.Forms.MenuItem()
-        Me.mnuFileSelectData = New System.Windows.Forms.MenuItem()
-        Me.mnuAnalysis = New System.Windows.Forms.MenuItem()
-        Me.mnuHelp = New System.Windows.Forms.MenuItem()
+        Me.MainMenu1 = New System.Windows.Forms.MenuStrip()
+        Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuFileSelectData = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuAnalysis = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuHelp = New System.Windows.Forms.ToolStripMenuItem()
         Me.tabMain = New System.Windows.Forms.TabControl()
         Me.tabSelectDates = New System.Windows.Forms.TabPage()
         Me.gbTextOutput = New System.Windows.Forms.GroupBox()
@@ -287,28 +287,28 @@ Public Class frmSWSTATDFlowBatch
         '
         'MainMenu1
         '
-        Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuFile, Me.mnuAnalysis, Me.mnuHelp})
+        Me.MainMenu1.Items.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuFile, Me.mnuAnalysis, Me.mnuHelp})
         '
         'mnuFile
         '
-        Me.mnuFile.Index = 0
-        Me.mnuFile.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuFileSelectData})
+        Me.mnuFile.MergeIndex = 0
+        Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripMenuItem() {Me.mnuFileSelectData})
         Me.mnuFile.Text = "File"
         '
         'mnuFileSelectData
         '
-        Me.mnuFileSelectData.Index = 0
+        Me.mnuFileSelectData.MergeIndex = 0
         Me.mnuFileSelectData.Text = "Select &Data"
         '
         'mnuAnalysis
         '
-        Me.mnuAnalysis.Index = 1
+        Me.mnuAnalysis.MergeIndex = 1
         Me.mnuAnalysis.Text = "Analysis"
         '
         'mnuHelp
         '
-        Me.mnuHelp.Index = 2
-        Me.mnuHelp.Shortcut = System.Windows.Forms.Shortcut.F1
+        Me.mnuHelp.MergeIndex = 2
+        Me.mnuHelp.ShortcutKeys = System.Windows.Forms.Shortcut.F1
         Me.mnuHelp.Text = "Help"
         '
         'tabMain
@@ -1540,7 +1540,7 @@ Public Class frmSWSTATDFlowBatch
         Me.ClientSize = New System.Drawing.Size(466, 537)
         Me.Controls.Add(Me.tabMain)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Menu = Me.MainMenu1
+        'Me.Menu = Me.MainMenu1
         Me.Name = "frmSWSTATDFlowBatch"
         Me.Text = "Integrated Design Flow"
         Me.tabMain.ResumeLayout(False)
@@ -1865,7 +1865,7 @@ Public Class frmSWSTATDFlowBatch
                 Dim lMenuText As String = lDisp.Name
                 If lMenuText <> "Analysis::USGS Surface Water Statistics (SWSTAT)::Integrated Frequency Analysis" Then
                     If lMenuText.StartsWith("Analysis::") Then lMenuText = lMenuText.Substring(10)
-                    mnuAnalysis.MenuItems.Add(lMenuText, New EventHandler(AddressOf mnuAnalysis_Click))
+                    mnuAnalysis.DropDownItems.Add(lMenuText, Nothing, New EventHandler(AddressOf mnuAnalysis_Click))
                 End If
             Next
         End If
@@ -2636,7 +2636,7 @@ Public Class frmSWSTATDFlowBatch
                                                          aHigh:=radioHigh.Checked, _
                                                          aNday:=ListToArray(lstNday), _
                                                          aReturns:=ListToArray(lstRecurrence))
-            lFreqForm.SWSTATDFlowBatchfrm = Me
+            'lFreqForm.SWSTATDFlowBatchfrm = Me
 
             Me.Cursor = System.Windows.Forms.Cursors.Default
         End If

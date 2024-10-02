@@ -1,3 +1,4 @@
+Imports System.Data
 Partial Class SwatInput
     Private pHru As clsHru = New clsHru(Me)
     ReadOnly Property Hru() As clsHru
@@ -36,10 +37,10 @@ Partial Class SwatInput
         Public DEP_IMP As Long
         Public DIS_STREAM As Long
 
-        Public Sub New(ByVal aSUBBASIN As Double, _
-                       ByVal aHRU As Double, _
-                       ByVal aLANDUSE As String, _
-                       ByVal aSOIL As String, _
+        Public Sub New(ByVal aSUBBASIN As Double,
+                       ByVal aHRU As Double,
+                       ByVal aLANDUSE As String,
+                       ByVal aSOIL As String,
                        ByVal aSLOPE_CD As String)
             SUBBASIN = aSUBBASIN
             HRU = aHRU

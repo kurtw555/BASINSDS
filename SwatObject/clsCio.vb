@@ -1,3 +1,6 @@
+Imports System.Data
+Imports System.Data.SQLite
+
 Partial Class SwatInput
     ''' <summary>
     ''' Master Watershed (CIO) input section
@@ -81,7 +84,7 @@ Partial Class SwatInput
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
                 'Open the connection
-                Dim lConnection As ADODB.Connection = pSwatInput.OpenADOConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
 
                 'Open the Catalog
                 Dim lCatalog As New ADOX.Catalog
@@ -253,7 +256,7 @@ Partial Class SwatInput
                         Dim lStr As String = ""
                         For lIndex As Integer = 1 To lRow.Item(10)
                             lStr &= ("pcp" & lIndex & ".pcp").PadLeft(13)
-                            If Math.IEEERemainder(lIndex, 6) = 0 OrElse _
+                            If Math.IEEERemainder(lIndex, 6) = 0 OrElse
                                lIndex = lRow.Item(10) Then
                                 lSB.AppendLine(lStr)
                                 lStr = ""
@@ -283,7 +286,7 @@ Partial Class SwatInput
                         Dim lStr As String = ""
                         For lIndex As Integer = 1 To lRow.Item(14)
                             lStr &= ("tmp" & lIndex & ".tmp").PadRight(13)
-                            If Math.IEEERemainder(lIndex, 6) = 0 OrElse _
+                            If Math.IEEERemainder(lIndex, 6) = 0 OrElse
                                lIndex = lRow.Item(14) Then
                                 lSB.AppendLine(lStr)
                                 lStr = ""

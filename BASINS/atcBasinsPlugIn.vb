@@ -94,7 +94,8 @@ Public Class atcBasinsPlugIn
 #Else
         GisUtil.MappingObject = g_MapWin
 #End If
-        atcDataManager.MapWindow = g_MapWin
+        'KW
+        'atcDataManager.MapWindow = g_MapWin
 
         'These should match, but now g_AppNameLong is a constant and we do not set it here.
         'g_AppNameLong = aMapWin.ApplicationInfo.ApplicationName

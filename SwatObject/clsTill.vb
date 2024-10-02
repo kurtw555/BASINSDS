@@ -1,4 +1,5 @@
 'OBJECTID,ITNUM,TILLNM,EFTMIX,DEPTIL,OPNAME,OPNUM
+Imports System.Data
 Partial Class SwatInput
     Private pTill As clsTill = New clsTill(Me)
     ReadOnly Property Till() As clsTill
