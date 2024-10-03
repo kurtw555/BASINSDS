@@ -4128,24 +4128,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\KWOLFE\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\KWOLFE\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\BASINSDS\\atcTimeseriesBinary\\atcTimeseriesBinary-DS.vbproj",
+      "projectUniqueName": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcTimeseriesBinary\\atcTimeseriesBinary-DS.vbproj",
       "projectName": "atcTimeseriesBinary",
-      "projectPath": "E:\\BASINSDS\\atcTimeseriesBinary\\atcTimeseriesBinary-DS.vbproj",
+      "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcTimeseriesBinary\\atcTimeseriesBinary-DS.vbproj",
       "packagesPath": "C:\\Users\\KWOLFE\\.nuget\\packages\\",
-      "outputPath": "E:\\BASINSDS\\atcTimeseriesBinary\\obj\\",
+      "outputPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcTimeseriesBinary\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\KWOLFE\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4160,14 +4155,14 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "E:\\BASINSDS\\atcData\\atcData-DS.vbproj": {
-              "projectPath": "E:\\BASINSDS\\atcData\\atcData-DS.vbproj"
+            "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcData\\atcData-DS.vbproj": {
+              "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcData\\atcData-DS.vbproj"
             },
-            "E:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
-              "projectPath": "E:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj"
+            "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
+              "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj"
             },
-            "E:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
-              "projectPath": "E:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
+            "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
+              "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
             }
           }
         }

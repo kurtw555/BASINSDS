@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\BASINSDS\\atcTimeseriesMath\\atcTimeseriesMath-DS.vbproj": {}
+    "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcTimeseriesMath\\atcTimeseriesMath-DS.vbproj": {}
   },
   "projects": {
-    "E:\\BASINSDS\\atcControls\\atcControls-DS.vbproj": {
+    "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcControls\\atcControls-DS.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\BASINSDS\\atcControls\\atcControls-DS.vbproj",
+        "projectUniqueName": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcControls\\atcControls-DS.vbproj",
         "projectName": "atcControls",
-        "projectPath": "E:\\BASINSDS\\atcControls\\atcControls-DS.vbproj",
+        "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcControls\\atcControls-DS.vbproj",
         "packagesPath": "C:\\Users\\KWOLFE\\.nuget\\packages\\",
-        "outputPath": "E:\\BASINSDS\\atcControls\\obj\\",
+        "outputPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcControls\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\KWOLFE\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -33,11 +29,11 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "E:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
-                "projectPath": "E:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj"
+              "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
+                "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj"
               },
-              "E:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
-                "projectPath": "E:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
+              "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
+                "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
               }
             }
           }
@@ -112,21 +108,17 @@
         }
       }
     },
-    "E:\\BASINSDS\\atcData\\atcData-DS.vbproj": {
+    "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcData\\atcData-DS.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\BASINSDS\\atcData\\atcData-DS.vbproj",
+        "projectUniqueName": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcData\\atcData-DS.vbproj",
         "projectName": "atcData",
-        "projectPath": "E:\\BASINSDS\\atcData\\atcData-DS.vbproj",
+        "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcData\\atcData-DS.vbproj",
         "packagesPath": "C:\\Users\\KWOLFE\\.nuget\\packages\\",
-        "outputPath": "E:\\BASINSDS\\atcData\\obj\\",
+        "outputPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcData\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\KWOLFE\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -141,14 +133,14 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "E:\\BASINSDS\\atcControls\\atcControls-DS.vbproj": {
-                "projectPath": "E:\\BASINSDS\\atcControls\\atcControls-DS.vbproj"
+              "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcControls\\atcControls-DS.vbproj": {
+                "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcControls\\atcControls-DS.vbproj"
               },
-              "E:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
-                "projectPath": "E:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj"
+              "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
+                "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj"
               },
-              "E:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
-                "projectPath": "E:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
+              "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
+                "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
               }
             }
           }
@@ -247,21 +239,17 @@
         }
       }
     },
-    "E:\\BASINSDS\\atcTimeseriesMath\\atcTimeseriesMath-DS.vbproj": {
+    "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcTimeseriesMath\\atcTimeseriesMath-DS.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\BASINSDS\\atcTimeseriesMath\\atcTimeseriesMath-DS.vbproj",
+        "projectUniqueName": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcTimeseriesMath\\atcTimeseriesMath-DS.vbproj",
         "projectName": "atcTimeseriesMath",
-        "projectPath": "E:\\BASINSDS\\atcTimeseriesMath\\atcTimeseriesMath-DS.vbproj",
+        "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcTimeseriesMath\\atcTimeseriesMath-DS.vbproj",
         "packagesPath": "C:\\Users\\KWOLFE\\.nuget\\packages\\",
-        "outputPath": "E:\\BASINSDS\\atcTimeseriesMath\\obj\\",
+        "outputPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcTimeseriesMath\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\KWOLFE\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -276,17 +264,17 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "E:\\BASINSDS\\atcControls\\atcControls-DS.vbproj": {
-                "projectPath": "E:\\BASINSDS\\atcControls\\atcControls-DS.vbproj"
+              "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcControls\\atcControls-DS.vbproj": {
+                "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcControls\\atcControls-DS.vbproj"
               },
-              "E:\\BASINSDS\\atcData\\atcData-DS.vbproj": {
-                "projectPath": "E:\\BASINSDS\\atcData\\atcData-DS.vbproj"
+              "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcData\\atcData-DS.vbproj": {
+                "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcData\\atcData-DS.vbproj"
               },
-              "E:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
-                "projectPath": "E:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj"
+              "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
+                "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj"
               },
-              "E:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
-                "projectPath": "E:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
+              "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
+                "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
               }
             }
           }
@@ -369,21 +357,17 @@
         }
       }
     },
-    "E:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
+    "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj",
+        "projectUniqueName": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj",
         "projectName": "atcUtility",
-        "projectPath": "E:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj",
+        "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj",
         "packagesPath": "C:\\Users\\KWOLFE\\.nuget\\packages\\",
-        "outputPath": "E:\\BASINSDS\\atcUtility\\obj\\",
+        "outputPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\atcUtility\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\KWOLFE\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -398,8 +382,8 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "E:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
-                "projectPath": "E:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
+              "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
+                "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
               }
             }
           }
@@ -474,21 +458,17 @@
         }
       }
     },
-    "E:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
+    "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj",
+        "projectUniqueName": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj",
         "projectName": "MapWinUtility",
-        "projectPath": "E:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj",
+        "projectPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj",
         "packagesPath": "C:\\Users\\KWOLFE\\.nuget\\packages\\",
-        "outputPath": "E:\\BASINSDS\\MapWinUtility\\obj\\",
+        "outputPath": "C:\\Users\\KWOLFE\\Code\\dotnet\\BASINSDS\\MapWinUtility\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\KWOLFE\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

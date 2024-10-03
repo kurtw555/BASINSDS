@@ -12,3 +12,17 @@ E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\refint\atcTimeseriesBin
 E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary.xml
 E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary.pdb
 E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\ref\atcTimeseriesBinary.dll
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\D4EM10\AnyDebug\net8.0-windows\atcTimeseriesBinary.deps.json
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\D4EM10\AnyDebug\net8.0-windows\atcTimeseriesBinary.dll
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\D4EM10\AnyDebug\net8.0-windows\atcTimeseriesBinary.pdb
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\D4EM10\AnyDebug\net8.0-windows\atcTimeseriesBinary.xml
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary-DS.vbproj.AssemblyReference.cache
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary-DS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary-DS.vbproj.CoreCompileInputs.cache
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary-DS.sourcelink.json
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimes.4A43886E.Up2Date
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary.dll
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\refint\atcTimeseriesBinary.dll
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary.xml
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary.pdb
+C:\Users\KWOLFE\Code\dotnet\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\ref\atcTimeseriesBinary.dll
