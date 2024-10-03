@@ -1,0 +1,14 @@
+D:\BASINSDS\bin\Debug\BASINS\net6.0-windows\atcTimeseriesMath.deps.json
+D:\BASINSDS\bin\Debug\BASINS\net6.0-windows\atcTimeseriesMath.dll
+D:\BASINSDS\bin\Debug\BASINS\net6.0-windows\atcTimeseriesMath.xml
+D:\BASINSDS\atcTimeseriesMath\obj\Release\net6.0-windows\atcTimeseriesMath-DS.vbproj.AssemblyReference.cache
+D:\BASINSDS\atcTimeseriesMath\obj\Release\net6.0-windows\atcTimeseriesMath.frmSpecifyComputation.resources
+D:\BASINSDS\atcTimeseriesMath\obj\Release\net6.0-windows\atcTimeseriesMath.frmSpecifySubtract.resources
+D:\BASINSDS\atcTimeseriesMath\obj\Release\net6.0-windows\atcTimeseriesMath-DS.vbproj.GenerateResource.cache
+D:\BASINSDS\atcTimeseriesMath\obj\Release\net6.0-windows\atcTimeseriesMath-DS.GeneratedMSBuildEditorConfig.editorconfig
+D:\BASINSDS\atcTimeseriesMath\obj\Release\net6.0-windows\atcTimeseriesMath-DS.vbproj.CoreCompileInputs.cache
+D:\BASINSDS\atcTimeseriesMath\obj\Release\net6.0-windows\atcTimeseriesMath-DS.vbproj.CopyComplete
+D:\BASINSDS\atcTimeseriesMath\obj\Release\net6.0-windows\atcTimeseriesMath.dll
+D:\BASINSDS\atcTimeseriesMath\obj\Release\net6.0-windows\refint\atcTimeseriesMath.dll
+D:\BASINSDS\atcTimeseriesMath\obj\Release\net6.0-windows\atcTimeseriesMath.xml
+D:\BASINSDS\atcTimeseriesMath\obj\Release\net6.0-windows\ref\atcTimeseriesMath.dll

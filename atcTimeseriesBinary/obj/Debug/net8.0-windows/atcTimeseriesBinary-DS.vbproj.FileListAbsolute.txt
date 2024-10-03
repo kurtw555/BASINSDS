@@ -1,0 +1,14 @@
+E:\BASINSDS\D4EM10\AnyDebug\net8.0-windows\atcTimeseriesBinary.deps.json
+E:\BASINSDS\D4EM10\AnyDebug\net8.0-windows\atcTimeseriesBinary.dll
+E:\BASINSDS\D4EM10\AnyDebug\net8.0-windows\atcTimeseriesBinary.pdb
+E:\BASINSDS\D4EM10\AnyDebug\net8.0-windows\atcTimeseriesBinary.xml
+E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary-DS.vbproj.AssemblyReference.cache
+E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary-DS.GeneratedMSBuildEditorConfig.editorconfig
+E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary-DS.vbproj.CoreCompileInputs.cache
+E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary-DS.sourcelink.json
+E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimes.4A43886E.Up2Date
+E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary.dll
+E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\refint\atcTimeseriesBinary.dll
+E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary.xml
+E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\atcTimeseriesBinary.pdb
+E:\BASINSDS\atcTimeseriesBinary\obj\Debug\net8.0-windows\ref\atcTimeseriesBinary.dll

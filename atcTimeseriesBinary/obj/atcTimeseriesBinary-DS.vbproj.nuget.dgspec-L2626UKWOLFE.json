@@ -1,0 +1,413 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\BASINSDS\\atcTimeseriesBinary\\atcTimeseriesBinary-DS.vbproj": {}
+  },
+  "projects": {
+    "D:\\BASINSDS\\atcControls\\atcControls-DS.vbproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\BASINSDS\\atcControls\\atcControls-DS.vbproj",
+        "projectName": "atcControls",
+        "projectPath": "D:\\BASINSDS\\atcControls\\atcControls-DS.vbproj",
+        "packagesPath": "C:\\Users\\KWOLFE\\.nuget\\packages\\",
+        "outputPath": "D:\\BASINSDS\\atcControls\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\KWOLFE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {
+              "D:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
+                "projectPath": "D:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj"
+              },
+              "D:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
+                "projectPath": "D:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.4.336902, )"
+            },
+            "Microsoft.Windows.Compatibility": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.412\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\BASINSDS\\atcData\\atcData-DS.vbproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\BASINSDS\\atcData\\atcData-DS.vbproj",
+        "projectName": "atcData",
+        "projectPath": "D:\\BASINSDS\\atcData\\atcData-DS.vbproj",
+        "packagesPath": "C:\\Users\\KWOLFE\\.nuget\\packages\\",
+        "outputPath": "D:\\BASINSDS\\atcData\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\KWOLFE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {
+              "D:\\BASINSDS\\atcControls\\atcControls-DS.vbproj": {
+                "projectPath": "D:\\BASINSDS\\atcControls\\atcControls-DS.vbproj"
+              },
+              "D:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
+                "projectPath": "D:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj"
+              },
+              "D:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
+                "projectPath": "D:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "DotSpatial.Controls": {
+              "target": "Package",
+              "version": "[4.0.656, )"
+            },
+            "DotSpatial.Data": {
+              "target": "Package",
+              "version": "[4.0.656, )"
+            },
+            "DotSpatial.Data.Forms": {
+              "target": "Package",
+              "version": "[4.0.656, )"
+            },
+            "DotSpatial.Extensions": {
+              "target": "Package",
+              "version": "[4.0.656, )"
+            },
+            "DotSpatial.Serialization": {
+              "target": "Package",
+              "version": "[4.0.656, )"
+            },
+            "DotSpatial.Symbology": {
+              "target": "Package",
+              "version": "[4.0.656, )"
+            },
+            "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.4.336902, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.412\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\BASINSDS\\atcTimeseriesBinary\\atcTimeseriesBinary-DS.vbproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\BASINSDS\\atcTimeseriesBinary\\atcTimeseriesBinary-DS.vbproj",
+        "projectName": "atcTimeseriesBinary",
+        "projectPath": "D:\\BASINSDS\\atcTimeseriesBinary\\atcTimeseriesBinary-DS.vbproj",
+        "packagesPath": "C:\\Users\\KWOLFE\\.nuget\\packages\\",
+        "outputPath": "D:\\BASINSDS\\atcTimeseriesBinary\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\KWOLFE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {
+              "D:\\BASINSDS\\atcData\\atcData-DS.vbproj": {
+                "projectPath": "D:\\BASINSDS\\atcData\\atcData-DS.vbproj"
+              },
+              "D:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
+                "projectPath": "D:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj"
+              },
+              "D:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
+                "projectPath": "D:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.4.421302, )"
+            },
+            "Microsoft.Windows.Compatibility": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.410\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj",
+        "projectName": "atcUtility",
+        "projectPath": "D:\\BASINSDS\\atcUtility\\atcUtility-DS.vbproj",
+        "packagesPath": "C:\\Users\\KWOLFE\\.nuget\\packages\\",
+        "outputPath": "D:\\BASINSDS\\atcUtility\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\KWOLFE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {
+              "D:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
+                "projectPath": "D:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.4.336902, )"
+            },
+            "Microsoft.Windows.Compatibility": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.410\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj",
+        "projectName": "MapWinUtility",
+        "projectPath": "D:\\BASINSDS\\MapWinUtility\\MapWinUtility-DS.vbproj",
+        "packagesPath": "C:\\Users\\KWOLFE\\.nuget\\packages\\",
+        "outputPath": "D:\\BASINSDS\\MapWinUtility\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\KWOLFE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.4.336902, )"
+            },
+            "Microsoft.Windows.Compatibility": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.410\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+atcTimeseriesBinary
+</name>
+</assembly>
+<members>
+<member name="T:atcTimeseriesBinary.atcDataSourceTimeseriesBinary">
+ <summary>
+ Binary storage format for atcTimeseries
+ </summary>
+ <remarks>Copyright 2008 AQUA TERRA Consultants - Royalty-free use permitted under open source license</remarks>
+</member>
+</members>
+</doc>

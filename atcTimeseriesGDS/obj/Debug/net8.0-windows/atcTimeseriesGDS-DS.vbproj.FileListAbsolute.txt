@@ -1,0 +1,16 @@
+E:\BASINSDS\Bin\Plugins\BASINS\net8.0-windows\atcTimeseriesGDS.deps.json
+E:\BASINSDS\Bin\Plugins\BASINS\net8.0-windows\atcTimeseriesGDS.dll
+E:\BASINSDS\Bin\Plugins\BASINS\net8.0-windows\atcTimeseriesGDS.pdb
+E:\BASINSDS\Bin\Plugins\BASINS\net8.0-windows\atcTimeseriesGDS.xml
+E:\BASINSDS\atcTimeseriesGDS\obj\Debug\net8.0-windows\atcTimeseriesGDS-DS.vbproj.AssemblyReference.cache
+E:\BASINSDS\atcTimeseriesGDS\obj\Debug\net8.0-windows\atcTimeseriesGDS.Resources.resources
+E:\BASINSDS\atcTimeseriesGDS\obj\Debug\net8.0-windows\atcTimeseriesGDS-DS.vbproj.GenerateResource.cache
+E:\BASINSDS\atcTimeseriesGDS\obj\Debug\net8.0-windows\atcTimeseriesGDS-DS.GeneratedMSBuildEditorConfig.editorconfig
+E:\BASINSDS\atcTimeseriesGDS\obj\Debug\net8.0-windows\atcTimeseriesGDS-DS.vbproj.CoreCompileInputs.cache
+E:\BASINSDS\atcTimeseriesGDS\obj\Debug\net8.0-windows\atcTimeseriesGDS-DS.sourcelink.json
+E:\BASINSDS\atcTimeseriesGDS\obj\Debug\net8.0-windows\atcTimes.10ACC865.Up2Date
+E:\BASINSDS\atcTimeseriesGDS\obj\Debug\net8.0-windows\atcTimeseriesGDS.dll
+E:\BASINSDS\atcTimeseriesGDS\obj\Debug\net8.0-windows\refint\atcTimeseriesGDS.dll
+E:\BASINSDS\atcTimeseriesGDS\obj\Debug\net8.0-windows\atcTimeseriesGDS.xml
+E:\BASINSDS\atcTimeseriesGDS\obj\Debug\net8.0-windows\atcTimeseriesGDS.pdb
+E:\BASINSDS\atcTimeseriesGDS\obj\Debug\net8.0-windows\ref\atcTimeseriesGDS.dll
