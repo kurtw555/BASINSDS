@@ -1,0 +1,16 @@
+E:\D4EM\Bin\net8.0-windows\atcTimeseriesSWAT.deps.json
+E:\D4EM\Bin\net8.0-windows\atcTimeseriesSWAT.dll
+E:\D4EM\Bin\net8.0-windows\atcTimeseriesSWAT.pdb
+E:\D4EM\Bin\net8.0-windows\atcTimeseriesSWAT.xml
+E:\BASINSDS\atcTimeseriesSWAT\obj\Debug\net8.0-windows\atcTimeseriesSWAT-DS.vbproj.AssemblyReference.cache
+E:\BASINSDS\atcTimeseriesSWAT\obj\Debug\net8.0-windows\atcTimeseriesSWAT.Resources.resources
+E:\BASINSDS\atcTimeseriesSWAT\obj\Debug\net8.0-windows\atcTimeseriesSWAT-DS.vbproj.GenerateResource.cache
+E:\BASINSDS\atcTimeseriesSWAT\obj\Debug\net8.0-windows\atcTimeseriesSWAT-DS.GeneratedMSBuildEditorConfig.editorconfig
+E:\BASINSDS\atcTimeseriesSWAT\obj\Debug\net8.0-windows\atcTimeseriesSWAT-DS.vbproj.CoreCompileInputs.cache
+E:\BASINSDS\atcTimeseriesSWAT\obj\Debug\net8.0-windows\atcTimeseriesSWAT-DS.sourcelink.json
+E:\BASINSDS\atcTimeseriesSWAT\obj\Debug\net8.0-windows\atcTimes.C60F485B.Up2Date
+E:\BASINSDS\atcTimeseriesSWAT\obj\Debug\net8.0-windows\atcTimeseriesSWAT.dll
+E:\BASINSDS\atcTimeseriesSWAT\obj\Debug\net8.0-windows\refint\atcTimeseriesSWAT.dll
+E:\BASINSDS\atcTimeseriesSWAT\obj\Debug\net8.0-windows\atcTimeseriesSWAT.xml
+E:\BASINSDS\atcTimeseriesSWAT\obj\Debug\net8.0-windows\atcTimeseriesSWAT.pdb
+E:\BASINSDS\atcTimeseriesSWAT\obj\Debug\net8.0-windows\ref\atcTimeseriesSWAT.dll
