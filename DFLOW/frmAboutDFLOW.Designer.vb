@@ -28,44 +28,44 @@ Partial Class frmAboutDFLOW
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAboutDFLOW))
-        TableLayoutPanel = New Windows.Forms.TableLayoutPanel()
-        LabelProductName = New Windows.Forms.Label()
-        LabelVersion = New Windows.Forms.Label()
-        LabelCopyright = New Windows.Forms.Label()
-        LabelCompanyName = New Windows.Forms.Label()
-        TextBoxDescription = New Windows.Forms.TextBox()
-        OKButton = New Windows.Forms.Button()
+        TableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
+        LabelProductName = New System.Windows.Forms.Label()
+        LabelVersion = New System.Windows.Forms.Label()
+        LabelCopyright = New System.Windows.Forms.Label()
+        LabelCompanyName = New System.Windows.Forms.Label()
+        TextBoxDescription = New System.Windows.Forms.TextBox()
+        OKButton = New System.Windows.Forms.Button()
         TableLayoutPanel.SuspendLayout()
         SuspendLayout()
         ' 
         ' TableLayoutPanel
         ' 
         TableLayoutPanel.ColumnCount = 1
-        TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(Windows.Forms.SizeType.Percent, 33F))
-        TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(Windows.Forms.SizeType.Percent, 67F))
+        TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.0F))
+        TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.0F))
         TableLayoutPanel.Controls.Add(LabelProductName, 1, 0)
         TableLayoutPanel.Controls.Add(LabelVersion, 1, 1)
         TableLayoutPanel.Controls.Add(LabelCopyright, 1, 2)
         TableLayoutPanel.Controls.Add(LabelCompanyName, 1, 3)
         TableLayoutPanel.Controls.Add(TextBoxDescription, 1, 4)
         TableLayoutPanel.Controls.Add(OKButton, 1, 5)
-        TableLayoutPanel.Dock = Windows.Forms.DockStyle.Fill
+        TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom.Fill
         TableLayoutPanel.Location = New System.Drawing.Point(12, 14)
         TableLayoutPanel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         TableLayoutPanel.Name = "TableLayoutPanel"
         TableLayoutPanel.RowCount = 6
-        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Percent, 10F))
-        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Percent, 10F))
-        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Percent, 10F))
-        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Percent, 10F))
-        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Percent, 50F))
-        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(Windows.Forms.SizeType.Percent, 10F))
+        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0F))
+        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0F))
+        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0F))
+        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0F))
+        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0F))
+        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0F))
         TableLayoutPanel.Size = New System.Drawing.Size(431, 594)
         TableLayoutPanel.TabIndex = 0
         ' 
         ' LabelProductName
         ' 
-        LabelProductName.Dock = Windows.Forms.DockStyle.Fill
+        LabelProductName.Dock = System.Windows.Forms.DockStyle.Fill
         LabelProductName.Location = New System.Drawing.Point(8, 0)
         LabelProductName.Margin = New System.Windows.Forms.Padding(8, 0, 4, 0)
         LabelProductName.MaximumSize = New System.Drawing.Size(0, 26)
@@ -77,7 +77,7 @@ Partial Class frmAboutDFLOW
         ' 
         ' LabelVersion
         ' 
-        LabelVersion.Dock = Windows.Forms.DockStyle.Fill
+        LabelVersion.Dock = System.Windows.Forms.DockStyle.Fill
         LabelVersion.Location = New System.Drawing.Point(8, 59)
         LabelVersion.Margin = New System.Windows.Forms.Padding(8, 0, 4, 0)
         LabelVersion.MaximumSize = New System.Drawing.Size(0, 26)
@@ -89,7 +89,7 @@ Partial Class frmAboutDFLOW
         ' 
         ' LabelCopyright
         ' 
-        LabelCopyright.Dock = Windows.Forms.DockStyle.Fill
+        LabelCopyright.Dock = System.Windows.Forms.DockStyle.Fill
         LabelCopyright.Location = New System.Drawing.Point(8, 118)
         LabelCopyright.Margin = New System.Windows.Forms.Padding(8, 0, 4, 0)
         LabelCopyright.MaximumSize = New System.Drawing.Size(0, 26)
@@ -101,7 +101,7 @@ Partial Class frmAboutDFLOW
         ' 
         ' LabelCompanyName
         ' 
-        LabelCompanyName.Dock = Windows.Forms.DockStyle.Fill
+        LabelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill
         LabelCompanyName.Location = New System.Drawing.Point(8, 177)
         LabelCompanyName.Margin = New System.Windows.Forms.Padding(8, 0, 4, 0)
         LabelCompanyName.MaximumSize = New System.Drawing.Size(0, 26)
@@ -113,13 +113,13 @@ Partial Class frmAboutDFLOW
         ' 
         ' TextBoxDescription
         ' 
-        TextBoxDescription.Dock = Windows.Forms.DockStyle.Fill
+        TextBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill
         TextBoxDescription.Location = New System.Drawing.Point(8, 241)
         TextBoxDescription.Margin = New System.Windows.Forms.Padding(8, 5, 4, 5)
         TextBoxDescription.Multiline = True
         TextBoxDescription.Name = "TextBoxDescription"
         TextBoxDescription.ReadOnly = True
-        TextBoxDescription.ScrollBars = Windows.Forms.ScrollBars.Both
+        TextBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both
         TextBoxDescription.Size = New System.Drawing.Size(419, 287)
         TextBoxDescription.TabIndex = 0
         TextBoxDescription.TabStop = False
@@ -127,8 +127,8 @@ Partial Class frmAboutDFLOW
         ' 
         ' OKButton
         ' 
-        OKButton.Anchor = Windows.Forms.AnchorStyles.Bottom Or Windows.Forms.AnchorStyles.Right
-        OKButton.DialogResult = Windows.Forms.DialogResult.Cancel
+        OKButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right
+        OKButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         OKButton.Location = New System.Drawing.Point(327, 554)
         OKButton.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         OKButton.Name = "OKButton"
@@ -139,18 +139,18 @@ Partial Class frmAboutDFLOW
         ' frmAboutDFLOW
         ' 
         AutoScaleDimensions = New System.Drawing.SizeF(8F, 20F)
-        AutoScaleMode = Windows.Forms.AutoScaleMode.Font
+        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         CancelButton = OKButton
         ClientSize = New System.Drawing.Size(455, 622)
         Controls.Add(TableLayoutPanel)
-        FormBorderStyle = Windows.Forms.FormBorderStyle.FixedDialog
+        FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         MaximizeBox = False
         MinimizeBox = False
         Name = "frmAboutDFLOW"
         Padding = New System.Windows.Forms.Padding(12, 14, 12, 14)
         ShowInTaskbar = False
-        StartPosition = Windows.Forms.FormStartPosition.CenterParent
+        StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Text = "About DFLOW"
         TableLayoutPanel.ResumeLayout(False)
         TableLayoutPanel.PerformLayout()

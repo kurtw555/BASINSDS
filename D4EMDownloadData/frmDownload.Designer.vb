@@ -1218,8 +1218,8 @@ Partial Class frmDownload
     Friend WithEvents chkUSGS_Seamless_NLCD2013_LandCover As System.Windows.Forms.CheckBox
     Friend WithEvents chkUSGS_Seamless_NLCD2004_LandCover As System.Windows.Forms.CheckBox
     Friend WithEvents chkUSGS_Seamless_NLCD2008_LandCover As System.Windows.Forms.CheckBox
-    Friend WithEvents chkUSGS_Seamless_NLCD2016_Impervious As Windows.Forms.CheckBox
-    Friend WithEvents chkUSGS_Seamless_NLCD2016_LandCover As Windows.Forms.CheckBox
-    Friend WithEvents grpSoils As Windows.Forms.GroupBox
-    Friend WithEvents chkSSURGO As Windows.Forms.CheckBox
+    Friend WithEvents chkUSGS_Seamless_NLCD2016_Impervious As System.Windows.Forms.CheckBox
+    Friend WithEvents chkUSGS_Seamless_NLCD2016_LandCover As System.Windows.Forms.CheckBox
+    Friend WithEvents grpSoils As System.Windows.Forms.GroupBox
+    Friend WithEvents chkSSURGO As System.Windows.Forms.CheckBox
 End Class

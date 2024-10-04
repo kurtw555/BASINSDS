@@ -3,6 +3,7 @@ Imports atcUtility
 Imports MapWinUtility
 
 Imports ZedGraph
+Imports ZedGraph.WinForms
 
 Imports System.Drawing
 Imports System.Windows.Forms
