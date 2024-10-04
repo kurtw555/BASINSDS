@@ -1,7 +1,9 @@
 Imports System.Data
+Imports System.Data.Common
 Imports System.Data.OleDb
 Imports MapWinUtility
 Imports MapWinUtility.Strings
+Imports Microsoft.Data
 Imports Microsoft.Data.Sqlite
 
 Module modUtility
@@ -101,15 +103,21 @@ Module modUtility
         Next
     End Function
 
-    Friend Function QueryDB(ByVal aQuery As String, ByVal aConnection As OleDbConnection) As DataTable
-        Dim lCommand As OleDbCommand = New OleDbCommand(aQuery, aConnection)
+    'Friend Function QueryDB(ByVal aQuery As String, ByVal aConnection As OleDbConnection) As DataTable
+    Friend Function QueryDB(ByVal aQuery As String, ByVal aConnection As SqliteConnection) As DataTable
+        'Dim lCommand As OleDbCommand = New OleDbCommand(aQuery, aConnection)
+        Dim lCommand = aConnection.CreateCommand()
+        lCommand.CommandText = aQuery
         lCommand.CommandTimeout = 30
-        Dim lOleDbDataAdapter As New OleDbDataAdapter
-        lOleDbDataAdapter.SelectCommand = lCommand
+        'Dim lOleDbDataAdapter As New OleDbDataAdapter
+        'lOleDbDataAdapter.SelectCommand = lCommand
         Dim lDataSet As New DataSet
         Dim lTableName As String = "lTable"
-        lOleDbDataAdapter.Fill(lDataSet, lTableName)
-        Return lDataSet.Tables(lTableName)
+        Dim executeReader = lCommand.ExecuteReader()
+        Dim lDataTable As New DataTable
+        lDataTable.Load(executeReader)
+        'lOleDbDataAdapter.Fill(lDataSet, lTableName)
+        Return lDataTable
     End Function
 
     'Public Function ExecuteNonQuery(ByVal aSQL As String, ByVal aConnection As OleDbConnection) As Boolean
@@ -125,7 +133,7 @@ TryExecute:
             lCommand.ExecuteNonQuery()
             Return True
         Catch e As Exception
-            Windows.Forms.Application.DoEvents()
+            System.Windows.Forms.Application.DoEvents()
             If Date.Now.Subtract(lStartTime).Seconds < lCommand.CommandTimeout Then
                 System.Threading.Thread.Sleep(100)
                 'If Not lLogged Then
@@ -191,7 +199,8 @@ TryExecute:
     '    ExecuteNonQuery(lSQL & ");", aConnection)
     'End Function
 
-    Friend Function CreateTable(ByVal aTableName As String, ByVal aKeyName As String, ByVal aDataColumns As Generic.List(Of clsDataColumn), ByVal aConnection As OleDb.OleDbConnection) As Boolean
+    'Friend Function CreateTable(ByVal aTableName As String, ByVal aKeyName As String, ByVal aDataColumns As Generic.List(Of clsDataColumn), ByVal aConnection As OleDb.OleDbConnection) As Boolean
+    Friend Function CreateTable(ByVal aTableName As String, ByVal aKeyName As String, ByVal aDataColumns As Generic.List(Of clsDataColumn), ByVal aConnection As SqliteConnection) As Boolean
         DropTable(aTableName, aConnection)
         Dim lSQL As String = "CREATE TABLE " & aTableName & " (" _
                           & aKeyName & " INT IDENTITY PRIMARY KEY, "

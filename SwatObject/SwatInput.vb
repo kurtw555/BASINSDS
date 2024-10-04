@@ -12,7 +12,7 @@ Imports System.Data.OleDb
 
 Public Class SwatInput
 #Region "Class Variables"
-    Friend StatusBar As Windows.Forms.ToolStripStatusLabel = Nothing
+    Friend StatusBar As System.Windows.Forms.ToolStripStatusLabel = Nothing
     'Friend CnSwatParm As OleDbConnection
     Friend CnSwatParm As SqliteConnection
     'Friend CnSwatInput As OleDbConnection
@@ -39,7 +39,7 @@ Public Class SwatInput
                    ByVal aSwatSoilsDB As SqliteConnection,
                    ByVal aOutputFolder As String,
                    ByVal aScenario As String,
-                   ByVal aStatusBar As Windows.Forms.ToolStripStatusLabel)
+                   ByVal aStatusBar As System.Windows.Forms.ToolStripStatusLabel)
         Initialize(aSwatGDB, aOutGDB, aSwatSoilsDB, aOutputFolder, aScenario, aStatusBar)
     End Sub
 
@@ -56,7 +56,7 @@ Public Class SwatInput
                           ByVal aSwatSoilsDB As SqliteConnection,
                           ByVal aOutputFolder As String,
                           ByVal aScenario As String,
-                          ByVal aStatusBar As Windows.Forms.ToolStripStatusLabel)
+                          ByVal aStatusBar As System.Windows.Forms.ToolStripStatusLabel)
         ProjectFolder = aOutputFolder
         If ProjectFolder.Length > 0 Then
             IO.Directory.CreateDirectory(ProjectFolder)

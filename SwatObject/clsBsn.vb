@@ -1,5 +1,6 @@
 Imports System.Data
-Imports System.Data.SQLite
+Imports Microsoft.Data.Sqlite
+'Imports System.Data.SQLite
 
 
 Partial Class SwatInput
