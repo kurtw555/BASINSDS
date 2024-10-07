@@ -1,109 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <ProjectType>Local</ProjectType>
-    <AssemblyName>atcBasinsObsWQ</AssemblyName>
-    <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>
-    <DefaultClientScript>JScript</DefaultClientScript>
-    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
-    <DefaultTargetSchema>IE50</DefaultTargetSchema>
-    <DelaySign>false</DelaySign>
+    <AssemblyName>atcBasinsObsWQ</AssemblyName>    
     <OutputType>Library</OutputType>
-    <RootNamespace>atcBasinsObsWQ</RootNamespace>
-    <StartupObject>atcBasinsObsWQ.%2528None%2529</StartupObject>
-    <MyType>Windows</MyType>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <RootNamespace>atcBasinsObsWQ</RootNamespace>    
+    <ApplicationVersion>1.0.0</ApplicationVersion>    
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <DocumentationFile>atcBasinsObsWQ.xml</DocumentationFile>
-    <BaseAddress>285212672</BaseAddress>
-    <DebugSymbols>false</DebugSymbols>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <DocumentationFile>atcBasinsObsWQ.xml</DocumentationFile>    
     <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
     <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <DocumentationFile>atcBasinsObsWQ.xml</DocumentationFile>
-    <BaseAddress>285212672</BaseAddress>
-    <DefineDebug>false</DefineDebug>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <DocumentationFile>atcBasinsObsWQ.xml</DocumentationFile>    
+    <DefineDebug>false</DefineDebug>    
     <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
     <DebugType>none</DebugType>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>false</DebugSymbols>
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <BaseAddress>285212672</BaseAddress>
-    <DocumentationFile>atcBasinsObsWQ.xml</DocumentationFile>
-    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
-    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <BaseAddress>285212672</BaseAddress>
-    <DocumentationFile>atcBasinsObsWQ.xml</DocumentationFile>
-    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
-    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <BaseAddress>285212672</BaseAddress>
-    <DocumentationFile>atcBasinsObsWQ.xml</DocumentationFile>
-    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
-    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
-    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <BaseAddress>285212672</BaseAddress>
-    <DocumentationFile>atcBasinsObsWQ.xml</DocumentationFile>
-    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
-    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Update="System">
-      <Name>System</Name>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="My Project\" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\atcData\atcData-DS.vbproj" />
     <ProjectReference Include="..\atcUtility\atcUtility-DS.vbproj" />

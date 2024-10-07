@@ -10,14 +10,6 @@
     <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="DotSpatial.Controls" Version="4.0.656" />
     <PackageReference Include="DotSpatial.Data.Forms" Version="4.0.656" />
