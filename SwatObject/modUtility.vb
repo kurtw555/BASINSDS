@@ -332,4 +332,5 @@ TryExecute:
         lSQL = lSQL.Substring(0, lSQL.Length - 1) & " WHERE " & aWhereClause
         Return lSQL
     End Function
+
 End Module

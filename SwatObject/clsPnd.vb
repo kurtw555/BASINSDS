@@ -90,23 +90,26 @@ Partial Class SwatInput
 
                 'Open the Catalog
                 Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                'lCatalog.ActiveConnection = lConnection
 
                 'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
+                'Dim lTable As New ADOX.Table
+                Dim lTable As New DataTable
+                lTable.TableName = pTableName
+                Dim ival As Int32
 
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
+                'Dim lKeyColumn As New ADOX.Column
+                Dim lKeyColumn As New DataColumn("OID", ival.GetType(), "AutoIncrement=True")
+                'With lKeyColumn
+                '    .Name = "OID"
+                '    .Type = ADOX.DataTypeEnum.adInteger
+                '    .ParentCatalog = lCatalog
+                '    .Properties("AutoIncrement").Value = True
+                'End With
 
                 With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("SUBBASIN", ADOX.DataTypeEnum.adDouble)
+                    .Add(lKeyColumn)
+                    .Add("SUBBASIN", ADOX.DataTypeEnum.adDouble)
                     .Append("PND_FR", ADOX.DataTypeEnum.adSingle)
                     .Append("PND_PSA", ADOX.DataTypeEnum.adDouble)
                     .Append("PND_PVOL", ADOX.DataTypeEnum.adDouble)
