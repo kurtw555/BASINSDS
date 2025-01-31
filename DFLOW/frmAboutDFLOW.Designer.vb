@@ -41,36 +41,35 @@ Partial Class frmAboutDFLOW
         ' TableLayoutPanel
         ' 
         TableLayoutPanel.ColumnCount = 1
-        TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.0F))
-        TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.0F))
+        TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F))
+        TableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F))
         TableLayoutPanel.Controls.Add(LabelProductName, 1, 0)
         TableLayoutPanel.Controls.Add(LabelVersion, 1, 1)
         TableLayoutPanel.Controls.Add(LabelCopyright, 1, 2)
         TableLayoutPanel.Controls.Add(LabelCompanyName, 1, 3)
         TableLayoutPanel.Controls.Add(TextBoxDescription, 1, 4)
         TableLayoutPanel.Controls.Add(OKButton, 1, 5)
-        TableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom.Fill
-        TableLayoutPanel.Location = New System.Drawing.Point(12, 14)
-        TableLayoutPanel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        TableLayoutPanel.Location = New System.Drawing.Point(10, 10)
+        TableLayoutPanel.Margin = New System.Windows.Forms.Padding(4)
         TableLayoutPanel.Name = "TableLayoutPanel"
         TableLayoutPanel.RowCount = 6
-        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0F))
-        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0F))
-        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0F))
-        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0F))
-        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0F))
-        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0F))
-        TableLayoutPanel.Size = New System.Drawing.Size(431, 594)
+        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F))
+        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F))
+        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F))
+        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F))
+        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F))
+        TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F))
+        TableLayoutPanel.Size = New System.Drawing.Size(377, 446)
         TableLayoutPanel.TabIndex = 0
         ' 
         ' LabelProductName
         ' 
         LabelProductName.Dock = System.Windows.Forms.DockStyle.Fill
-        LabelProductName.Location = New System.Drawing.Point(8, 0)
-        LabelProductName.Margin = New System.Windows.Forms.Padding(8, 0, 4, 0)
-        LabelProductName.MaximumSize = New System.Drawing.Size(0, 26)
+        LabelProductName.Location = New System.Drawing.Point(7, 0)
+        LabelProductName.Margin = New System.Windows.Forms.Padding(7, 0, 4, 0)
+        LabelProductName.MaximumSize = New System.Drawing.Size(0, 20)
         LabelProductName.Name = "LabelProductName"
-        LabelProductName.Size = New System.Drawing.Size(419, 26)
+        LabelProductName.Size = New System.Drawing.Size(366, 20)
         LabelProductName.TabIndex = 0
         LabelProductName.Text = "Product Name"
         LabelProductName.TextAlign = Drawing.ContentAlignment.MiddleLeft
@@ -78,11 +77,11 @@ Partial Class frmAboutDFLOW
         ' LabelVersion
         ' 
         LabelVersion.Dock = System.Windows.Forms.DockStyle.Fill
-        LabelVersion.Location = New System.Drawing.Point(8, 59)
-        LabelVersion.Margin = New System.Windows.Forms.Padding(8, 0, 4, 0)
-        LabelVersion.MaximumSize = New System.Drawing.Size(0, 26)
+        LabelVersion.Location = New System.Drawing.Point(7, 44)
+        LabelVersion.Margin = New System.Windows.Forms.Padding(7, 0, 4, 0)
+        LabelVersion.MaximumSize = New System.Drawing.Size(0, 20)
         LabelVersion.Name = "LabelVersion"
-        LabelVersion.Size = New System.Drawing.Size(419, 26)
+        LabelVersion.Size = New System.Drawing.Size(366, 20)
         LabelVersion.TabIndex = 0
         LabelVersion.Text = "Version"
         LabelVersion.TextAlign = Drawing.ContentAlignment.MiddleLeft
@@ -90,11 +89,11 @@ Partial Class frmAboutDFLOW
         ' LabelCopyright
         ' 
         LabelCopyright.Dock = System.Windows.Forms.DockStyle.Fill
-        LabelCopyright.Location = New System.Drawing.Point(8, 118)
-        LabelCopyright.Margin = New System.Windows.Forms.Padding(8, 0, 4, 0)
-        LabelCopyright.MaximumSize = New System.Drawing.Size(0, 26)
+        LabelCopyright.Location = New System.Drawing.Point(7, 88)
+        LabelCopyright.Margin = New System.Windows.Forms.Padding(7, 0, 4, 0)
+        LabelCopyright.MaximumSize = New System.Drawing.Size(0, 20)
         LabelCopyright.Name = "LabelCopyright"
-        LabelCopyright.Size = New System.Drawing.Size(419, 26)
+        LabelCopyright.Size = New System.Drawing.Size(366, 20)
         LabelCopyright.TabIndex = 0
         LabelCopyright.Text = "Copyright"
         LabelCopyright.TextAlign = Drawing.ContentAlignment.MiddleLeft
@@ -102,11 +101,11 @@ Partial Class frmAboutDFLOW
         ' LabelCompanyName
         ' 
         LabelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill
-        LabelCompanyName.Location = New System.Drawing.Point(8, 177)
-        LabelCompanyName.Margin = New System.Windows.Forms.Padding(8, 0, 4, 0)
-        LabelCompanyName.MaximumSize = New System.Drawing.Size(0, 26)
+        LabelCompanyName.Location = New System.Drawing.Point(7, 132)
+        LabelCompanyName.Margin = New System.Windows.Forms.Padding(7, 0, 4, 0)
+        LabelCompanyName.MaximumSize = New System.Drawing.Size(0, 20)
         LabelCompanyName.Name = "LabelCompanyName"
-        LabelCompanyName.Size = New System.Drawing.Size(419, 26)
+        LabelCompanyName.Size = New System.Drawing.Size(366, 20)
         LabelCompanyName.TabIndex = 0
         LabelCompanyName.Text = "Company Name"
         LabelCompanyName.TextAlign = Drawing.ContentAlignment.MiddleLeft
@@ -114,13 +113,13 @@ Partial Class frmAboutDFLOW
         ' TextBoxDescription
         ' 
         TextBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill
-        TextBoxDescription.Location = New System.Drawing.Point(8, 241)
-        TextBoxDescription.Margin = New System.Windows.Forms.Padding(8, 5, 4, 5)
+        TextBoxDescription.Location = New System.Drawing.Point(7, 180)
+        TextBoxDescription.Margin = New System.Windows.Forms.Padding(7, 4, 4, 4)
         TextBoxDescription.Multiline = True
         TextBoxDescription.Name = "TextBoxDescription"
         TextBoxDescription.ReadOnly = True
         TextBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        TextBoxDescription.Size = New System.Drawing.Size(419, 287)
+        TextBoxDescription.Size = New System.Drawing.Size(366, 215)
         TextBoxDescription.TabIndex = 0
         TextBoxDescription.TabStop = False
         TextBoxDescription.Text = resources.GetString("TextBoxDescription.Text")
@@ -129,26 +128,26 @@ Partial Class frmAboutDFLOW
         ' 
         OKButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right
         OKButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        OKButton.Location = New System.Drawing.Point(327, 554)
-        OKButton.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        OKButton.Location = New System.Drawing.Point(285, 416)
+        OKButton.Margin = New System.Windows.Forms.Padding(4)
         OKButton.Name = "OKButton"
-        OKButton.Size = New System.Drawing.Size(100, 35)
+        OKButton.Size = New System.Drawing.Size(88, 26)
         OKButton.TabIndex = 0
         OKButton.Text = "&OK"
         ' 
         ' frmAboutDFLOW
         ' 
-        AutoScaleDimensions = New System.Drawing.SizeF(8F, 20F)
+        AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         CancelButton = OKButton
-        ClientSize = New System.Drawing.Size(455, 622)
+        ClientSize = New System.Drawing.Size(398, 466)
         Controls.Add(TableLayoutPanel)
         FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Margin = New System.Windows.Forms.Padding(4)
         MaximizeBox = False
         MinimizeBox = False
         Name = "frmAboutDFLOW"
-        Padding = New System.Windows.Forms.Padding(12, 14, 12, 14)
+        Padding = New System.Windows.Forms.Padding(10)
         ShowInTaskbar = False
         StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Text = "About DFLOW"

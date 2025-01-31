@@ -1,3 +1,5 @@
+using atcData;
+using atcTimeseriesRDB;
 using DFLOWAnalysis;
 
 namespace DFLOW_HMS
@@ -30,6 +32,21 @@ namespace DFLOW_HMS
         {
             frmDFLOWResults frmDFLOWResults = new frmDFLOWResults();
             frmDFLOWResults.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            atcTimeseriesRDB.atcTimeseriesRDB rdb = new atcTimeseriesRDB.atcTimeseriesRDB();
+            //atcTimeseries ts = new atcTimeseries();
+            atcDataAttributes dataAtt = new atcDataAttributes();
+
+            string file = @"E:\BASINSDS\DFLOW-HMS\02226000.rdb";
+            bool bOpen = rdb.Open(file);
+            
+            atcTimeseries ts = rdb.DataSets[0];
+            
+
+            DFLOWCalcs.xQy(7, 10, ts);
         }
     }
 }
