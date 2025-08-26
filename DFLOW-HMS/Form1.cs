@@ -40,7 +40,8 @@ namespace DFLOW_HMS
             //atcTimeseries ts = new atcTimeseries();
             atcDataAttributes dataAtt = new atcDataAttributes();
 
-            string file = @"E:\BASINSDS\DFLOW-HMS\02226000.rdb";
+            //string file = @"E:\BASINSDS\DFLOW-HMS\02226000.rdb";
+            string file = @"E:\BASINSDS\DFLOW-HMS\NWIS_discharge_TestData.rdb";
             bool bOpen = rdb.Open(file);
             
             atcTimeseries ts = rdb.DataSets[0];

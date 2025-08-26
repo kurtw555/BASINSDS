@@ -97,7 +97,7 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "atcSeasons-DS", "atcSeasons
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "atcDataTree-DS", "atcDataTree\atcDataTree-DS.vbproj", "{0B496354-933E-4622-A6DF-F9623EF9B506}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamFlowDuration", "StreamFLowDuration\StreamFlowDuration.csproj", "{2794A228-E8F8-4656-821C-BFA23667EE0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "USGSHydroToolbox", "StreamFLowDuration\USGSHydroToolbox.csproj", "{2794A228-E8F8-4656-821C-BFA23667EE0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

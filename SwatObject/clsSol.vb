@@ -1,5 +1,5 @@
 Imports System.Data
-Imports System.Data.SQLite
+Imports Microsoft.Data.SQLite
 Partial Class SwatInput
     Private pSol As clsSol = New clsSol(Me)
     ReadOnly Property Sol() As clsSol

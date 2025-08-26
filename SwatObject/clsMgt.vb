@@ -1,5 +1,5 @@
 Imports System.Data
-Imports System.Data.SQLite
+Imports Microsoft.Data.SQLite
 
 Partial Class SwatInput
     Private pMgt As clsMgt = New clsMgt(Me)

@@ -6,10 +6,11 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>    
-    <DefineConstants>GISProvider="DotSpatial"</DefineConstants>    
+    <OutputPath>..\bin\Debug\BASINS\</OutputPath>        
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>    

@@ -1,25 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputType>Library</OutputType>
     <RootNamespace>atcD4EMLauncher</RootNamespace>
-    <AssemblyName>atcD4EMLauncher</AssemblyName>
-    <MyType>Windows</MyType>
+    <AssemblyName>atcD4EMLauncher</AssemblyName>    
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
+    <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <DocumentationFile>atcD4EMLauncher.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>..\bin\Debug\BASINS\</OutputPath>    
     <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DefineDebug>false</DefineDebug>
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <DocumentationFile>atcD4EMLauncher.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DefineDebug>false</DefineDebug>    
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Update="My Project\Resources.resx">

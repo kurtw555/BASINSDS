@@ -1,5 +1,5 @@
 Imports System.Data
-Imports System.Data.SQLite
+Imports Microsoft.Data.SQLite
 Partial Class SwatInput
     Private pRte As clsRte = New clsRte(Me)
     ReadOnly Property Rte() As clsRte
