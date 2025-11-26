@@ -5,6 +5,7 @@
     <MyType>Windows</MyType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>..\Bin\Plugins\BASINS\</OutputPath>
+    <RootNamespace>atcTimeseriesGLDS</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\Bin\</OutputPath>
@@ -16,12 +17,7 @@
     <DefineDebug>false</DefineDebug>
     <DocumentationFile>atcTimeseriesGLDS.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="My Project\**" />
-    <EmbeddedResource Remove="My Project\**" />
-    <None Remove="My Project\**" />
-  </ItemGroup>
+  </PropertyGroup>  
   <ItemGroup>
     <ProjectReference Include="..\atcData\atcData-DS.vbproj" />
     <ProjectReference Include="..\atcUtility\atcUtility-DS.vbproj" />

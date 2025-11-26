@@ -4,6 +4,7 @@
     <OutputType>Library</OutputType>
     <AssemblyName>atcTimeseriesTRMM</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>atcTimeseriesTRMM</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\Bin\</OutputPath>
