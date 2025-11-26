@@ -1,17 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <OutputType>Library</OutputType>
-    <RootNamespace>atcTimeseriesGDS</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
     <AssemblyName>atcTimeseriesGDS</AssemblyName>
+    <RootNamespace>atcTimeseriesGDS</RootNamespace>
     <MyType>Windows</MyType>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <OutputPath>..\Bin\BASINS\</OutputPath>
+    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
+    <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">    
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">   
-  </PropertyGroup>  
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\bin\Release\BASINS\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Update="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

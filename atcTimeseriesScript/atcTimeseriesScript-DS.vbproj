@@ -1,32 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <OutputType>Library</OutputType>
-    <RootNamespace>atcTimeseriesScript</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
     <AssemblyName>atcTimeseriesScript</AssemblyName>
+    <RootNamespace>atcTimeseriesScript</RootNamespace>
     <MyType>Windows</MyType>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
-    <OutputPath>..\Bin\Debug\BASINS\</OutputPath>
+    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
+    <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <DocumentationFile>atcTimeseriesScript.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DefineDebug>false</DefineDebug>
-    <OutputPath>..\Bin\Debug\BASINS\</OutputPath>
-    <DocumentationFile>atcTimeseriesScript.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <OutputPath>..\bin\Release\BASINS\</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic.Compatibility" />
-    <Reference Update="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-  </ItemGroup>
   <ItemGroup>
     <Compile Update="frmDebugScript.designer.vb">
       <DependentUpon>frmDebugScript.vb</DependentUpon>
