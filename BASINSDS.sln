@@ -99,6 +99,10 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "atcDataTree-DS", "atcDataTr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "USGSHydroToolbox", "StreamFLowDuration\USGSHydroToolbox.csproj", "{2794A228-E8F8-4656-821C-BFA23667EE0D}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "atcTimeseriesGLDS", "atcTimeseriesGLDS\atcTimeseriesGLDS.vbproj", "{D06E39DA-602F-BDAC-35B3-90C7037F185F}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "atcTimeseriesTRMM", "atcTimeseriesTRMM\atcTimeseriesTRMM.vbproj", "{554C0F04-DCA2-65D2-AEED-907F4A536C3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -685,6 +689,30 @@ Global
 		{2794A228-E8F8-4656-821C-BFA23667EE0D}.Release|x64.Build.0 = Release|Any CPU
 		{2794A228-E8F8-4656-821C-BFA23667EE0D}.Release|x86.ActiveCfg = Release|Any CPU
 		{2794A228-E8F8-4656-821C-BFA23667EE0D}.Release|x86.Build.0 = Release|Any CPU
+		{D06E39DA-602F-BDAC-35B3-90C7037F185F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D06E39DA-602F-BDAC-35B3-90C7037F185F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D06E39DA-602F-BDAC-35B3-90C7037F185F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D06E39DA-602F-BDAC-35B3-90C7037F185F}.Debug|x64.Build.0 = Debug|Any CPU
+		{D06E39DA-602F-BDAC-35B3-90C7037F185F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D06E39DA-602F-BDAC-35B3-90C7037F185F}.Debug|x86.Build.0 = Debug|Any CPU
+		{D06E39DA-602F-BDAC-35B3-90C7037F185F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D06E39DA-602F-BDAC-35B3-90C7037F185F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D06E39DA-602F-BDAC-35B3-90C7037F185F}.Release|x64.ActiveCfg = Release|Any CPU
+		{D06E39DA-602F-BDAC-35B3-90C7037F185F}.Release|x64.Build.0 = Release|Any CPU
+		{D06E39DA-602F-BDAC-35B3-90C7037F185F}.Release|x86.ActiveCfg = Release|Any CPU
+		{D06E39DA-602F-BDAC-35B3-90C7037F185F}.Release|x86.Build.0 = Release|Any CPU
+		{554C0F04-DCA2-65D2-AEED-907F4A536C3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{554C0F04-DCA2-65D2-AEED-907F4A536C3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{554C0F04-DCA2-65D2-AEED-907F4A536C3E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{554C0F04-DCA2-65D2-AEED-907F4A536C3E}.Debug|x64.Build.0 = Debug|Any CPU
+		{554C0F04-DCA2-65D2-AEED-907F4A536C3E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{554C0F04-DCA2-65D2-AEED-907F4A536C3E}.Debug|x86.Build.0 = Debug|Any CPU
+		{554C0F04-DCA2-65D2-AEED-907F4A536C3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{554C0F04-DCA2-65D2-AEED-907F4A536C3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{554C0F04-DCA2-65D2-AEED-907F4A536C3E}.Release|x64.ActiveCfg = Release|Any CPU
+		{554C0F04-DCA2-65D2-AEED-907F4A536C3E}.Release|x64.Build.0 = Release|Any CPU
+		{554C0F04-DCA2-65D2-AEED-907F4A536C3E}.Release|x86.ActiveCfg = Release|Any CPU
+		{554C0F04-DCA2-65D2-AEED-907F4A536C3E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
