@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36908.2 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "atcStatusMonitorDS", "atcStatusMonitorDS.vbproj", "{241DE3DB-4EE8-4839-948E-DE366DF0BD9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{241DE3DB-4EE8-4839-948E-DE366DF0BD9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241DE3DB-4EE8-4839-948E-DE366DF0BD9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241DE3DB-4EE8-4839-948E-DE366DF0BD9F}.Debug|x86.ActiveCfg = Debug|x86
+		{241DE3DB-4EE8-4839-948E-DE366DF0BD9F}.Debug|x86.Build.0 = Debug|x86
+		{241DE3DB-4EE8-4839-948E-DE366DF0BD9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241DE3DB-4EE8-4839-948E-DE366DF0BD9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{241DE3DB-4EE8-4839-948E-DE366DF0BD9F}.Release|x86.ActiveCfg = Release|x86
+		{241DE3DB-4EE8-4839-948E-DE366DF0BD9F}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {282AD5E4-7215-4458-A5AA-847B15F42205}
+	EndGlobalSection
+EndGlobal
