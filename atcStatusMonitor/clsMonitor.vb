@@ -239,7 +239,7 @@ Public Class clsMonitor
 
                         If lLevel.ProgressNeedsUpdate Then
                             lLevel.ProgressNeedsUpdate = False
-                            Dim lProgress As Windows.Forms.ProgressBar = .Progress(lLevelIndex)
+                            Dim lProgress As System.Windows.Forms.ProgressBar = .Progress(lLevelIndex)
 
                             If lLevel.ProgressCurrent >= lLevel.ProgressFinal Then 'Progress is finished
                                 lProgress.Visible = False

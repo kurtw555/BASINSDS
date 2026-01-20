@@ -211,7 +211,7 @@ Public Class frmStatus
         End Set
     End Property
 
-    Public ReadOnly Property Progress(Optional ByVal aLevel As Integer = 0) As Windows.Forms.ProgressBar
+    Public ReadOnly Property Progress(Optional ByVal aLevel As Integer = 0) As System.Windows.Forms.ProgressBar
         Get
             If aLevel < 1 Then aLevel = pLevels.Count
             Return pLevels(aLevel - 1).Progress
