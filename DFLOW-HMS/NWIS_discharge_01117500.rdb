@@ -1,0 +1,101 @@
+# http://waterdata.usgs.gov/nwis/dv?cb_00060=on&format=rdb&begin_date=1880-01-01&end_date=2100-01-01&site_no=01117500
+# download_date 2015-04-14 11:42
+# agency_cd                                       USGS
+# site_no                                         01117500
+# station_nm                                      PAWCATUCK RIVER AT WOOD RIVER JUNCTION, RI
+# site_tp_cd                                      ST
+# dec_lat_va                                      41.44510024
+# dec_long_va                                     -71.68089828
+# coord_acy_cd                                    S
+# dec_coord_datum_cd                              NAD83
+# district_cd                                     25
+# state_cd                                        44
+# county_cd                                       009
+# country_cd                                      US
+# land_net_ds                                     
+# map_nm                                          
+# map_scale_fc                                    
+# alt_va                                          43.86
+# alt_meth_cd                                     U
+# alt_acy_va                                      .01
+# alt_datum_cd                                    NGVD29
+# huc_cd                                          01090005
+# basin_cd                                        
+# topo_cd                                         
+# data_types_cd                                   ANNNNNNNNNNNNNNNNNNNNNNNNNNNNA
+# instruments_cd                                  YNNNYNNNNNYNNNNNNNNNNNNNNNNNNN
+# construction_dt                                 
+# inventory_dt                                    
+# drain_area_va                                   100
+# contrib_drain_area_va                           100
+# tz_cd                                           EST
+# local_time_fg                                   Y
+# reliability_cd                                  
+# gw_file_cd                                      NNNNNNNN
+# nat_aqfr_cd                                     
+# aqfr_cd                                         
+# aqfr_type_cd                                    
+# well_depth_va                                   
+# hole_depth_va                                   
+# depth_src_cd                                    
+# project_no                                      442500150
+# rt_bol                                          1
+# peak_begin_date                                 1941-02-10
+# peak_end_date                                   2014-04-01
+# peak_count_nu                                   74
+# qw_begin_date                                   1955-11-08
+# qw_end_date                                     1996-01-18
+# qw_count_nu                                     135
+# gw_begin_date                                   --
+# gw_end_date                                     --
+# gw_count_nu                                     0
+# sv_begin_date                                   1945-03-07
+# sv_end_date                                     2015-04-07
+# sv_count_nu                                     265
+# ---------------------------------- WARNING ----------------------------------------
+# The data you have obtained from this automated U.S. Geological Survey database
+# have not received Director's approval and as such are provisional and subject to
+# revision.  The data are released on the condition that neither the USGS nor the
+# United States Government may be held liable for any damages resulting from its use.
+# Additional info: http://help.waterdata.usgs.gov/policies/provisional-data-statement
+#
+# File-format description:  http://help.waterdata.usgs.gov/faq/about-tab-delimited-output
+# Automated-retrieval info: http://help.waterdata.usgs.gov/faq/automated-retrievals
+#
+# Contact:   gs-w_support_nwisweb@usgs.gov
+# retrieved: 2015-04-14 11:42:10 EDT       (caww01)
+#
+# Data for the following 1 site(s) are contained in this file
+#    USGS 01117500 PAWCATUCK RIVER AT WOOD RIVER JUNCTION, RI
+# -----------------------------------------------------------------------------------
+#
+# Data provided for site 01117500
+#    DD parameter statistic   Description
+#    01   00060     00003     Discharge, cubic feet per second (Mean)
+#
+# Data-value qualification codes included in this output: 
+#     A  Approved for publication -- Processing and review completed.  
+#     P  Provisional data subject to revision.  
+#     e  Value has been estimated.  
+# 
+agency_cd	site_no	datetime	01_00060_00003	01_00060_00003_cd
+5s	15s	20d	14n	10s
+USGS	01117500	1940-12-07	117	A
+USGS	01117500	1940-12-08	139	A
+USGS	01117500	1940-12-09	153	A
+USGS	01117500	1940-12-10	148	A
+USGS	01117500	1940-12-11	143	A
+USGS	01117500	1940-12-12	137	A
+USGS	01117500	1940-12-13	134	A
+USGS	01117500	1940-12-14	132	A
+USGS	01117500	1940-12-15	130	A
+USGS	01117500	1940-12-16	139	A
+USGS	01117500	1940-12-17	165	A
+USGS	01117500	1940-12-18	182	A
+USGS	01117500	1940-12-19	178	A
+USGS	01117500	1940-12-20	172	A
+USGS	01117500	1940-12-21	155	A
+USGS	01117500	1940-12-22	155	A
+USGS	01117500	1940-12-23	158	A
+USGS	01117500	1940-12-24	137	A
+USGS	01117500	1940-12-25	132	A

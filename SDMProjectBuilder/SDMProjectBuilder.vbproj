@@ -1,0 +1,311 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <MyType>Windows</MyType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\Bin\Plugins\BASINS\</OutputPath>
+    <DocumentationFile>SDMProjectBuilder.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DefineDebug>false</DefineDebug>
+    <OutputPath>..\Bin\Plugins\BASINS\</OutputPath>
+    <DocumentationFile>SDMProjectBuilder.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.MapWinGIS, Version=4.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\Interop.MapWinGIS.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MapWinGeoProc, Version=4.8.1.28499, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\MapWinGeoProc.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MapWinInterfaces, Version=4.8.1.28373, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\MapWinInterfaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Update="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <ProjectReference Include="..\atcManDelin\atcManDelin.vbproj" />
+    <ProjectReference Include="..\MapWinUtility\BASINS-MapWinUtility.vbproj" />
+    <ProjectReference Include="..\SwatObject\SwatObject.vbproj" />
+    <ProjectReference Include="..\atcControls\atcControls.vbproj" />
+    <ProjectReference Include="..\atcData\atcData.vbproj" />
+    <ProjectReference Include="..\atcModelSegmentation\atcModelSegmentation.vbproj" />
+    <ProjectReference Include="..\atcModelSetup\atcModelSetup.vbproj" />
+    <ProjectReference Include="..\atcMwGisUtility\atcMwGisUtility.vbproj" />
+    <ProjectReference Include="..\atcTimeseriesBinary\atcTimeseriesBinary.vbproj" />
+    <ProjectReference Include="..\atcTimeseriesD4EM\atcTimeseriesD4EM.vbproj" />
+    <ProjectReference Include="..\atcTimeseriesMath\atcTimeseriesMath.vbproj" />
+    <ProjectReference Include="..\atcTimeseriesStatistics\atcTimeseriesStatistics.vbproj" />
+    <ProjectReference Include="..\atcTimeseriesSWAT\atcTimeseriesSWAT.vbproj" />
+    <ProjectReference Include="..\atcUtility\atcUtility.vbproj" />
+    <ProjectReference Include="..\atcWDM\atcWDM.vbproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Backup\atcControls\AssemblyInfo.vb" />
+    <Compile Remove="Backup\atcControls\atcConnectFields.Designer.vb" />
+    <Compile Remove="Backup\atcControls\atcConnectFields.vb" />
+    <Compile Remove="Backup\atcControls\atcGrid.vb" />
+    <Compile Remove="Backup\atcControls\atcGridSource.vb" />
+    <Compile Remove="Backup\atcControls\atcGridSourceRowColumnSwapper.vb" />
+    <Compile Remove="Backup\atcControls\atcGridSourceTable.vb" />
+    <Compile Remove="Backup\atcControls\atcManagedList.Designer.vb" />
+    <Compile Remove="Backup\atcControls\atcManagedList.vb" />
+    <Compile Remove="Backup\atcControls\ATCoSelectListSortByProp.Designer.vb" />
+    <Compile Remove="Backup\atcControls\ATCoSelectListSortByProp.vb" />
+    <Compile Remove="Backup\atcControls\atcSelectList.vb" />
+    <Compile Remove="Backup\atcControls\atcText.vb" />
+    <Compile Remove="Backup\atcControls\frmButtons.vb" />
+    <Compile Remove="Backup\atcControls\frmConnectFields.Designer.vb" />
+    <Compile Remove="Backup\atcControls\frmConnectFields.vb" />
+    <Compile Remove="Backup\atcData\AssemblyInfo.vb" />
+    <Compile Remove="Backup\atcData\atcAttributeDefinition.vb" />
+    <Compile Remove="Backup\atcData\atcChooseDataGroupDates.Designer.vb" />
+    <Compile Remove="Backup\atcData\atcChooseDataGroupDates.vb" />
+    <Compile Remove="Backup\atcData\atcCommonDataGroupDates.Designer.vb" />
+    <Compile Remove="Backup\atcData\atcCommonDataGroupDates.vb" />
+    <Compile Remove="Backup\atcData\atcDataAttributes.vb" />
+    <Compile Remove="Backup\atcData\atcDataDisplay.vb" />
+    <Compile Remove="Backup\atcData\atcDataGroup.vb" />
+    <Compile Remove="Backup\atcData\atcDataManager.vb" />
+    <Compile Remove="Backup\atcData\atcDataPlugin.vb" />
+    <Compile Remove="Backup\atcData\atcDataSet.vb" />
+    <Compile Remove="Backup\atcData\atcDataSource.vb" />
+    <Compile Remove="Backup\atcData\atcSeasonBase.vb" />
+    <Compile Remove="Backup\atcData\atcSeasonsAMorPM.vb" />
+    <Compile Remove="Backup\atcData\atcSeasonsCalendarYear.vb" />
+    <Compile Remove="Backup\atcData\atcSeasonsDayOfMonth.vb" />
+    <Compile Remove="Backup\atcData\atcSeasonsDayOfWeek.vb" />
+    <Compile Remove="Backup\atcData\atcSeasonsDayOfYear.vb" />
+    <Compile Remove="Backup\atcData\atcSeasonsHour.vb" />
+    <Compile Remove="Backup\atcData\atcSeasonsMonth.vb" />
+    <Compile Remove="Backup\atcData\atcSeasonsTraditional.vb" />
+    <Compile Remove="Backup\atcData\atcSeasonsWaterYear.vb" />
+    <Compile Remove="Backup\atcData\atcSeasonsYearSubset.vb" />
+    <Compile Remove="Backup\atcData\atcSeasonYears.Designer.vb" />
+    <Compile Remove="Backup\atcData\atcSeasonYears.vb" />
+    <Compile Remove="Backup\atcData\atcTimeseries.vb" />
+    <Compile Remove="Backup\atcData\atcTimeseriesBuilder.vb" />
+    <Compile Remove="Backup\atcData\atcTimeseriesGridSource.vb" />
+    <Compile Remove="Backup\atcData\atcTimeseriesGroup.vb" />
+    <Compile Remove="Backup\atcData\atcTimeseriesGroupBuilder.vb" />
+    <Compile Remove="Backup\atcData\atcTimeseriesSource.vb" />
+    <Compile Remove="Backup\atcData\frmDataSource.vb" />
+    <Compile Remove="Backup\atcData\frmFilterData.Designer.vb" />
+    <Compile Remove="Backup\atcData\frmFilterData.vb" />
+    <Compile Remove="Backup\atcData\frmManager.vb" />
+    <Compile Remove="Backup\atcData\frmSaveData.Designer.vb" />
+    <Compile Remove="Backup\atcData\frmSaveData.vb" />
+    <Compile Remove="Backup\atcData\frmSelectData.vb" />
+    <Compile Remove="Backup\atcData\frmSelectDisplay.vb" />
+    <Compile Remove="Backup\atcData\frmSpecifySeasonalAttributes.vb" />
+    <Compile Remove="Backup\atcData\frmSpecifySplit.Designer.vb" />
+    <Compile Remove="Backup\atcData\frmSpecifySplit.vb" />
+    <Compile Remove="Backup\atcData\frmSpecifyYearSubset.vb" />
+    <Compile Remove="Backup\atcData\modMetData.vb" />
+    <Compile Remove="Backup\atcData\modTimeseriesMath.vb" />
+    <Compile Remove="Backup\atcData\My Project\Resources.Designer.vb" />
+    <Compile Remove="Backup\atcManDelin\AssemblyInfo.vb" />
+    <Compile Remove="Backup\atcManDelin\clsManDelinPlugin.vb" />
+    <Compile Remove="Backup\atcManDelin\frmManDelin.vb" />
+    <Compile Remove="Backup\atcModelSegmentation\clsSegmentationPlugin.vb" />
+    <Compile Remove="Backup\atcModelSegmentation\frmModelSegmentation.Designer.vb" />
+    <Compile Remove="Backup\atcModelSegmentation\frmModelSegmentation.vb" />
+    <Compile Remove="Backup\atcModelSetup\AssemblyInfo.vb" />
+    <Compile Remove="Backup\atcModelSetup\clsPlugin.vb" />
+    <Compile Remove="Backup\atcModelSetup\frmModelSetup.vb" />
+    <Compile Remove="Backup\atcModelSetup\HspfSetup.vb" />
+    <Compile Remove="Backup\atcModelSetup\modModelSetup.vb" />
+    <Compile Remove="Backup\atcMwGisUtility\AssemblyInfo.vb" />
+    <Compile Remove="Backup\atcMwGisUtility\GisUtil.vb" />
+    <Compile Remove="Backup\atcSegmentation\atcChannel.vb" />
+    <Compile Remove="Backup\atcSegmentation\atcLandUse.vb" />
+    <Compile Remove="Backup\atcSegmentation\atcMetSegment.vb" />
+    <Compile Remove="Backup\atcSegmentation\atcPointLoad.vb" />
+    <Compile Remove="Backup\atcSegmentation\atcReach.vb" />
+    <Compile Remove="Backup\atcSegmentation\atcWatershed.vb" />
+    <Compile Remove="Backup\atcSegmentation\My Project\Application.Designer.vb" />
+    <Compile Remove="Backup\atcSegmentation\My Project\AssemblyInfo.vb" />
+    <Compile Remove="Backup\atcSegmentation\My Project\Resources.Designer.vb" />
+    <Compile Remove="Backup\atcSegmentation\My Project\Settings.Designer.vb" />
+    <Compile Remove="Backup\atcTimeseriesBinary\atcDataSourceTimeseriesBinary.vb" />
+    <Compile Remove="Backup\atcTimeseriesD4EM\atcDataSourceTimeseriesD4EM.vb" />
+    <Compile Remove="Backup\atcTimeseriesStatistics\atcTimeseriesStatistics.vb" />
+    <Compile Remove="Backup\atcTimeseriesStatistics\My Project\Application.Designer.vb" />
+    <Compile Remove="Backup\atcTimeseriesSWAT\atcTimeseriesSWAT.vb" />
+    <Compile Remove="Backup\atcTimeseriesSWAT\atcTimeseriesSWATMet.vb" />
+    <Compile Remove="Backup\atcTimeseriesSWAT\atcTimeseriesSWATOutput.vb" />
+    <Compile Remove="Backup\atcTimeseriesSWAT\My Project\Application.Designer.vb" />
+    <Compile Remove="Backup\atcTimeseriesSWAT\My Project\AssemblyInfo.vb" />
+    <Compile Remove="Backup\atcTimeseriesSWAT\My Project\Resources.Designer.vb" />
+    <Compile Remove="Backup\atcTimeseriesSWAT\My Project\Settings.Designer.vb" />
+    <Compile Remove="Backup\atcUCI\AssemblyInfo.vb" />
+    <Compile Remove="Backup\atcUCI\HspfAddChar2Keyword.vb" />
+    <Compile Remove="Backup\atcUCI\HspfBlockDefn.vb" />
+    <Compile Remove="Backup\atcUCI\HspfCategoryBlk.vb" />
+    <Compile Remove="Backup\atcUCI\HspfConnection.vb" />
+    <Compile Remove="Backup\atcUCI\HspfData.vb" />
+    <Compile Remove="Backup\atcUCI\HspfFilesBlk.vb" />
+    <Compile Remove="Backup\atcUCI\HspfFtable.vb" />
+    <Compile Remove="Backup\atcUCI\HspfGlobalBlk.vb" />
+    <Compile Remove="Backup\atcUCI\HspfMassLink.vb" />
+    <Compile Remove="Backup\atcUCI\HspfMetSeg.vb" />
+    <Compile Remove="Backup\atcUCI\HspfMetSegRec.vb" />
+    <Compile Remove="Backup\atcUCI\HspfMonthData.vb" />
+    <Compile Remove="Backup\atcUCI\HspfMonthDataTable.vb" />
+    <Compile Remove="Backup\atcUCI\HspfMsg.vb" />
+    <Compile Remove="Backup\atcUCI\HspfOperation.vb" />
+    <Compile Remove="Backup\atcUCI\HspfOpnBlk.vb" />
+    <Compile Remove="Backup\atcUCI\HspfOpnSeqBlk.vb" />
+    <Compile Remove="Backup\atcUCI\HSPFParm.vb" />
+    <Compile Remove="Backup\atcUCI\HSPFParmDef.vb" />
+    <Compile Remove="Backup\atcUCI\HspfPoint.vb" />
+    <Compile Remove="Backup\atcUCI\HspfPollutant.vb" />
+    <Compile Remove="Backup\atcUCI\HspfSectionDefn.vb" />
+    <Compile Remove="Backup\atcUCI\HspfSpecialActionBlk.vb" />
+    <Compile Remove="Backup\atcUCI\HspfSpecialRecord.vb" />
+    <Compile Remove="Backup\atcUCI\HspfSrcTar.vb" />
+    <Compile Remove="Backup\atcUCI\HspfStatus.vb" />
+    <Compile Remove="Backup\atcUCI\HspfStatusType.vb" />
+    <Compile Remove="Backup\atcUCI\HspfTable.vb" />
+    <Compile Remove="Backup\atcUCI\HspfTableDefn.vb" />
+    <Compile Remove="Backup\atcUCI\HspfTSGroupDefn.vb" />
+    <Compile Remove="Backup\atcUCI\HspfTSMemberDefn.vb" />
+    <Compile Remove="Backup\atcUCI\HspfUci.vb" />
+    <Compile Remove="Backup\atcUCI\modClsTserFile.vb" />
+    <Compile Remove="Backup\atcUCI\modCreateUci.vb" />
+    <Compile Remove="Backup\atcUCI\modPollutants.vb" />
+    <Compile Remove="Backup\atcUCI\modStatusImplnd.vb" />
+    <Compile Remove="Backup\atcUCI\modStatusInputTimeseriesImplnd.vb" />
+    <Compile Remove="Backup\atcUCI\modStatusInputTimeseriesPerlnd.vb" />
+    <Compile Remove="Backup\atcUCI\modStatusInputTimeseriesRchres.vb" />
+    <Compile Remove="Backup\atcUCI\modStatusOutputTimeseriesImplnd.vb" />
+    <Compile Remove="Backup\atcUCI\modStatusOutputTimeseriesPerlnd.vb" />
+    <Compile Remove="Backup\atcUCI\modStatusOutputTimeseriesRchres.vb" />
+    <Compile Remove="Backup\atcUCI\modStatusPerlnd.vb" />
+    <Compile Remove="Backup\atcUCI\modStatusRchres.vb" />
+    <Compile Remove="Backup\atcUCI\modStatusTimeseriesUtility.vb" />
+    <Compile Remove="Backup\atcUCI\modStatusUtility.vb" />
+    <Compile Remove="Backup\atcUCI\modUciRead.vb" />
+    <Compile Remove="Backup\atcUCI\modUCIRecords.vb" />
+    <Compile Remove="Backup\atcUCI\modVb2F90.vb" />
+    <Compile Remove="Backup\atcUtility\AssemblyInfo.vb" />
+    <Compile Remove="Backup\atcUtility\atcCollection.vb" />
+    <Compile Remove="Backup\atcUtility\atcDateFormat.vb" />
+    <Compile Remove="Backup\atcUtility\atcMDB.vb" />
+    <Compile Remove="Backup\atcUtility\atcTable.vb" />
+    <Compile Remove="Backup\atcUtility\atcTableArray.vb" />
+    <Compile Remove="Backup\atcUtility\atcTableDBF.vb" />
+    <Compile Remove="Backup\atcUtility\atcTableDelimited.vb" />
+    <Compile Remove="Backup\atcUtility\atcTableFixed.vb" />
+    <Compile Remove="Backup\atcUtility\atcTableFixedStreaming.vb" />
+    <Compile Remove="Backup\atcUtility\atcTableRDB.vb" />
+    <Compile Remove="Backup\atcUtility\frmArgs.Designer.vb" />
+    <Compile Remove="Backup\atcUtility\frmArgs.vb" />
+    <Compile Remove="Backup\atcUtility\frmFeedback.vb" />
+    <Compile Remove="Backup\atcUtility\modColor.vb" />
+    <Compile Remove="Backup\atcUtility\modDate.vb" />
+    <Compile Remove="Backup\atcUtility\modFile.vb" />
+    <Compile Remove="Backup\atcUtility\modReflection.vb" />
+    <Compile Remove="Backup\atcUtility\modString.vb" />
+    <Compile Remove="Backup\atcUtility\modUnits.vb" />
+    <Compile Remove="Backup\atcUtility\PointLocation.vb" />
+    <Compile Remove="Backup\atcWDM\AssemblyInfo.vb" />
+    <Compile Remove="Backup\atcWDM\atcDataSourceWDM.vb" />
+    <Compile Remove="Backup\atcWDM\atcMsgWDM.vb" />
+    <Compile Remove="Backup\atcWDM\atcWdmHandle.vb" />
+    <Compile Remove="Backup\atcWDM\frmDefaultTimeInterval.Designer.vb" />
+    <Compile Remove="Backup\atcWDM\frmDefaultTimeInterval.vb" />
+    <Compile Remove="Backup\atcWDM\frmImport.Designer.vb" />
+    <Compile Remove="Backup\atcWDM\frmImport.vb" />
+    <Compile Remove="Backup\atcWDM\frmSave.Designer.vb" />
+    <Compile Remove="Backup\atcWDM\frmSave.vb" />
+    <Compile Remove="Backup\atcWDM\modVb2F90.vb" />
+    <Compile Remove="Backup\atcWDM\modWDMGlobal.vb" />
+    <Compile Remove="Backup\frmBuildNew.vb" />
+    <Compile Remove="Backup\modBatchHSPF.vb" />
+    <Compile Remove="Backup\modDownload.vb" />
+    <Compile Remove="Backup\modNetwork.vb" />
+    <Compile Remove="Backup\modSDM.vb" />
+    <Compile Remove="Backup\My Project\Application.Designer.vb" />
+    <Compile Remove="Backup\My Project\AssemblyInfo.vb" />
+    <Compile Remove="Backup\My Project\Resources.Designer.vb" />
+    <Compile Remove="Backup\My Project\Settings.Designer.vb" />
+    <Compile Remove="Backup\SDMplugin.vb" />
+    <Compile Remove="Backup\SWAT\modArcSWAT.vb" />
+    <Compile Remove="Backup\SWAT\modDefaults.vb" />
+    <Compile Remove="Backup\SWAT\modOutputSummarize.vb" />
+    <Compile Remove="Backup\SWAT\modReclassify.vb" />
+    <Compile Remove="Backup\SWAT\modSwatDatabase.vb" />
+    <Compile Remove="Backup\SWAT\modSwatMetData.vb" />
+    <EmbeddedResource Remove="Backup\atcControls\atcConnectFields.resx" />
+    <EmbeddedResource Remove="Backup\atcControls\atcGrid.resx" />
+    <EmbeddedResource Remove="Backup\atcControls\atcManagedList.resx" />
+    <EmbeddedResource Remove="Backup\atcControls\ATCoSelectListSortByProp.resX" />
+    <EmbeddedResource Remove="Backup\atcControls\atcSelectList.resx" />
+    <EmbeddedResource Remove="Backup\atcControls\atcText.resx" />
+    <EmbeddedResource Remove="Backup\atcControls\frmButtons.resx" />
+    <EmbeddedResource Remove="Backup\atcControls\frmConnectFields.resx" />
+    <EmbeddedResource Remove="Backup\atcData\atcChooseDataGroupDates.resx" />
+    <EmbeddedResource Remove="Backup\atcData\atcCommonDataGroupDates.resx" />
+    <EmbeddedResource Remove="Backup\atcData\atcSeasonYears.resx" />
+    <EmbeddedResource Remove="Backup\atcData\frmDataSource.resx" />
+    <EmbeddedResource Remove="Backup\atcData\frmFilterData.resx" />
+    <EmbeddedResource Remove="Backup\atcData\frmManager.resx" />
+    <EmbeddedResource Remove="Backup\atcData\frmSaveData.resx" />
+    <EmbeddedResource Remove="Backup\atcData\frmSelectData.resx" />
+    <EmbeddedResource Remove="Backup\atcData\frmSelectDisplay.resx" />
+    <EmbeddedResource Remove="Backup\atcData\frmSpecifySeasonalAttributes.resx" />
+    <EmbeddedResource Remove="Backup\atcData\frmSpecifySplit.resx" />
+    <EmbeddedResource Remove="Backup\atcData\frmSpecifyYearSubset.resx" />
+    <EmbeddedResource Remove="Backup\atcData\My Project\Resources.resx" />
+    <EmbeddedResource Remove="Backup\atcManDelin\frmManDelin.resx" />
+    <EmbeddedResource Remove="Backup\atcModelSegmentation\frmModelSegmentation.resx" />
+    <EmbeddedResource Remove="Backup\atcModelSetup\frmModelSetup.resx" />
+    <EmbeddedResource Remove="Backup\atcSegmentation\My Project\Resources.resx" />
+    <EmbeddedResource Remove="Backup\atcTimeseriesSWAT\My Project\Resources.resx" />
+    <EmbeddedResource Remove="Backup\atcUtility\frmArgs.resx" />
+    <EmbeddedResource Remove="Backup\atcUtility\frmFeedback.resx" />
+    <EmbeddedResource Remove="Backup\atcWDM\frmDefaultTimeInterval.resx" />
+    <EmbeddedResource Remove="Backup\atcWDM\frmImport.resx" />
+    <EmbeddedResource Remove="Backup\atcWDM\frmSave.resx" />
+    <EmbeddedResource Remove="Backup\frmBuildNew.resx" />
+    <EmbeddedResource Remove="Backup\My Project\Resources.resx" />
+  </ItemGroup>
+  <PropertyGroup />
+</Project>
