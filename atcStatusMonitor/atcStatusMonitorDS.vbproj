@@ -34,6 +34,8 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <AssemblyVersion>3.1.1.0</AssemblyVersion>
+    <FileVersion>3.1.1.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\Bin\</OutputPath>
