@@ -4,6 +4,7 @@ Option Explicit On
 Imports System.Text
 Imports System.Runtime.InteropServices
 Imports System.Collections.Specialized
+Imports Microsoft.VisualBasic
 Imports MapWinUtility
 
 Public Module modFile

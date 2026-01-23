@@ -1,6 +1,12 @@
 <Project>
   <PropertyGroup>
+    <!-- Set the BaseOutputPath to a common folder relative to the solution directory -->
+    <BaseOutputPath>$(MSBuildThisFileDirectory)bin\</BaseOutputPath>
+    <!-- Optional: Prevent Visual Studio from appending the Target Framework or Runtime Identifier -->
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-  </PropertyGroup>       
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <!-- Optional: Ensure project references copy to the common output directory correctly -->
+    <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
+  </PropertyGroup>
 </Project>

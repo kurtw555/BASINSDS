@@ -10,27 +10,27 @@ Option Explicit On
 Module Vb2F90
 
     'general routines
-    Declare Sub F90_MSG Lib "hass_ent.dll" _
+    Declare Sub F90_MSG Lib "hass_ent_64.dll" _
         (ByVal aMsg As String, ByVal aMsgLen As Short)
-    Declare Function F90_INQNAM Lib "hass_ent.dll" _
+    Declare Function F90_INQNAM Lib "hass_ent_64.dll" _
         (ByVal aName As String, ByVal aNameLen As Short) As Integer
-    Declare Sub F90_WDBOPNR Lib "hass_ent.dll" _
-        (ByRef aRwflg As Integer, _
-         ByVal aName As String, _
+    Declare Sub F90_WDBOPNR Lib "hass_ent_64.dll" _
+        (ByRef aRwflg As Integer,
+         ByVal aName As String,
          ByRef aUnit As Integer, ByRef aRetcod As Integer, ByVal aNameLen As Short)
 
     'wdm:wdatrb
-    Declare Sub F90_WDBSAC Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, ByRef aMsgUnit As Integer, _
-         ByRef aSaind As Integer, ByRef aSalen As Integer, ByRef aRetcod As Integer, _
+    Declare Sub F90_WDBSAC Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, ByRef aMsgUnit As Integer,
+         ByRef aSaind As Integer, ByRef aSalen As Integer, ByRef aRetcod As Integer,
          ByVal aVal As String, ByVal aValLen As Short)
-    Declare Sub F90_WDBSAI Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, ByRef aMsgUnit As Integer, _
-         ByRef aSaind As Integer, ByRef aSalen As Integer, ByRef aVal As Integer, _
+    Declare Sub F90_WDBSAI Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, ByRef aMsgUnit As Integer,
+         ByRef aSaind As Integer, ByRef aSalen As Integer, ByRef aVal As Integer,
          ByRef aRetcod As Integer)
-    Declare Sub F90_WDBSAR Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, ByRef aMsgUnit As Integer, _
-         ByRef aSaind As Integer, ByRef aSalen As Integer, ByRef aVal As Single, _
+    Declare Sub F90_WDBSAR Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, ByRef aMsgUnit As Integer,
+         ByRef aSaind As Integer, ByRef aSalen As Integer, ByRef aVal As Single,
          ByRef aRetcod As Integer)
     'Declare Sub F90_WDSAGY Lib "hass_ent.dll" _
     '    (ByRef aWdmUnit As Integer, ByRef aSaind As Integer, _
@@ -38,72 +38,72 @@ Module Vb2F90
     '     ByRef aMin As Single, ByRef aMax As Single, ByRef aDef As Single, _
     '     ByRef aHLen As Integer, ByRef aHRec As Integer, ByRef aHPos As Integer, _
     '     ByRef aVLen As Integer, ByVal aIName As String[6], ByVal aIDesc As String, ByVal aIValid As String)
-    Declare Sub F90_WDSAGY_XX Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aSaind As Integer, _
-         ByRef aLen As Integer, ByRef aType As Integer, _
-         ByRef aMin As Single, ByRef aMax As Single, ByRef aDef As Single, _
-         ByRef aHLen As Integer, ByRef aHRec As Integer, ByRef aHPos As Integer, _
+    Declare Sub F90_WDSAGY_XX Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aSaind As Integer,
+         ByRef aLen As Integer, ByRef aType As Integer,
+         ByRef aMin As Single, ByRef aMax As Single, ByRef aDef As Single,
+         ByRef aHLen As Integer, ByRef aHRec As Integer, ByRef aHPos As Integer,
          ByRef aVLen As Integer, ByVal aIName() As Integer, ByVal aIDesc() As Integer, ByVal aIValid() As Integer)
 
     'adwdm:wdmess
-    Declare Sub F90_WDLBAX Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aDstype As Integer, ByRef aNDn As Integer, ByRef aNUp As Integer, _
-         ByRef aNSa As Integer, ByRef aNSasp As Integer, ByRef aNDp As Integer, _
+    Declare Sub F90_WDLBAX Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aDstype As Integer, ByRef aNDn As Integer, ByRef aNUp As Integer,
+         ByRef aNSa As Integer, ByRef aNSasp As Integer, ByRef aNDp As Integer,
          ByRef aPsa As Integer)
-    Declare Sub F90_WDDSDL Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
+    Declare Sub F90_WDDSDL Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
          ByRef aRetcod As Integer)
-    Declare Sub F90_GETATT Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aInit As Integer, _
+    Declare Sub F90_GETATT Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aInit As Integer,
          ByRef aSaInd As Integer, ByVal aSaVal() As Integer)
 
     'wdm:wdbtch
-    Declare Sub F90_WDBSGI Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aSaInd As Integer, ByRef aSaLen As Integer, _
+    Declare Sub F90_WDBSGI Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aSaInd As Integer, ByRef aSaLen As Integer,
          ByRef aSaVal As Integer, ByRef aRetcod As Integer)
-    Declare Sub F90_WDBSGR Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aSaInd As Integer, ByRef aSaLen As Integer, _
+    Declare Sub F90_WDBSGR Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aSaInd As Integer, ByRef aSaLen As Integer,
          ByRef aSaVal As Single, ByRef aRetcod As Integer)
-    Declare Sub F90_WDDSRN Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsnOld As Integer, _
+    Declare Sub F90_WDDSRN Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsnOld As Integer,
          ByRef aDsnNew As Integer, ByRef aRetcod As Integer)
-    Declare Sub F90_WDBSGC_XX Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aSaInd As Integer, ByRef aSaLen As Integer, _
+    Declare Sub F90_WDBSGC_XX Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aSaInd As Integer, ByRef aSaLen As Integer,
          ByVal aISaVal() As Integer)
-    Declare Sub F90_WDLBAD Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
+    Declare Sub F90_WDLBAD Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
          ByRef aDsType As Integer, ByRef aPsa As Integer)
 
     'adwdm:utwdmd
-    Declare Function F90_WDFLCL Lib "hass_ent.dll" _
+    Declare Function F90_WDFLCL Lib "hass_ent_64.dll" _
         (ByRef aWdmUnit As Integer) As Integer
-    Declare Sub F90_WDDSNX Lib "hass_ent.dll" _
+    Declare Sub F90_WDDSNX Lib "hass_ent_64.dll" _
         (ByRef aWdmUnit As Integer, ByRef aDsn As Integer)
-    Declare Function F90_WDCKDT Lib "hass_ent.dll" _
+    Declare Function F90_WDCKDT Lib "hass_ent_64.dll" _
         (ByRef aWdmUnit As Integer, ByRef aDsn As Integer) As Integer
 
     'wdm:wdtms1
-    Declare Sub F90_WDTGET Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aDelt As Integer, ByVal aDates() As Integer, ByRef aNval As Integer, _
-         ByRef aDtran As Integer, ByRef aQualfg As Integer, ByRef aTunits As Integer, _
+    Declare Sub F90_WDTGET Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aDelt As Integer, ByVal aDates() As Integer, ByRef aNval As Integer,
+         ByRef aDtran As Integer, ByRef aQualfg As Integer, ByRef aTunits As Integer,
          ByVal aRVal() As Single, ByRef aRetcod As Integer)
-    Declare Sub F90_WDTPUT Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aDelt As Integer, ByVal aDates() As Integer, ByRef aNval As Integer, _
-         ByRef aDtran As Integer, ByRef aQualfg As Integer, ByRef aTunits As Integer, _
+    Declare Sub F90_WDTPUT Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aDelt As Integer, ByVal aDates() As Integer, ByRef aNval As Integer,
+         ByRef aDtran As Integer, ByRef aQualfg As Integer, ByRef aTunits As Integer,
          ByVal aRVal() As Single, ByRef aRetcod As Integer)
 
     'wdm:wdtms2
-    Declare Sub F90_WTFNDT Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aGpflg As Integer, ByRef aTdsfrc As Integer, _
-         ByVal aSDate() As Integer, ByVal aEDate() As Integer, _
+    Declare Sub F90_WTFNDT Lib "hass_ent_64.dll" _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aGpflg As Integer, ByRef aTdsfrc As Integer,
+         ByVal aSDate() As Integer, ByVal aEDate() As Integer,
          ByRef aRetcod As Integer)
 
     Public Sub F90_WDBSGC(ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
