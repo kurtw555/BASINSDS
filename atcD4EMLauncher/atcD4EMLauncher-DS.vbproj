@@ -5,8 +5,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>atcD4EMLauncher</RootNamespace>
     <AssemblyName>atcD4EMLauncher</AssemblyName>    
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>    
     <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

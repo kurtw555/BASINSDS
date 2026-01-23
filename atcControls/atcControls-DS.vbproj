@@ -4,8 +4,7 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AssemblyName>atcControls</AssemblyName>
     <RootNamespace>atcControls</RootNamespace>
-    <MyType>Windows</MyType>
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
+    <MyType>Windows</MyType>    
     <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

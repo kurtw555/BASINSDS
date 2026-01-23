@@ -1,34 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <ProjectType>Local</ProjectType>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>  
     <AssemblyName>atcHspfBinOut</AssemblyName>
     <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
-    <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>    
-    <OutputType>Library</OutputType>
     <RootNamespace>atcHspfBinOut</RootNamespace>
     <MyType>Windows</MyType>    
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <DocumentationFile>atcHspfBinOut.xml</DocumentationFile>
-    <BaseAddress>285212672</BaseAddress>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>false</RemoveIntegerChecks>
-    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
-    <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <DocumentationFile>atcHspfBinOut.xml</DocumentationFile>
-    <BaseAddress>285212672</BaseAddress>
-    <DefineDebug>false</DefineDebug>
-    <RegisterForComInterop>false</RegisterForComInterop>
-    <RemoveIntegerChecks>false</RemoveIntegerChecks>
-    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
-    <DebugType>none</DebugType>
+    <OutputPath>..\bin\Debug\BASINS\</OutputPath>    
   </PropertyGroup>   
   <ItemGroup>
     <Reference Update="System">

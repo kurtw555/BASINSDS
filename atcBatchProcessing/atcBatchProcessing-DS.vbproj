@@ -5,19 +5,13 @@
     <OutputType>Library</OutputType>
     <RootNamespace>atcBatchProcessing</RootNamespace>
     <AssemblyName>atcBatchProcessing</AssemblyName>       
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>        
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>          
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <DocumentationFile>atcBatchProcessing.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>    
+    <OutputPath>..\bin\Debug\BASINS\</OutputPath> 
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DefineDebug>false</DefineDebug>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">  
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <DocumentationFile>atcBatchProcessing.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="frmBatch.Designer.vb">

@@ -1,31 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <AssemblyName>atcBasinsObsWQ</AssemblyName>    
     <OutputType>Library</OutputType>
-    <RootNamespace>atcBasinsObsWQ</RootNamespace>    
-    <ApplicationVersion>1.0.0</ApplicationVersion>    
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <RootNamespace>atcBasinsObsWQ</RootNamespace>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <DocumentationFile>atcBasinsObsWQ.xml</DocumentationFile>    
-    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
-    <DocumentationFile>atcBasinsObsWQ.xml</DocumentationFile>    
-    <DefineDebug>false</DefineDebug>    
-    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
-    <DebugType>none</DebugType>
   </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\bin\Release\BASINS\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\atcData\atcData-DS.vbproj" />
     <ProjectReference Include="..\atcUtility\atcUtility-DS.vbproj" />
     <ProjectReference Include="..\MapWinUtility\MapWinUtility-DS.vbproj" />
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="DotSpatial.Controls" Version="4.0.656" />
     <PackageReference Include="DotSpatial.Extensions" Version="4.0.656" />
