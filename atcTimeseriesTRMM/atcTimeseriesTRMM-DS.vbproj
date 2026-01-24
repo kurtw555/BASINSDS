@@ -7,9 +7,10 @@
     <RootNamespace>atcTimeseriesTRMM</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\Bin\</OutputPath>   
+    <OutputPath>..\bin\Debug\BASINS\</OutputPath>  
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">    
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\bin\Release\BASINS\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\atcData\atcData-DS.vbproj" />

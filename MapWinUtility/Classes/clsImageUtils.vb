@@ -35,42 +35,42 @@ Public Class ImageUtils
 
 
     Public Shared Function ObjectToImage(ByVal Picture As Object, Optional ByVal newWidth As Integer = -1, Optional ByVal newHeight As Integer = -1) As Image
-        Dim img As Image = Nothing
-        If TypeOf Picture Is Icon Then
-            img = CType(Picture, Icon).ToBitmap
-        ElseIf TypeOf Picture Is Image Then
-            img = CType(Picture, Image)
-        ElseIf TypeOf Picture Is stdole.IPictureDisp Then
-            Dim ipdisp As stdole.IPictureDisp = CType(Picture, stdole.IPictureDisp)
+        'Dim img As Image = Nothing
+        'If TypeOf Picture Is Icon Then
+        '    img = CType(Picture, Icon).ToBitmap
+        'ElseIf TypeOf Picture Is Image Then
+        '    img = CType(Picture, Image)
+        'ElseIf TypeOf Picture Is stdole.IPictureDisp Then
+        '    Dim ipdisp As stdole.IPictureDisp = CType(Picture, stdole.IPictureDisp)
 
-            Const PIC_BITMAP As Integer = 1
-            Const PIC_ICON As Integer = 3
+        '    Const PIC_BITMAP As Integer = 1
+        '    Const PIC_ICON As Integer = 3
 
-            If ipdisp.Type = PIC_BITMAP Then
-                'This is a shared function; create an instance
-                'of myself so I can convert this.
-                Dim cvter As New ImageUtils
-                img = cvter.IPictureDispToImage(Picture)
-            ElseIf ipdisp.Type = PIC_ICON Then
-                Throw New System.Exception("VB6 Icons not currently supported")
-            Else
-                Throw New System.Exception("Unsupported image format")
-            End If
-        End If
+        '    If ipdisp.Type = PIC_BITMAP Then
+        '        'This is a shared function; create an instance
+        '        'of myself so I can convert this.
+        '        Dim cvter As New ImageUtils
+        '        img = cvter.IPictureDispToImage(Picture)
+        '    ElseIf ipdisp.Type = PIC_ICON Then
+        '        Throw New System.Exception("VB6 Icons not currently supported")
+        '    Else
+        '        Throw New System.Exception("Unsupported image format")
+        '    End If
+        'End If
 
-        Dim retval As Image
+        'Dim retval As Image
 
-        If newHeight > 0 And newWidth > 0 Then
-            retval = New Bitmap(newWidth, newHeight)
-            Dim drawtool As System.Drawing.Graphics = System.Drawing.Graphics.FromImage(retval)
-            If img IsNot Nothing Then
-                drawtool.DrawImage(img, New Rectangle(0, 0, newWidth, newHeight))
-            End If
-        Else
-            retval = img
-        End If
+        'If newHeight > 0 And newWidth > 0 Then
+        '    retval = New Bitmap(newWidth, newHeight)
+        '    Dim drawtool As System.Drawing.Graphics = System.Drawing.Graphics.FromImage(retval)
+        '    If img IsNot Nothing Then
+        '        drawtool.DrawImage(img, New Rectangle(0, 0, newWidth, newHeight))
+        '    End If
+        'Else
+        '    retval = img
+        'End If
 
-        Return retval
+        'Return retval
     End Function
 
     'This cannot be "Shared"!

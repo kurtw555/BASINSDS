@@ -1,11 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+    <TargetFramework>net8.0-windows</TargetFramework>   
     <AssemblyName>atcMetCmp</AssemblyName>
     <RootNamespace>atcMetCmp</RootNamespace>
-    <MyType>Windows</MyType>
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
+    <MyType>Windows</MyType>    
     <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

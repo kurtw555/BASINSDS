@@ -7,10 +7,10 @@
     <MyType>Windows</MyType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\bin\Debug</OutputPath>
+    <OutputPath>..\bin\Debug\BASINS</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\bin\Debug</OutputPath>
+    <OutputPath>..\bin\Release\BASINS</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="My Project\**" />

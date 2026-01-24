@@ -14,9 +14,6 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>    
-    <DefineConstants>
-    </DefineConstants>
-    <DefineDebug>false</DefineDebug>    
   </PropertyGroup>
   <ItemGroup>
     <Reference Update="System">

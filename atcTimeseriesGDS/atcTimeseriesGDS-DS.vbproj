@@ -5,7 +5,6 @@
     <AssemblyName>atcTimeseriesGDS</AssemblyName>
     <RootNamespace>atcTimeseriesGDS</RootNamespace>
     <MyType>Windows</MyType>
-    <OutputPath>..\bin\Debug\BASINS\</OutputPath>
     <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

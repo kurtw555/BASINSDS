@@ -36,6 +36,7 @@
     <ProjectReference Include="..\atcTimeseriesScript\atcTimeseriesScript-DS.vbproj" />
     <ProjectReference Include="..\atcUtility\atcUtility-DS.vbproj" />
     <ProjectReference Include="..\MapWinUtility\MapWinUtility-DS.vbproj" />
+    <ProjectReference Include="..\HASS_ENT.Net\HASS_ENT.Net.csproj" />
   </ItemGroup>
 
   <ItemGroup>
