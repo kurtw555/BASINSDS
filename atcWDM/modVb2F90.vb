@@ -15,22 +15,22 @@ Module Vb2F90
     Declare Function F90_INQNAM Lib "hass_ent.dll" _
         (ByVal aName As String, ByVal aNameLen As Short) As Integer
     Declare Sub F90_WDBOPNR Lib "hass_ent.dll" _
-        (ByRef aRwflg As Integer, _
-         ByVal aName As String, _
+        (ByRef aRwflg As Integer,
+         ByVal aName As String,
          ByRef aUnit As Integer, ByRef aRetcod As Integer, ByVal aNameLen As Short)
 
     'wdm:wdatrb
     Declare Sub F90_WDBSAC Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, ByRef aMsgUnit As Integer, _
-         ByRef aSaind As Integer, ByRef aSalen As Integer, ByRef aRetcod As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, ByRef aMsgUnit As Integer,
+         ByRef aSaind As Integer, ByRef aSalen As Integer, ByRef aRetcod As Integer,
          ByVal aVal As String, ByVal aValLen As Short)
     Declare Sub F90_WDBSAI Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, ByRef aMsgUnit As Integer, _
-         ByRef aSaind As Integer, ByRef aSalen As Integer, ByRef aVal As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, ByRef aMsgUnit As Integer,
+         ByRef aSaind As Integer, ByRef aSalen As Integer, ByRef aVal As Integer,
          ByRef aRetcod As Integer)
     Declare Sub F90_WDBSAR Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, ByRef aMsgUnit As Integer, _
-         ByRef aSaind As Integer, ByRef aSalen As Integer, ByRef aVal As Single, _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, ByRef aMsgUnit As Integer,
+         ByRef aSaind As Integer, ByRef aSalen As Integer, ByRef aVal As Single,
          ByRef aRetcod As Integer)
     'Declare Sub F90_WDSAGY Lib "hass_ent.dll" _
     '    (ByRef aWdmUnit As Integer, ByRef aSaind As Integer, _
@@ -39,44 +39,44 @@ Module Vb2F90
     '     ByRef aHLen As Integer, ByRef aHRec As Integer, ByRef aHPos As Integer, _
     '     ByRef aVLen As Integer, ByVal aIName As String[6], ByVal aIDesc As String, ByVal aIValid As String)
     Declare Sub F90_WDSAGY_XX Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aSaind As Integer, _
-         ByRef aLen As Integer, ByRef aType As Integer, _
-         ByRef aMin As Single, ByRef aMax As Single, ByRef aDef As Single, _
-         ByRef aHLen As Integer, ByRef aHRec As Integer, ByRef aHPos As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aSaind As Integer,
+         ByRef aLen As Integer, ByRef aType As Integer,
+         ByRef aMin As Single, ByRef aMax As Single, ByRef aDef As Single,
+         ByRef aHLen As Integer, ByRef aHRec As Integer, ByRef aHPos As Integer,
          ByRef aVLen As Integer, ByVal aIName() As Integer, ByVal aIDesc() As Integer, ByVal aIValid() As Integer)
 
     'adwdm:wdmess
     Declare Sub F90_WDLBAX Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aDstype As Integer, ByRef aNDn As Integer, ByRef aNUp As Integer, _
-         ByRef aNSa As Integer, ByRef aNSasp As Integer, ByRef aNDp As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aDstype As Integer, ByRef aNDn As Integer, ByRef aNUp As Integer,
+         ByRef aNSa As Integer, ByRef aNSasp As Integer, ByRef aNDp As Integer,
          ByRef aPsa As Integer)
     Declare Sub F90_WDDSDL Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
          ByRef aRetcod As Integer)
     Declare Sub F90_GETATT Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aInit As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aInit As Integer,
          ByRef aSaInd As Integer, ByVal aSaVal() As Integer)
 
     'wdm:wdbtch
     Declare Sub F90_WDBSGI Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aSaInd As Integer, ByRef aSaLen As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aSaInd As Integer, ByRef aSaLen As Integer,
          ByRef aSaVal As Integer, ByRef aRetcod As Integer)
     Declare Sub F90_WDBSGR Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aSaInd As Integer, ByRef aSaLen As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aSaInd As Integer, ByRef aSaLen As Integer,
          ByRef aSaVal As Single, ByRef aRetcod As Integer)
     Declare Sub F90_WDDSRN Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsnOld As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aDsnOld As Integer,
          ByRef aDsnNew As Integer, ByRef aRetcod As Integer)
     Declare Sub F90_WDBSGC_XX Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aSaInd As Integer, ByRef aSaLen As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aSaInd As Integer, ByRef aSaLen As Integer,
          ByVal aISaVal() As Integer)
     Declare Sub F90_WDLBAD Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
          ByRef aDsType As Integer, ByRef aPsa As Integer)
 
     'adwdm:utwdmd
@@ -89,25 +89,25 @@ Module Vb2F90
 
     'wdm:wdtms1
     Declare Sub F90_WDTGET Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aDelt As Integer, ByVal aDates() As Integer, ByRef aNval As Integer, _
-         ByRef aDtran As Integer, ByRef aQualfg As Integer, ByRef aTunits As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aDelt As Integer, ByVal aDates() As Integer, ByRef aNval As Integer,
+         ByRef aDtran As Integer, ByRef aQualfg As Integer, ByRef aTunits As Integer,
          ByVal aRVal() As Single, ByRef aRetcod As Integer)
     Declare Sub F90_WDTPUT Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aDelt As Integer, ByVal aDates() As Integer, ByRef aNval As Integer, _
-         ByRef aDtran As Integer, ByRef aQualfg As Integer, ByRef aTunits As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aDelt As Integer, ByVal aDates() As Integer, ByRef aNval As Integer,
+         ByRef aDtran As Integer, ByRef aQualfg As Integer, ByRef aTunits As Integer,
          ByVal aRVal() As Single, ByRef aRetcod As Integer)
 
     'wdm:wdtms2
     Declare Sub F90_WTFNDT Lib "hass_ent.dll" _
-        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-         ByRef aGpflg As Integer, ByRef aTdsfrc As Integer, _
-         ByVal aSDate() As Integer, ByVal aEDate() As Integer, _
+        (ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+         ByRef aGpflg As Integer, ByRef aTdsfrc As Integer,
+         ByVal aSDate() As Integer, ByVal aEDate() As Integer,
          ByRef aRetcod As Integer)
 
-    Public Sub F90_WDBSGC(ByRef aWdmUnit As Integer, ByRef aDsn As Integer, _
-                          ByRef aSaInd As Integer, ByRef aSaLen As Integer, _
+    Public Sub F90_WDBSGC(ByRef aWdmUnit As Integer, ByRef aDsn As Integer,
+                          ByRef aSaInd As Integer, ByRef aSaLen As Integer,
                           ByRef aSaVal As String)
         Dim lVal(80) As Integer
 
@@ -126,18 +126,18 @@ Module Vb2F90
         aStr = RTrim(aStr)
     End Sub
 
-    Public Sub F90_WDSAGY(ByRef aWdmUnit As Integer, ByRef aSaind As Integer, _
-                   ByRef aLen As Integer, ByRef aType As Integer, _
-                   ByRef aMin As Single, ByRef aMax As Single, ByRef aDef As Single, _
-                   ByRef aHLen As Integer, ByRef aHRec As Integer, ByRef aHPos As Integer, _
+    Public Sub F90_WDSAGY(ByRef aWdmUnit As Integer, ByRef aSaind As Integer,
+                   ByRef aLen As Integer, ByRef aType As Integer,
+                   ByRef aMin As Single, ByRef aMax As Single, ByRef aDef As Single,
+                   ByRef aHLen As Integer, ByRef aHRec As Integer, ByRef aHPos As Integer,
                    ByRef aVLen As Integer, ByRef aName As String, ByRef aDesc As String, ByRef aValid As String)
         Dim lName(5) As Integer
         Dim lDesc(47) As Integer
         Dim lValid(239) As Integer
-        F90_WDSAGY_XX(aWdmUnit, aSaind, _
-                      aLen, aType, _
-                      aMin, aMax, aDef, _
-                      aHLen, aHRec, aHPos, _
+        F90_WDSAGY_XX(aWdmUnit, aSaind,
+                      aLen, aType,
+                      aMin, aMax, aDef,
+                      aHLen, aHRec, aHPos,
                       aVLen, lName, lDesc, lValid)
         NumChr(6, lName, aName)
         If aName.Length = 0 AndAlso aSaind < 290 Then

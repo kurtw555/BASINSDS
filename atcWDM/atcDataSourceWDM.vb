@@ -69,31 +69,23 @@ Public Class atcDataSourceWDM
     End Sub
 
     Private Sub Refresh(ByVal aWdmUnit As Integer)
-        Dim lDsn As Integer
-        Dim lProg As Integer = 0
-        Dim lProgPrev As Integer
+        Dim lCount As Integer = 0
 
         DataSets.Clear()
         pDates.Clear()
 
-        lDsn = 1
-        While lDsn > 0
-            F90_WDDSNX(aWdmUnit, lDsn) 'finds next dsn in use
-            If lDsn > 0 Then
-                If F90_WDCKDT(aWdmUnit, lDsn) = 1 Then
-                    RefreshDsn(aWdmUnit, lDsn)
-                End If
-            Else
-                'Logger.Dbg("Refresh " & lDsn)
+        Dim aDsn As Integer = 1
+        While aDsn > 0
+            'modHassEntWrapper.F90_WDDSNX(aWdmUnit, aDsn)
+            F90_WDDSNX(aWdmUnit, aDsn)
+            If aDsn > 0 AndAlso F90_WDCKDT(aWdmUnit, aDsn) = 1 Then
+                RefreshDsn(aWdmUnit, aDsn)
             End If
-            If lDsn > -1 Then 'try the next dsn
-                lDsn += 1
-                lProgPrev = lProg
-                lProg = (100 * lDsn) / 32000
-                'Logger.Progress("WDM Refresh", lProg, lProgPrev)
+            If aDsn > -1 Then
+                aDsn += 1
+                lCount = CInt(100 * aDsn / 32000)
             End If
         End While
-        'Logger.Progress("", 0, 0)
     End Sub
 
     'True if attribute is set by custom code and does not need to be processed along with all attributes
@@ -188,7 +180,7 @@ Public Class atcDataSourceWDM
     ''' <param name="aExistAction">action to take if dataset with same id(dsn) already exists on wdm file</param>
     ''' <returns>true if successful, otherwise false</returns>
     ''' <remarks></remarks>
-    Public Overrides Function AddDataset(ByVal aDataSet As atcData.atcDataSet, _
+    Public Overrides Function AddDataset(ByVal aDataSet As atcData.atcDataSet,
                                 Optional ByVal aExistAction As atcData.atcDataSource.EnumExistAction _
                                                              = atcData.atcDataSource.EnumExistAction.ExistReplace) _
                                          As Boolean
@@ -218,8 +210,8 @@ Public Class atcDataSourceWDM
                 TimDif(lSDat, lEDat, lTu, lTs, lNValsExpected)
                 If lNvals < lNValsExpected Then
                     'TODO:  make writing data smarter to deal with big gaps of missing, etc
-                    Throw New ApplicationException("NVals:" & lNvals & ":" & lNValsExpected & vbCrLf & _
-                                                   "in " & Specification & vbCrLf & _
+                    Throw New ApplicationException("NVals:" & lNvals & ":" & lNValsExpected & vbCrLf &
+                                                   "in " & Specification & vbCrLf &
                                                    "dsn " & lTimser.Attributes.GetValue("ID", 0))
                 End If
 
@@ -243,9 +235,9 @@ Public Class atcDataSourceWDM
                         Case ExistAskUser
                             Select Case Logger.MsgCustomCheckbox("Existing dataset '" & lExistTimser.ToString & "'" & vbCrLf _
                                                                & "has same data set number as" & vbCrLf _
-                                                               & "new dataset '" & lTimser.ToString & "'", _
-                                                                 "Dataset Number Conflict", _
-                                                                 "Use this answer for all datasets", "WDM", "AddDataset", "ExistAskUserAction", _
+                                                               & "new dataset '" & lTimser.ToString & "'",
+                                                                 "Dataset Number Conflict",
+                                                                 "Use this answer for all datasets", "WDM", "AddDataset", "ExistAskUserAction",
                                                                  "Replace Existing", "Renumber New", "Discard New") ', "Append new to Existing")
                                 Case "Replace Existing" : GoTo CaseExistReplace
                                 Case "Renumber New" : GoTo CaseExistRenumber
@@ -264,14 +256,14 @@ CaseExistReplace:
                             End If
                         Case ExistAppend  'find dataset and try to append to it
                             'Logger.Dbg("atcDataSourceWdm:AddDataset:ExistAppend:" & lWdmHandle.Unit & ":" & lDsn)
-                            If lTimser.numValues > 0 AndAlso _
-                               lExistTimser.numValues > 0 AndAlso _
+                            If lTimser.numValues > 0 AndAlso
+                               lExistTimser.numValues > 0 AndAlso
                                lTimser.Dates.Value(1) <= lExistTimser.Dates.Value(lExistTimser.numValues) Then
-                                Throw New ApplicationException("atcDataSourceWDM:AddDataset: Unable to append new TSer " & _
-                                                    lTimser.ToString & " to existing TSer " & _
-                                                    lExistTimser.ToString & vbCrLf & _
-                                                    "New TSer start date (" & lTimser.Dates.Value(1) & _
-                                                    ") preceeds exising TSer end date (" & _
+                                Throw New ApplicationException("atcDataSourceWDM:AddDataset: Unable to append new TSer " &
+                                                    lTimser.ToString & " to existing TSer " &
+                                                    lExistTimser.ToString & vbCrLf &
+                                                    "New TSer start date (" & lTimser.Dates.Value(1) &
+                                                    ") preceeds exising TSer end date (" &
                                                     lExistTimser.Dates.Value(lExistTimser.numValues) & ")")
                             End If
                         Case ExistRenumber 'use next available number
@@ -332,8 +324,8 @@ CaseExistRenumber:
                     '    lTimserConst.Clear() 'TODO: maybe just part?
                     'End If
                     If lRet <> 0 Then
-                        Throw New ApplicationException("WDTPUT:call:" & _
-                                    lWdmHandle.Unit & ":" & lDsn & ":" & lTs & ":" & lNvals & ":" & _
+                        Throw New ApplicationException("WDTPUT:call:" &
+                                    lWdmHandle.Unit & ":" & lDsn & ":" & lTs & ":" & lNvals & ":" &
                                     lSDat(0) & ":" & lSDat(1) & ":" & lSDat(2) & ":" & lRet)
                         'Logger.Dbg("atcDataSourceWdm:AddDataset:WDTPUT:back:" & _
                         '            lWdmHandle.Unit & ":" & lDsn & ":" & lRet)
@@ -457,8 +449,8 @@ CaseExistRenumber:
     ''' <param name="aNewValue">New value for attribute (Optional)</param>
     ''' <returns>True on success, False on failure</returns>
     ''' <remarks>Use WriteAttributes to write all attributes</remarks>
-    Public Function WriteAttribute(ByVal aDataSet As atcData.atcDataSet, _
-                                   ByVal aAttribute As atcDefinedValue, _
+    Public Function WriteAttribute(ByVal aDataSet As atcData.atcDataSet,
+                                   ByVal aAttribute As atcDefinedValue,
                                    Optional ByVal aNewValue As Object = Nothing) As Boolean
         'Logger.Dbg("atcDataSourceWdm:WriteAttributes:entry:" & aDataSet.ToString & ":" & aAttribute.Definition.Name & "=" & aAttribute.Value)
         Using lWdmHandle As New atcWdmHandle(0, Specification), lMsg As atcWdmHandle = pMsg.MsgHandle
@@ -506,7 +498,7 @@ CaseExistRenumber:
         Return lRemoveDataset
     End Function
 
-    Public Overrides Function Save(ByVal SaveFileName As String, _
+    Public Overrides Function Save(ByVal SaveFileName As String,
                           Optional ByVal ExistAction As EnumExistAction = EnumExistAction.ExistReplace) As Boolean
         If SaveFileName.ToLower.Equals(Me.Specification.ToLower) Then
             Return True
@@ -521,7 +513,7 @@ CaseExistRenumber:
     ''' <param name="aFileUnit">WDM file handle</param>
     ''' <param name="aTs">data set to add to WDM</param>
     ''' <returns></returns>
-    Private Function DsnBld(ByVal aFileUnit As Integer, _
+    Private Function DsnBld(ByVal aFileUnit As Integer,
                             ByVal aTs As atcTimeseries) As Boolean
 
         If aTs.Attributes.GetValue("tu", atcTimeUnit.TUDay) = atcTimeUnit.TUYear Then
@@ -549,7 +541,7 @@ CaseExistRenumber:
         Return DsnWriteAttributes(aFileUnit, aTs)
     End Function
 
-    Private Function DsnWriteAttributes(ByVal aFileUnit As Integer, _
+    Private Function DsnWriteAttributes(ByVal aFileUnit As Integer,
                                         ByVal aTs As atcTimeseries) As Boolean
         With aTs.Attributes
             Dim lDsn As Integer = .GetValue("id", 1)
@@ -624,7 +616,7 @@ CaseExistRenumber:
     End Function
 
     Private Function DateToyyyyMMddHHmmss(ByVal aDate As Date) As String
-        Return aDate.ToString("yyyyMMddHHmmss")
+        aDate.ToString("yyyyMMddHHmmss")
     End Function
 
     ''' <summary>
@@ -632,9 +624,9 @@ CaseExistRenumber:
     ''' </summary>
     ''' <returns>True if attribute was written OR if attribute is not in message file</returns>
     ''' <remarks>Only attributes in WDM message file can be written to WDM files</remarks>
-    Private Function DsnWriteAttribute(ByVal aFileUnit As Integer, _
-                                       ByVal aMsgUnit As Integer, _
-                                       ByVal aDsn As Integer, _
+    Private Function DsnWriteAttribute(ByVal aFileUnit As Integer,
+                                       ByVal aMsgUnit As Integer,
+                                       ByVal aDsn As Integer,
                                        ByVal aAttribute As atcDefinedValue) As Boolean
         Dim lRetcod As Integer
         Dim lName As String = aAttribute.Definition.Name
@@ -772,7 +764,7 @@ CaseExistRenumber:
                 If Math.Abs(lRetcod) = 104 Then 'cant update if data already present
                     'Logger.Dbg("Skip:" & lName & ", data present")
                 Else
-                    Logger.Dbg("Unable to Write Data Attribute to WDM" & vbCrLf & _
+                    Logger.Dbg("Unable to Write Data Attribute to WDM" & vbCrLf &
                                "Attribute:" & lName & ", Value:" & lValue & ", Retcod:" & lRetcod)
                     DsnWriteAttribute = False
                 End If
@@ -816,7 +808,7 @@ CaseExistRenumber:
         End Get
     End Property
 
-    Public Overrides Function Open(ByVal aFileName As String, _
+    Public Overrides Function Open(ByVal aFileName As String,
                           Optional ByVal aAttributes As atcDataAttributes = Nothing) As Boolean
 
         If MyBase.Open(aFileName, aAttributes) Then
@@ -848,7 +840,7 @@ CaseExistRenumber:
 
     Public Overrides Sub ReadData(ByVal aReadMe As atcDataSet)
         If Not DataSets.Contains(aReadMe) Then
-            Logger.Dbg("WDM cannot read dataset with details:" & aReadMe.ToString & vbCrLf & _
+            Logger.Dbg("WDM cannot read dataset with details:" & aReadMe.ToString & vbCrLf &
                        "Specification:'" & Specification & "'")
         Else
             Dim lVd(0) As Double 'array of double data values
@@ -894,7 +886,7 @@ CaseExistRenumber:
                                 Dim lTran As Integer = 0 'transformation = aver,same
                                 Dim lQual As Integer = 31 'allowed quality code
                                 Dim lV(nVals) As Single 'data values come from WDM as Single
-                                F90_WDTGET(lWdmHandle.Unit, lDsn, lTimeStep, lSdat, nVals, _
+                                F90_WDTGET(lWdmHandle.Unit, lDsn, lTimeStep, lSdat, nVals,
                                            lTran, lQual, lTimeUnits, lV, lRetcod)
                                 If lRetcod <> 0 Then
                                     Throw New ApplicationException("ReadData Failed For " & lDsn & " with code " & lRetcod)
@@ -945,9 +937,9 @@ CaseExistRenumber:
                                     Dim lMatchingDates As atcTimeseries = Nothing
                                     'Search for existing Dates that exactly match these so we can share that one and save memory
                                     For Each lOtherDates As atcTimeseries In pDates
-                                        If lOtherDates.Serial <> lReadTS.Dates.Serial AndAlso _
-                                           lOtherDates.numValues = nVals AndAlso _
-                                           lOtherDates.Value(1) = lJd(1) AndAlso _
+                                        If lOtherDates.Serial <> lReadTS.Dates.Serial AndAlso
+                                           lOtherDates.numValues = nVals AndAlso
+                                           lOtherDates.Value(1) = lJd(1) AndAlso
                                            lOtherDates.Value(nVals) = lJd(nVals) Then
                                             If lConstInterval Then
                                                 If Math.Abs(lInterval - lOtherDates.Attributes.GetValue("Interval", 0)) < pEpsilon Then
@@ -995,6 +987,13 @@ CaseExistRenumber:
         lData.Attributes.AddHistory("Read from " & Specification)
 
         lData.ValuesNeedToBeRead = True
+
+        ' Check if DSN already exists to prevent duplicate key exceptions
+        If DataSets.Keys.Contains(aDsn) Then
+            Logger.Dbg("RefreshDsn: DSN " & aDsn & " already exists in DataSets collection, skipping duplicate")
+            Return
+        End If
+
         DataSets.Add(aDsn, lData)
         If aFileUnit > 0 AndAlso lData IsNot Nothing Then
             Try
@@ -1022,11 +1021,11 @@ CaseExistRenumber:
                                 Dim lDate As Date
                                 If IsNumeric(lS.Substring(0, 4)) Then
                                     Try 'Dates should be formatted YYYYMMDDhhmmss
-                                        lDate = New Date(CInt(lS.Substring(0, 4)), _
-                                                         CInt(lS.Substring(4, 2)), _
-                                                         CInt(lS.Substring(6, 2)), _
-                                                         CInt(lS.Substring(8, 2)), _
-                                                         CInt(lS.Substring(10, 2)), _
+                                        lDate = New Date(CInt(lS.Substring(0, 4)),
+                                                         CInt(lS.Substring(4, 2)),
+                                                         CInt(lS.Substring(6, 2)),
+                                                         CInt(lS.Substring(8, 2)),
+                                                         CInt(lS.Substring(10, 2)),
                                                          CInt(lS.Substring(12, 2)))
                                     Catch ex As Exception
                                         GoTo ParseDate
@@ -1070,7 +1069,7 @@ ParseDate:                          Logger.Dbg(lName & " text date '" & lS & "' 
     End Sub
 
     'Before calling, make sure id property of aDataset has been set to dsn -- aDataset.Attributes.SetValue("id", dsn)
-    Private Sub DsnReadGeneral(ByVal aFileUnit As Integer, _
+    Private Sub DsnReadGeneral(ByVal aFileUnit As Integer,
                                ByVal aDataset As atcTimeseries)
         Dim lSaInd, lSaLen, lRetcod As Integer
         Dim lTu As atcTimeUnit
@@ -1086,7 +1085,7 @@ ParseDate:                          Logger.Dbg(lName & " text date '" & lS & "' 
         If (lRetcod <> 0) Then ' set time step to default of 1
             lTs = 1
         End If
- 
+
         lSaInd = 17 'time unit (TCODE)
         Dim lTuInt As Integer
         F90_WDBSGI(aFileUnit, lDsn, lSaInd, lSaLen, lTuInt, lRetcod)
@@ -1168,7 +1167,7 @@ ParseDate:                          Logger.Dbg(lName & " text date '" & lS & "' 
 
     Public Overrides Sub View()
         If pShowViewMessage Then
-            Select Case Logger.MsgCustom(Specification & vbCrLf & "No text viewer available for WDM files", "View", _
+            Select Case Logger.MsgCustom(Specification & vbCrLf & "No text viewer available for WDM files", "View",
                                          "Ok", "Show File Folder", "Stop showing this message")
                 Case "Show File Folder"
                     OpenFile(IO.Path.GetDirectoryName(Specification))

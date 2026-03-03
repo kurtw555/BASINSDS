@@ -4,7 +4,8 @@
     <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>    
     <AssemblyName>atcData</AssemblyName>
     <RootNamespace>atcData</RootNamespace>
-    <MyType>Windows</MyType>    
+    <MyType>Windows</MyType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
     <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>  

@@ -66,18 +66,19 @@ TestFileName:
         End If
 
         If Not FileExists(lFileName) AndAlso aRWCFlg <> 2 Then
-            'Logger.Msg("Could not find " & aFileName, "atcWdmHandle")
+            Logger.Msg("Could not find " & aFileName, "atcWdmHandle")
         Else
             Try
-                'Logger.Dbg("atcWdmHandle:New:VBOpen:" & lFileName)
+                Logger.Dbg("atcWdmHandle:New:VBOpen:" & lFileName)
+                Dim lWdmFile As atcWdmVb.atcWDMfile = New atcWdmVb.atcWDMfile
                 'Dim lWdmFile As New atcwdmfilevb.atcWDMfile
-                'If lWdmFile.Open(lFileName) Then
-                '    Logger.Dbg("atcWdmHandle:New:VBOpenDone")
-                '    Dim lS As String = lWdmFile.ToString
-                '    Logger.Dbg(lS)
-                'Else
-                '    Logger.Dbg("atcWdmHandle:New:VBOpen:False")
-                'End If
+                If lWdmFile.Open(lFileName) Then
+                    Logger.Dbg("atcWdmHandle:New:VBOpenDone")
+                    Dim lS As String = lWdmFile.ToString
+                    Logger.Dbg(lS)
+                Else
+                    Logger.Dbg("atcWdmHandle:New:VBOpen:False")
+                End If
             Catch ex As Exception
                 Logger.Msg(ex.ToString)
             End Try

@@ -2,7 +2,7 @@ Option Strict Off
 Option Explicit On
 
 Imports atcData
-Imports ATCutility
+Imports atcUtility
 
 Module WDMGlobal
 #If GISProvider = "DotSpatial" Then

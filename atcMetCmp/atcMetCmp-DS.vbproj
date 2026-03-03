@@ -4,6 +4,7 @@
     <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
     <AssemblyName>atcMetCmp</AssemblyName>
     <RootNamespace>atcMetCmp</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <MyType>Windows</MyType>
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
     <DefineConstants>GISProvider="DotSpatial"</DefineConstants>

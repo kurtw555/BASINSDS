@@ -5,6 +5,7 @@
     <AssemblyName>atcWDM</AssemblyName>
     <RootNamespace>atcWDM</RootNamespace>
     <MyType>Windows</MyType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
     <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
   </PropertyGroup>
@@ -35,6 +36,7 @@
     <ProjectReference Include="..\atcData\atcData-DS.vbproj" />
     <ProjectReference Include="..\atcTimeseriesScript\atcTimeseriesScript-DS.vbproj" />
     <ProjectReference Include="..\atcUtility\atcUtility-DS.vbproj" />
+    <ProjectReference Include="..\atcWdmVb\atcWdmVb-DS.vbproj" />
     <ProjectReference Include="..\MapWinUtility\MapWinUtility-DS.vbproj" />
   </ItemGroup>
 
