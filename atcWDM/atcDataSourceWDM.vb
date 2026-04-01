@@ -658,10 +658,12 @@ CaseExistRenumber:
             Case "description" : lName = "descrp"
             Case "date created", "datcre"
                 lName = "datcre"
-                lValue = DateToyyyyMMddHHmmss(lValue)
+                Dim dtVal As Date = lValue
+                lValue = dtVal.ToString("yyyyMMddHHmmss")
             Case "date modified", "datmod"
                 lName = "datmod"
-                lValue = DateToyyyyMMddHHmmss(lValue)
+                Dim dtVal As Date = lValue
+                lValue = dtVal.ToString("yyyyMMddHHmmss")
             Case "tsfill" 'Avoid writing NaN values in WDM file to make old tools happy
                 If Double.IsNaN(lValue) Then lValue = -999
 
@@ -754,7 +756,7 @@ CaseExistRenumber:
                     If lStr.Length > lMsgDefinition.Max Then
                         lStr = lStr.Substring(0, lMsgDefinition.Max)
                         'Logger.Dbg("Attribute '" & lMsgDefinition.Name & "' truncated from '" & lValue & "' to '" & lStr & "'")
-                    ElseIf lStr.Length < lMsgDefinition.Max Then
+                ElseIf lStr.Length < lMsgDefinition.Max Then
                         lStr = lStr.PadRight(lMsgDefinition.Max)
                     End If
                     F90_WDBSAC(aFileUnit, aDsn, aMsgUnit, lMsgDefinition.ID, lMsgDefinition.Max, lRetcod, lStr, lStr.Length)

@@ -7,6 +7,7 @@
     <MyType>Windows</MyType>
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>
     <DefineConstants>GISProvider="DotSpatial"</DefineConstants>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\bin\Debug\BASINS\</OutputPath>

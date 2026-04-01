@@ -19,8 +19,9 @@ Public Class atcTimeseriesGDS
     Inherits atcTimeseriesSource
 
     Private Shared pFilter As String = "NASA NLDAS (*.nldas.txt)|*.nldas.txt|NASA GDS (*.gds)|*.gds|Text Files (*.txt)|*.txt|All Files (*.*)|*.*"
-    Private Shared pASC2FirstLine As String = "Metadata of the Time Series file:"
-    Private Shared pASC2DataHeader As String = "           Date&Time       Data"
+    Private Shared pASC2FirstLine As String = "prod_name" '"Metadata for Requested Time Series:"
+    'Private Shared pASC2DataHeader As String = "Timestamp (UTC),Data" '"Date&Time               Data"
+    Private Shared pASC2DataHeader As String = "Timestamp,Value"
     Private pErrorDescription As String
     Private pJulianOffset As Double = New Date(1900, 1, 1).Subtract(New Date(1, 1, 1)).TotalDays
 
@@ -48,7 +49,7 @@ Public Class atcTimeseriesGDS
         End Get
     End Property
 
-    Public Overrides Function Open(ByVal aFileName As String, _
+    Public Overrides Function Open(ByVal aFileName As String,
                           Optional ByVal aAttributes As atcData.atcDataAttributes = Nothing) As Boolean
         Dim lOpened As Boolean = False
         If aFileName Is Nothing OrElse aFileName.Length = 0 OrElse Not FileExists(aFileName) Then
@@ -71,8 +72,15 @@ Public Class atcTimeseriesGDS
                             lFirstLine = NextLine(lInputReader)
                         End While
                         Return False
-                    ElseIf lFirstLine.Equals(pASC2FirstLine) Then
-                        lOpened = ReadASC2(lInputReader)
+                    ElseIf Not lOpened Then
+                        While Not lFirstLine.Equals(pASC2DataHeader)
+                            If lFirstLine.StartsWith(pASC2FirstLine) Then
+                                lOpened = ReadASC2(lInputReader)
+                                Exit While
+                            Else
+                                lFirstLine = NextLine(lInputReader)
+                            End If
+                        End While
                     Else
                         lOpened = ReadGDS(lFirstLine, lInputReader)
                     End If
@@ -94,7 +102,7 @@ Public Class atcTimeseriesGDS
         Dim lCurLine() As String
 
         While lCurLineString <> pASC2DataHeader
-            lCurLine = lCurLineString.Split("=")
+            lCurLine = lCurLineString.Split(",") '("=")
             If lCurLine.Length = 2 Then
                 Dim lAttName As String = lCurLine(0).Trim
                 Dim lAttValue As String = lCurLine(1).Trim
@@ -113,6 +121,9 @@ Public Class atcTimeseriesGDS
                         lBuilder.Attributes.SetValue("Latitude", lAttValue)
                     Case "lon"
                         lBuilder.Attributes.SetValue("Longitude", lAttValue)
+                    'GPF added 11/10/20
+                    Case "elevation[m]"
+                        lBuilder.Attributes.SetValue("Elevation", lAttValue)
                     Case Else
                         lBuilder.Attributes.SetValue(lAttName, lAttValue)
                 End Select
@@ -124,8 +135,11 @@ Public Class atcTimeseriesGDS
         Do
             Try
                 lCurLineString = NextLine(lInputReader)
-                If Date.TryParse(SafeSubstring(lCurLineString, 0, 20).Trim.Replace("Z", ":00"), lDate) AndAlso _
-                    Double.TryParse(SafeSubstring(lCurLineString, 21), lValue) Then
+                lCurLine = lCurLineString.Split(",") 'vbTab)
+                'If Date.TryParse(SafeSubstring(lCurLineString, 0, 20).Trim.Replace("Z", ":00"), lDate) AndAlso
+                '    Double.TryParse(SafeSubstring(lCurLineString, 21), lValue) Then
+                If Date.TryParse(lCurLine(0), lDate) AndAlso
+                    Double.TryParse(lCurLine(1), lValue) Then
                     lBuilder.AddValue(lDate, lValue)
                 End If
             Catch ex As EndOfStreamException
