@@ -96,7 +96,8 @@ Public Class atcTimeseriesGLDS
         Dim lCons As String = String.Empty
 
         While lCurLineString <> pASC2DataHeader
-            lCurLine = lCurLineString.Split("=")
+            'lCurLine = lCurLineString.Split("=")
+            lCurLine = lCurLineString.Split(",")
             If lCurLine.Length = 2 Then
                 Dim lAttName As String = lCurLine(0).Trim
                 Dim lAttValue As String = lCurLine(1).Trim
