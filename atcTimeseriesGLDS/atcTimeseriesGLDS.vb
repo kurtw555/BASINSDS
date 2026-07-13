@@ -19,8 +19,10 @@ Public Class atcTimeseriesGLDS
     Inherits atcTimeseriesSource
 
     Private Shared pFilter As String = "NASA GLDAS (*.GLDAS.txt)|*.GLDAS.txt|NASA GDS (*.gds)|*.gds|Text Files (*.txt)|*.txt|All Files (*.*)|*.*"
-    Private Shared pASC2FirstLine As String = "Metadata for Requested Time Series:"
-    Private Shared pASC2DataHeader As String = "Date&Time               Data"
+    'Private Shared pASC2FirstLine As String = "Metadata for Requested Time Series:"
+    Private Shared pASC2FirstLine As String = "prod_name,GLDAS_NOAH025_3H.2.1"
+    'Private Shared pASC2DataHeader As String = "Date&Time               Data"
+    Private Shared pASC2DataHeader As String = "Timestamp,Value"
     Private pErrorDescription As String
     Private pJulianOffset As Double = New Date(1900, 1, 1).Subtract(New Date(1, 1, 1)).TotalDays
 
