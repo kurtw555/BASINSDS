@@ -152,24 +152,13 @@ TryExecute:
     'Function find whether a table exist or not
     Friend Function IsTableExist(ByVal strTable As String, ByVal aConnection As SqliteConnection) As Boolean
         Try
-
-            Dim schemaTable As DataTable = aConnection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, New Object() {Nothing, Nothing, Nothing, "TABLE"})
-            Dim I As Int32
-            For I = 0 To schemaTable.Rows.Count - 1
-                Dim rd As DataRow = schemaTable.Rows(I)
-                If rd("TABLE_TYPE").ToString = "TABLE" Then
-                    If (rd("TABLE_NAME").ToString) = strTable Then
-                        'Table exists
-                        IsTableExist = True
-                        Exit For
-                    Else
-                        'Table not exists
-                        IsTableExist = False
-                    End If
-                End If
-            Next
+            Dim lCommand = aConnection.CreateCommand()
+            lCommand.CommandText = "SELECT 1 FROM sqlite_master WHERE type='table' AND name=@name LIMIT 1;"
+            lCommand.Parameters.AddWithValue("@name", strTable)
+            IsTableExist = lCommand.ExecuteScalar() IsNot Nothing
         Catch ex As Exception
             Logger.Dbg(ex.Message)
+            IsTableExist = False
         End Try
     End Function
 

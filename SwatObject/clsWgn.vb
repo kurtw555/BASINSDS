@@ -112,67 +112,48 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As New Text.StringBuilder
+                lCreateSql.Append("CREATE TABLE " & pTableName & " (")
+                lCreateSql.Append("OID INTEGER PRIMARY KEY AUTOINCREMENT, ")
+                lCreateSql.Append("SUBBASIN INTEGER, STATION TEXT, WLATITUDE REAL, WLONGITUDE REAL, WELEV REAL, RAIN_YRS REAL, ")
+                Append12DBColumnsReal(lCreateSql, "TMPMX")
+                Append12DBColumnsReal(lCreateSql, "TMPMN")
+                Append12DBColumnsReal(lCreateSql, "TMPSTDMX")
+                Append12DBColumnsReal(lCreateSql, "TMPSTDMN")
+                Append12DBColumnsReal(lCreateSql, "PCPMM")
+                Append12DBColumnsReal(lCreateSql, "PCPSTD")
+                Append12DBColumnsReal(lCreateSql, "PCPSKW")
+                Append12DBColumnsReal(lCreateSql, "PR_W1_")
+                Append12DBColumnsReal(lCreateSql, "PR_W2_")
+                Append12DBColumnsReal(lCreateSql, "PCPD")
+                Append12DBColumnsReal(lCreateSql, "RAINHHMX")
+                Append12DBColumnsReal(lCreateSql, "SOLARAV")
+                Append12DBColumnsReal(lCreateSql, "DEWPT")
+                Append12DBColumnsReal(lCreateSql, "WNDAV")
+                lCreateSql.Length -= 2
+                lCreateSql.Append(");")
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("SUBBASIN", ADOX.DataTypeEnum.adInteger)
-                    .Append("STATION", ADOX.DataTypeEnum.adVarWChar, 80)
-                    .Append("WLATITUDE", ADOX.DataTypeEnum.adSingle)
-                    .Append("WLONGITUDE", ADOX.DataTypeEnum.adSingle)
-                    .Append("WELEV", ADOX.DataTypeEnum.adSingle)
-                    .Append("RAIN_YRS", ADOX.DataTypeEnum.adSingle)
-
-                    Append12DBColumnsSingle(lTable.Columns, "TMPMX")
-                    Append12DBColumnsSingle(lTable.Columns, "TMPMN")
-                    Append12DBColumnsSingle(lTable.Columns, "TMPSTDMX")
-                    Append12DBColumnsSingle(lTable.Columns, "TMPSTDMN")
-                    Append12DBColumnsSingle(lTable.Columns, "PCPMM")
-                    Append12DBColumnsSingle(lTable.Columns, "PCPSTD")
-                    Append12DBColumnsSingle(lTable.Columns, "PCPSKW")
-                    Append12DBColumnsSingle(lTable.Columns, "PR_W1_")
-                    Append12DBColumnsSingle(lTable.Columns, "PR_W2_")
-                    Append12DBColumnsSingle(lTable.Columns, "PCPD")
-                    Append12DBColumnsSingle(lTable.Columns, "RAINHHMX")
-                    Append12DBColumnsSingle(lTable.Columns, "SOLARAV")
-                    Append12DBColumnsSingle(lTable.Columns, "DEWPT")
-                    Append12DBColumnsSingle(lTable.Columns, "WNDAV")
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql.ToString(), lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try
         End Function
 
-        'Private Sub Append12DBColumnsSingle(ByVal aColumns As ADOX.Columns, ByVal aSection As String)
-        Private Sub Append12DBColumnsSingle(ByVal aColumns As DataColumnCollection, ByVal aSection As String)
+        Private Sub Append12DBColumnsReal(ByVal aSql As Text.StringBuilder, ByVal aSection As String)
             For i As Integer = 1 To 12
-                'aColumns.Append(aSection & i, ADOX.DataTypeEnum.adSingle)
-                aColumns.Add(aSection & i, ADOX.DataTypeEnum.adSingle)
+                aSql.Append(aSection & i & " REAL, ")
             Next
         End Sub
 

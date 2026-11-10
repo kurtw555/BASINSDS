@@ -55,56 +55,25 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As String = _
+                    "CREATE TABLE " & pTableName & " (" & _
+                    "OBJECTID INTEGER PRIMARY KEY AUTOINCREMENT, " & _
+                    "Lao INTEGER, Igropt INTEGER, Ai0 REAL, Ai1 REAL, Ai2 REAL, Ai3 REAL, Ai4 REAL, Ai5 REAL, Ai6 REAL, Mumax REAL, Rhoq REAL, Tfact REAL, K_l REAL, K_n REAL, K_p REAL, Lambda0 REAL, Lambda1 REAL, Lambda2 REAL, P_n REAL" & _
+                    ");"
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OBJECTID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("Lao", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("Igropt", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("Ai0", ADOX.DataTypeEnum.adDouble)
-                    .Append("Ai1", ADOX.DataTypeEnum.adDouble)
-                    .Append("Ai2", ADOX.DataTypeEnum.adDouble)
-                    .Append("Ai3", ADOX.DataTypeEnum.adDouble)
-                    .Append("Ai4", ADOX.DataTypeEnum.adDouble)
-                    .Append("Ai5", ADOX.DataTypeEnum.adDouble)
-                    .Append("Ai6", ADOX.DataTypeEnum.adDouble)
-                    .Append("Mumax", ADOX.DataTypeEnum.adDouble)
-                    .Append("Rhoq", ADOX.DataTypeEnum.adDouble)
-                    .Append("Tfact", ADOX.DataTypeEnum.adDouble)
-                    .Append("K_l", ADOX.DataTypeEnum.adDouble)
-                    .Append("K_n", ADOX.DataTypeEnum.adDouble)
-                    .Append("K_p", ADOX.DataTypeEnum.adDouble)
-                    .Append("Lambda0", ADOX.DataTypeEnum.adDouble, 4)
-                    .Append("Lambda1", ADOX.DataTypeEnum.adDouble, 4)
-                    .Append("Lambda2", ADOX.DataTypeEnum.adDouble)
-                    .Append("P_n", ADOX.DataTypeEnum.adDouble)
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql, lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try

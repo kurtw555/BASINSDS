@@ -98,55 +98,25 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As String = _
+                    "CREATE TABLE " & pTableName & " (" &
+                    "OID INTEGER PRIMARY KEY AUTOINCREMENT, " &
+                    "SUBBASIN REAL, HRU REAL, LANDUSE TEXT, SOIL TEXT, SLOPE_CD TEXT, SHALLST REAL, DEEPST REAL, GW_DELAY REAL, ALPHA_BF REAL, GWQMN REAL, GW_REVAP REAL, REVAPMN REAL, RCHRG_DP REAL, GWHT REAL, GW_SPYLD REAL, SHALLST_N REAL, GWSOLP REAL, HLIFE_NGW REAL" &
+                    ");"
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("SUBBASIN", ADOX.DataTypeEnum.adDouble)
-                    .Append("HRU", ADOX.DataTypeEnum.adDouble)
-                    .Append("LANDUSE", ADOX.DataTypeEnum.adVarWChar, 4)
-                    .Append("SOIL", ADOX.DataTypeEnum.adVarWChar, 40)
-                    .Append("SLOPE_CD", ADOX.DataTypeEnum.adVarWChar, 20)
-                    .Append("SHALLST", ADOX.DataTypeEnum.adDouble)
-                    .Append("DEEPST", ADOX.DataTypeEnum.adDouble)
-                    .Append("GW_DELAY", ADOX.DataTypeEnum.adDouble)
-                    .Append("ALPHA_BF", ADOX.DataTypeEnum.adDouble)
-                    .Append("GWQMN", ADOX.DataTypeEnum.adDouble)
-                    .Append("GW_REVAP", ADOX.DataTypeEnum.adDouble)
-                    .Append("REVAPMN", ADOX.DataTypeEnum.adDouble)
-                    .Append("RCHRG_DP", ADOX.DataTypeEnum.adDouble)
-                    .Append("GWHT", ADOX.DataTypeEnum.adDouble)
-                    .Append("GW_SPYLD", ADOX.DataTypeEnum.adDouble)
-                    .Append("SHALLST_N", ADOX.DataTypeEnum.adDouble)
-                    .Append("GWSOLP", ADOX.DataTypeEnum.adDouble)
-                    .Append("HLIFE_NGW", ADOX.DataTypeEnum.adDouble)
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql, lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try

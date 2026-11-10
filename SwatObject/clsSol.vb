@@ -146,71 +146,36 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As New Text.StringBuilder
+                lCreateSql.Append("CREATE TABLE " & pTableName & " (")
+                lCreateSql.Append("OBJECTID INTEGER PRIMARY KEY AUTOINCREMENT, ")
+                lCreateSql.Append("SUBBASIN REAL, HRU REAL, LANDUSE TEXT, SOIL TEXT, SLOPE_CD TEXT, SNAM TEXT, NLAYERS INTEGER, HYDGRP TEXT, SOL_ZMX REAL, ANION_EXCL REAL, SOL_CRK REAL, TEXTURE TEXT, ")
+                Append10DBColumnsReal(lCreateSql, "SOL_Z", "SOL_BD", "SOL_AWC", "SOL_K", "SOL_CBN", "CLAY", "SILT", "SAND", "ROCK", "SOL_ALB", "USLE_K", "SOL_EC")
+                lCreateSql.Length -= 2
+                lCreateSql.Append(");")
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OBJECTID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("SUBBASIN", ADOX.DataTypeEnum.adDouble)
-                    .Append("HRU", ADOX.DataTypeEnum.adDouble)
-                    .Append("LANDUSE", ADOX.DataTypeEnum.adVarWChar, 4)
-                    .Append("SOIL", ADOX.DataTypeEnum.adVarWChar, 40)
-                    .Append("SLOPE_CD", ADOX.DataTypeEnum.adVarWChar, 20)
-                    .Append("SNAM", ADOX.DataTypeEnum.adVarWChar, 30)
-                    .Append("NLAYERS", ADOX.DataTypeEnum.adInteger, 2)
-                    .Append("HYDGRP", ADOX.DataTypeEnum.adVarWChar, 1)
-                    .Append("SOL_ZMX", ADOX.DataTypeEnum.adSingle)
-                    .Append("ANION_EXCL", ADOX.DataTypeEnum.adSingle)
-                    .Append("SOL_CRK", ADOX.DataTypeEnum.adSingle)
-                    .Append("TEXTURE", ADOX.DataTypeEnum.adVarWChar, 80)
-                    Append10DBColumnsDouble(lTable.Columns,
-                                            "SOL_Z",
-                                            "SOL_BD",
-                                            "SOL_AWC",
-                                            "SOL_K",
-                                            "SOL_CBN",
-                                            "CLAY",
-                                            "SILT",
-                                            "SAND",
-                                            "ROCK",
-                                            "SOL_ALB",
-                                            "USLE_K",
-                                            "SOL_EC")
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql.ToString(), lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try
         End Function
 
-        Private Sub Append10DBColumnsDouble(ByVal aColumns As DataColumnCollection, ByVal ParamArray aSections() As String)
+        Private Sub Append10DBColumnsReal(ByVal aSql As Text.StringBuilder, ByVal ParamArray aSections() As String)
             For i As Integer = 1 To 10
                 For Each lSection As String In aSections
-                    aColumns.Add(lSection & i, GetType(Double))
+                    aSql.Append(lSection & i & " REAL, ")
                 Next
             Next
         End Sub

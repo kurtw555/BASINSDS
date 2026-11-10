@@ -54,48 +54,25 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As String = _
+                    "CREATE TABLE " & pTableName & " (" &
+                    "OID INTEGER PRIMARY KEY AUTOINCREMENT, " &
+                    "SUBBASIN INTEGER, CH_W2 REAL, CH_D REAL, CH_S2 REAL, CH_L2 REAL, CH_N2 REAL, CH_K2 REAL, CH_EROD REAL, CH_COV REAL, CH_WDR REAL, ALPHA_BNK REAL" &
+                    ");"
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("SUBBASIN", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("CH_W2", ADOX.DataTypeEnum.adSingle)
-                    .Append("CH_D", ADOX.DataTypeEnum.adSingle)
-                    .Append("CH_S2", ADOX.DataTypeEnum.adSingle)
-                    .Append("CH_L2", ADOX.DataTypeEnum.adSingle)
-                    .Append("CH_N2", ADOX.DataTypeEnum.adSingle)
-                    .Append("CH_K2", ADOX.DataTypeEnum.adSingle)
-                    .Append("CH_EROD", ADOX.DataTypeEnum.adSingle)
-                    .Append("CH_COV", ADOX.DataTypeEnum.adSingle)
-                    .Append("CH_WDR", ADOX.DataTypeEnum.adSingle)
-                    .Append("ALPHA_BNK", ADOX.DataTypeEnum.adSingle)
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql, lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try

@@ -210,113 +210,26 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                'Dim lConnection As SqliteConnection = pSwatInput.OpenADOConnection()
-                Dim lConnection As SQLiteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As String = _
+                    "CREATE TABLE " & pTableName & " (" & _
+                    "OBJECTID INTEGER PRIMARY KEY AUTOINCREMENT, " & _
+                    "SFTMP REAL, SMTMP REAL, SMFMX REAL, SMFMN REAL, TIMP REAL, SNOCOVMX REAL, SNO50COV REAL, IPET INTEGER, ESCO REAL, EPCO REAL, EVLAI REAL, FFCB REAL, IEVENT INTEGER, ICRK INTEGER, SURLAG REAL, ADJ_PKR REAL, PRF REAL, SPCON REAL, SPEXP REAL, RCN REAL, CMN REAL, N_UPDIS REAL, P_UPDIS REAL, NPERCO REAL, PPERCO REAL, PHOSKD REAL, PSP REAL, RSDCO REAL, PERCOP REAL, ISUBWQ INTEGER, WDPQ REAL, WGPQ REAL, WDLPQ REAL, WGLPQ REAL, WDPS REAL, WGPS REAL, WDLPS REAL, WGLPS REAL, BACTKDQ REAL, THBACT REAL, WOF_P REAL, WOF_LP REAL, WDPF REAL, WGPF REAL, WDLPF REAL, WGLPF REAL, IRTE INTEGER, MSK_COL1 REAL, MSK_COL2 REAL, MSK_X REAL, IDEG INTEGER, IWQ INTEGER, TRNSRCH INTEGER, EVRCH REAL, IRTPEST INTEGER, ICN INTEGER, CNCOEF REAL, CDN REAL, SDNCO REAL, BACT_SWF REAL, BACTMX REAL, BACTMINLP REAL, BACTMINP REAL, WDLPRCH REAL, WDPRCH REAL, WDLPRES INTEGER, WDPRES INTEGER, TB_ADJ INTEGER, DEPIMP_BSN REAL, DDRAIN_BSN INTEGER, TDRAIN_BSN INTEGER, GDRAIN_BSN REAL, CN_FROZ REAL, ISED_DET REAL, ETFILE TEXT" & _
+                    ");"
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
+                ExecuteNonQuery(lCreateSql, lConnection)
 
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OBJECTID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("SFTMP", ADOX.DataTypeEnum.adDouble)
-                    .Append("SMTMP", ADOX.DataTypeEnum.adDouble)
-                    .Append("SMFMX", ADOX.DataTypeEnum.adDouble)
-                    .Append("SMFMN", ADOX.DataTypeEnum.adDouble)
-                    .Append("TIMP", ADOX.DataTypeEnum.adDouble)
-                    .Append("SNOCOVMX", ADOX.DataTypeEnum.adDouble)
-                    .Append("SNO50COV", ADOX.DataTypeEnum.adDouble)
-                    .Append("IPET", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("ESCO", ADOX.DataTypeEnum.adDouble)
-                    .Append("EPCO", ADOX.DataTypeEnum.adDouble)
-                    .Append("EVLAI", ADOX.DataTypeEnum.adDouble)
-                    .Append("FFCB", ADOX.DataTypeEnum.adDouble)
-                    .Append("IEVENT", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("ICRK", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("SURLAG", ADOX.DataTypeEnum.adDouble)
-                    .Append("ADJ_PKR", ADOX.DataTypeEnum.adDouble)
-                    .Append("PRF", ADOX.DataTypeEnum.adDouble)
-                    .Append("SPCON", ADOX.DataTypeEnum.adDouble)
-                    .Append("SPEXP", ADOX.DataTypeEnum.adDouble)
-                    .Append("RCN", ADOX.DataTypeEnum.adDouble)
-                    .Append("CMN", ADOX.DataTypeEnum.adDouble)
-                    .Append("N_UPDIS", ADOX.DataTypeEnum.adDouble)
-                    .Append("P_UPDIS", ADOX.DataTypeEnum.adDouble)
-                    .Append("NPERCO", ADOX.DataTypeEnum.adDouble)
-                    .Append("PPERCO", ADOX.DataTypeEnum.adDouble)
-                    .Append("PHOSKD", ADOX.DataTypeEnum.adDouble)
-                    .Append("PSP", ADOX.DataTypeEnum.adDouble)
-                    .Append("RSDCO", ADOX.DataTypeEnum.adDouble)
-                    .Append("PERCOP", ADOX.DataTypeEnum.adDouble)
-                    .Append("ISUBWQ", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("WDPQ", ADOX.DataTypeEnum.adDouble)
-                    .Append("WGPQ", ADOX.DataTypeEnum.adDouble)
-                    .Append("WDLPQ", ADOX.DataTypeEnum.adDouble)
-                    .Append("WGLPQ", ADOX.DataTypeEnum.adDouble)
-                    .Append("WDPS", ADOX.DataTypeEnum.adDouble)
-                    .Append("WGPS", ADOX.DataTypeEnum.adDouble)
-                    .Append("WDLPS", ADOX.DataTypeEnum.adDouble)
-                    .Append("WGLPS", ADOX.DataTypeEnum.adDouble)
-                    .Append("BACTKDQ", ADOX.DataTypeEnum.adDouble)
-                    .Append("THBACT", ADOX.DataTypeEnum.adDouble)
-                    .Append("WOF_P", ADOX.DataTypeEnum.adDouble)
-                    .Append("WOF_LP", ADOX.DataTypeEnum.adDouble)
-                    .Append("WDPF", ADOX.DataTypeEnum.adDouble)
-                    .Append("WGPF", ADOX.DataTypeEnum.adDouble)
-                    .Append("WDLPF", ADOX.DataTypeEnum.adDouble)
-                    .Append("WGLPF", ADOX.DataTypeEnum.adDouble)
-                    .Append("IRTE", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("MSK_COL1", ADOX.DataTypeEnum.adDouble)
-                    .Append("MSK_COL2", ADOX.DataTypeEnum.adDouble)
-                    .Append("MSK_X", ADOX.DataTypeEnum.adDouble)
-                    .Append("IDEG", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IWQ", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("TRNSRCH", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("EVRCH", ADOX.DataTypeEnum.adDouble)
-                    .Append("IRTPEST", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("ICN", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("CNCOEF", ADOX.DataTypeEnum.adDouble)
-                    .Append("CDN", ADOX.DataTypeEnum.adDouble)
-                    .Append("SDNCO", ADOX.DataTypeEnum.adDouble)
-                    .Append("BACT_SWF", ADOX.DataTypeEnum.adDouble)
-                    .Append("BACTMX", ADOX.DataTypeEnum.adDouble)
-                    .Append("BACTMINLP", ADOX.DataTypeEnum.adDouble)
-                    .Append("BACTMINP", ADOX.DataTypeEnum.adDouble)
-                    .Append("WDLPRCH", ADOX.DataTypeEnum.adDouble)
-                    .Append("WDPRCH", ADOX.DataTypeEnum.adDouble)
-                    .Append("WDLPRES", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("WDPRES", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("TB_ADJ", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("DEPIMP_BSN", ADOX.DataTypeEnum.adDouble)
-                    .Append("DDRAIN_BSN", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("TDRAIN_BSN", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("GDRAIN_BSN", ADOX.DataTypeEnum.adDouble)
-                    .Append("CN_FROZ", ADOX.DataTypeEnum.adDouble)
-                    .Append("ISED_DET", ADOX.DataTypeEnum.adDouble)
-                    .Append("ETFILE", ADOX.DataTypeEnum.adVarWChar, 100)
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
                 Return True
-            Catch lEx As ApplicationException
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try

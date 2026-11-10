@@ -103,100 +103,39 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As New Text.StringBuilder
+                lCreateSql.Append("CREATE TABLE " & pTableName & " (")
+                lCreateSql.Append("OID INTEGER PRIMARY KEY AUTOINCREMENT, ")
+                lCreateSql.Append("SUBBASIN REAL, MORES INTEGER, IYRES INTEGER, RES_ESA REAL, RES_EVOL REAL, RES_PSA REAL, RES_PVOL REAL, RES_VOL REAL, RES_SED REAL, RES_NSED REAL, RES_K REAL, IRESCO INTEGER, ")
+                Append12DBColumnsReal(lCreateSql, "OFLOWMX")
+                Append12DBColumnsReal(lCreateSql, "OFLOWMN")
+                lCreateSql.Append("RES_RR REAL, RESMONO TEXT, IFLOOD1R INTEGER, IFLOOD2R INTEGER, NDTARGR INTEGER, ")
+                Append12DBColumnsReal(lCreateSql, "STARG")
+                lCreateSql.Append("RESDAYO TEXT, ")
+                Append12DBColumnsReal(lCreateSql, "WURESN")
+                lCreateSql.Append("WURTNF REAL, IRES1 INTEGER, IRES2 INTEGER, PSETLR1 REAL, PSETLR2 REAL, NSETLR1 REAL, NSETLR2 REAL, CHLAR REAL, SECCIR REAL, RES_ORGP REAL, RES_SOLP REAL, RES_ORGN REAL, RES_NO3 REAL, RES_NH3 REAL, RES_NO2 REAL, LKPST_CONC REAL, LKPST_REA REAL, LKPST_VOL REAL, LKPST_KOC REAL, LKPST_STL REAL, LKPST_RSP REAL, LKPST_MIX REAL, LKSPSTCONC REAL, LKSPST_REA REAL, LKSPST_BRY REAL, LKSPST_ACT REAL, RES_D50 REAL);")
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("SUBBASIN", ADOX.DataTypeEnum.adDouble)
-                    .Append("MORES", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IYRES", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("RES_ESA", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_EVOL", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_PSA", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_PVOL", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_VOL", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_SED", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_NSED", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_K", ADOX.DataTypeEnum.adSingle)
-                    .Append("IRESCO", ADOX.DataTypeEnum.adInteger, 4)
-
-                    Append12DBColumnsDouble(lTable.Columns, "OFLOWMX")
-                    Append12DBColumnsDouble(lTable.Columns, "OFLOWMN")
-
-                    .Append("RES_RR", ADOX.DataTypeEnum.adSingle)
-                    .Append("RESMONO", ADOX.DataTypeEnum.adVarWChar, 254)
-                    .Append("IFLOOD1R", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IFLOOD2R", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("NDTARGR", ADOX.DataTypeEnum.adInteger, 4)
-
-                    Append12DBColumnsDouble(lTable.Columns, "STARG")
-
-                    .Append("RESDAYO", ADOX.DataTypeEnum.adVarWChar, 254)
-
-                    Append12DBColumnsDouble(lTable.Columns, "WURESN")
-
-                    .Append("WURTNF", ADOX.DataTypeEnum.adSingle)
-                    .Append("IRES1", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IRES2", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("PSETLR1", ADOX.DataTypeEnum.adSingle)
-                    .Append("PSETLR2", ADOX.DataTypeEnum.adSingle)
-                    .Append("NSETLR1", ADOX.DataTypeEnum.adSingle)
-                    .Append("NSETLR2", ADOX.DataTypeEnum.adSingle)
-                    .Append("CHLAR", ADOX.DataTypeEnum.adSingle)
-                    .Append("SECCIR", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_ORGP", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_SOLP", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_ORGN", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_NO3", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_NH3", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_NO2", ADOX.DataTypeEnum.adSingle)
-                    .Append("LKPST_CONC", ADOX.DataTypeEnum.adSingle)
-                    .Append("LKPST_REA", ADOX.DataTypeEnum.adSingle)
-                    .Append("LKPST_VOL", ADOX.DataTypeEnum.adSingle)
-                    .Append("LKPST_KOC", ADOX.DataTypeEnum.adSingle)
-                    .Append("LKPST_STL", ADOX.DataTypeEnum.adSingle)
-                    .Append("LKPST_RSP", ADOX.DataTypeEnum.adSingle)
-                    .Append("LKPST_MIX", ADOX.DataTypeEnum.adSingle)
-                    .Append("LKSPSTCONC", ADOX.DataTypeEnum.adSingle)
-                    .Append("LKSPST_REA", ADOX.DataTypeEnum.adSingle)
-                    .Append("LKSPST_BRY", ADOX.DataTypeEnum.adSingle)
-                    .Append("LKSPST_ACT", ADOX.DataTypeEnum.adSingle)
-                    .Append("RES_D50", ADOX.DataTypeEnum.adSingle)
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql.ToString(), lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try
         End Function
 
-        Private Sub Append12DBColumnsDouble(ByVal aColumns As DataColumn, ByVal aSection As String)
+        Private Sub Append12DBColumnsReal(ByVal aSql As Text.StringBuilder, ByVal aSection As String)
             For i As Integer = 1 To 12
-                aColumns.Add(aSection & i, ADOX.DataTypeEnum.adDouble)
+                aSql.Append(aSection & i & " REAL, ")
             Next
         End Sub
 

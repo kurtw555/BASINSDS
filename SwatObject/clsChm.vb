@@ -105,72 +105,44 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                'Dim lCatalog As New ADOX.Catalog
-                'lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As New Text.StringBuilder
+                lCreateSql.Append("CREATE TABLE " & pTableName & " (")
+                lCreateSql.Append("OID INTEGER PRIMARY KEY AUTOINCREMENT, ")
+                lCreateSql.Append("SUBBASIN REAL, HRU REAL, LANDUSE TEXT, SOIL TEXT, SLOPE_CD TEXT, ")
+                AppendRepeatedColumns(lCreateSql, "SOL_NO3", 10, "REAL")
+                AppendRepeatedColumns(lCreateSql, "SOL_ORGN", 10, "REAL")
+                AppendRepeatedColumns(lCreateSql, "SOL_LABP", 10, "REAL")
+                AppendRepeatedColumns(lCreateSql, "SOL_ORGP", 10, "REAL")
+                AppendRepeatedColumns(lCreateSql, "PESTNAME", 10, "TEXT")
+                AppendRepeatedColumns(lCreateSql, "PLTPST", 10, "REAL")
+                AppendRepeatedColumns(lCreateSql, "SOLPST", 10, "REAL")
+                AppendRepeatedColumns(lCreateSql, "PSTENR", 10, "REAL")
+                lCreateSql.Length -= 2
+                lCreateSql.Append(");")
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                Dim i As Integer
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("SUBBASIN", ADOX.DataTypeEnum.adDouble)
-                    .Append("HRU", ADOX.DataTypeEnum.adDouble)
-                    .Append("LANDUSE", ADOX.DataTypeEnum.adVarWChar, 4)
-                    .Append("SOIL", ADOX.DataTypeEnum.adVarWChar, 40)
-                    .Append("SLOPE_CD", ADOX.DataTypeEnum.adVarWChar, 20)
-                    For i = 1 To 10
-                        .Append("SOL_NO3" & i, ADOX.DataTypeEnum.adDouble)
-                    Next
-                    For i = 1 To 10
-                        .Append("SOL_ORGN" & i, ADOX.DataTypeEnum.adDouble)
-                    Next
-                    For i = 1 To 10
-                        .Append("SOL_LABP" & i, ADOX.DataTypeEnum.adDouble)
-                    Next
-                    For i = 1 To 10
-                        .Append("SOL_ORGP" & i, ADOX.DataTypeEnum.adDouble)
-                    Next
-                    For i = 1 To 10
-                        .Append("PESTNAME" & i, ADOX.DataTypeEnum.adVarWChar, 16)
-                    Next
-                    For i = 1 To 10
-                        .Append("PLTPST" & i, ADOX.DataTypeEnum.adDouble)
-                    Next
-                    For i = 1 To 10
-                        .Append("SOLPST" & i, ADOX.DataTypeEnum.adDouble)
-                    Next
-                    For i = 1 To 10
-                        .Append("PSTENR" & i, ADOX.DataTypeEnum.adDouble)
-                    Next
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql.ToString(), lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try
         End Function
+
+        Private Sub AppendRepeatedColumns(ByVal aSql As Text.StringBuilder, ByVal aPrefix As String, ByVal aCount As Integer, ByVal aType As String)
+            For i As Integer = 1 To aCount
+                aSql.Append(aPrefix & i & " " & aType & ", ")
+            Next
+        End Sub
 
         Public Function Table() As DataTable
             pSwatInput.Status("Reading " & pTableName & " from database ...")

@@ -161,19 +161,11 @@ Public Class SwatInput
     ''' <param name="aTableNameTarget">Target table name</param>
     ''' <remarks>Overwrites existing output table if required</remarks>
     Public Sub CopyTableInputDB(ByVal aTableNameSource As String, ByVal aTableNameTarget As String)
-        Dim lTableSchema As DataTable = CnSwatInput.GetOleDbSchemaTable(OleDb.OleDbSchemaGuid.Tables, New Object() {Nothing, Nothing, aTableNameSource, "TABLE"})
-        If lTableSchema.Rows.Count = 1 Then
-            lTableSchema = CnSwatInput.GetOleDbSchemaTable(OleDb.OleDbSchemaGuid.Tables, New Object() {Nothing, Nothing, aTableNameTarget, "TABLE"})
-            If lTableSchema.Rows.Count = 1 Then
-                Dim lSQLDrop As String = "DROP TABLE " & aTableNameTarget
-                Dim lDropCommand As OleDbCommand = New OleDbCommand(lSQLDrop, CnSwatInput)
-                lDropCommand.CommandTimeout = 30
-                lDropCommand.ExecuteNonQuery()
+        If TableExists(CnSwatInput, aTableNameSource) Then
+            If TableExists(CnSwatInput, aTableNameTarget) Then
+                ExecuteNonQuery("DROP TABLE " & aTableNameTarget, CnSwatInput)
             End If
-            Dim lSQL As String = "SELECT * INTO " & aTableNameTarget & " FROM(" & aTableNameSource & ")"
-            Dim lUpdateCommand As OleDbCommand = New OleDbCommand(lSQL, CnSwatInput)
-            lUpdateCommand.CommandTimeout = 30
-            lUpdateCommand.ExecuteNonQuery()
+            ExecuteNonQuery("CREATE TABLE " & aTableNameTarget & " AS SELECT * FROM " & aTableNameSource, CnSwatInput)
         Else
             Throw New ApplicationException("Table " & aTableNameSource & " does not exist to copy")
         End If
@@ -203,9 +195,7 @@ Public Class SwatInput
                 & " SET " & aValueFieldName & " = '" & aValue & "'" _
                 & " WHERE " & aIdFieldName & " = " & aId
         End If
-        Dim lUpdateCommand As OleDbCommand = New OleDbCommand(lSQL, CnSwatInput)
-        lUpdateCommand.CommandTimeout = 30
-        lUpdateCommand.ExecuteNonQuery()
+        ExecuteNonQuery(lSQL, CnSwatInput)
     End Sub
 
     Public Sub UpdateInputDB(ByVal aTableName As String,
@@ -222,19 +212,23 @@ Public Class SwatInput
                  & " SET " & aValueFieldName & " = '" & aValue & "'" _
                  & " WHERE " & aWhereClause
         End If
-        Dim lUpdateCommand As OleDbCommand = New OleDbCommand(lSQL, CnSwatInput)
-        lUpdateCommand.CommandTimeout = 30
-        lUpdateCommand.ExecuteNonQuery()
+        ExecuteNonQuery(lSQL, CnSwatInput)
     End Sub
 
 
     Public Sub DeleteRowInputDB(ByVal aTableName As String,
                                 ByVal aIdFieldName As String, ByVal aId As Integer)
         Dim lSQL As String = "DELETE FROM " & aTableName & " WHERE " & aIdFieldName & "=" & aId & ";"
-        Dim lDeleteCommand As OleDbCommand = New OleDbCommand(lSQL, CnSwatInput)
-        lDeleteCommand.CommandTimeout = 30
-        lDeleteCommand.ExecuteNonQuery()
+        ExecuteNonQuery(lSQL, CnSwatInput)
     End Sub
+
+    Private Function TableExists(ByVal aConnection As SqliteConnection, ByVal aTableName As String) As Boolean
+        Dim lCommand = aConnection.CreateCommand()
+        lCommand.CommandText = "SELECT 1 FROM sqlite_master WHERE type='table' AND name=@name LIMIT 1;"
+        lCommand.Parameters.AddWithValue("@name", aTableName)
+        Dim lResult As Object = lCommand.ExecuteScalar()
+        Return lResult IsNot Nothing
+    End Function
 
     Public Sub SaveAllTextInput()
         Dim a As Reflection.Assembly = Reflection.Assembly.GetExecutingAssembly

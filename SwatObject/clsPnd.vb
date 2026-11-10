@@ -1,5 +1,6 @@
 'Imports System.Data
 Imports Microsoft.Data.Sqlite
+Imports System.Data
 Partial Class SwatInput
     Private pPnd As clsPnd = New clsPnd(Me)
     ReadOnly Property Pnd() As clsPnd
@@ -85,84 +86,68 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                'lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As String =
+                    "CREATE TABLE " & pTableName & " (" &
+                    "OID INTEGER PRIMARY KEY AUTOINCREMENT, " &
+                    "SUBBASIN REAL, " &
+                    "PND_FR REAL, " &
+                    "PND_PSA REAL, " &
+                    "PND_PVOL REAL, " &
+                    "PND_ESA REAL, " &
+                    "PND_EVOL REAL, " &
+                    "PND_VOL REAL, " &
+                    "PND_SED REAL, " &
+                    "PND_NSED REAL, " &
+                    "PND_K REAL, " &
+                    "IFLOD1 INTEGER, " &
+                    "IFLOD2 INTEGER, " &
+                    "NDTARG INTEGER, " &
+                    "PSETLP1 REAL, " &
+                    "PSETLP2 REAL, " &
+                    "NSETLP1 REAL, " &
+                    "NSETLP2 REAL, " &
+                    "CHLAP REAL, " &
+                    "SECCIP REAL, " &
+                    "PND_NO3 REAL, " &
+                    "PND_SOLP REAL, " &
+                    "PND_ORGN REAL, " &
+                    "PND_ORGP REAL, " &
+                    "IPND1 INTEGER, " &
+                    "IPND2 INTEGER, " &
+                    "WET_FR REAL, " &
+                    "WET_NSA REAL, " &
+                    "WET_NVOL REAL, " &
+                    "WET_MXSA REAL, " &
+                    "WET_MXVOL REAL, " &
+                    "WET_VOL REAL, " &
+                    "WET_SED REAL, " &
+                    "WET_NSED REAL, " &
+                    "WET_K REAL, " &
+                    "PSETLW1 REAL, " &
+                    "PSETLW2 REAL, " &
+                    "NSETLW1 REAL, " &
+                    "NSETLW2 REAL, " &
+                    "CHLAW REAL, " &
+                    "SECCIW REAL, " &
+                    "WET_NO3 REAL, " &
+                    "WET_SOLP REAL, " &
+                    "WET_ORGN REAL, " &
+                    "WET_ORGP REAL" &
+                    ");"
 
-                'Create the table
-                'Dim lTable As New ADOX.Table
-                Dim lTable As New DataTable
-                lTable.TableName = pTableName
-                Dim ival As Int32
-
-                'Dim lKeyColumn As New ADOX.Column
-                Dim lKeyColumn As New DataColumn("OID", ival.GetType(), "AutoIncrement=True")
-                'With lKeyColumn
-                '    .Name = "OID"
-                '    .Type = ADOX.DataTypeEnum.adInteger
-                '    .ParentCatalog = lCatalog
-                '    .Properties("AutoIncrement").Value = True
-                'End With
-
-                With lTable.Columns
-                    .Add(lKeyColumn)
-                    .Add("SUBBASIN", ADOX.DataTypeEnum.adDouble)
-                    .Append("PND_FR", ADOX.DataTypeEnum.adSingle)
-                    .Append("PND_PSA", ADOX.DataTypeEnum.adDouble)
-                    .Append("PND_PVOL", ADOX.DataTypeEnum.adDouble)
-                    .Append("PND_ESA", ADOX.DataTypeEnum.adDouble)
-                    .Append("PND_EVOL", ADOX.DataTypeEnum.adDouble)
-                    .Append("PND_VOL", ADOX.DataTypeEnum.adDouble)
-                    .Append("PND_SED", ADOX.DataTypeEnum.adDouble)
-                    .Append("PND_NSED", ADOX.DataTypeEnum.adDouble)
-                    .Append("PND_K", ADOX.DataTypeEnum.adSingle)
-                    .Append("IFLOD1", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IFLOD2", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("NDTARG", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("PSETLP1", ADOX.DataTypeEnum.adSingle)
-                    .Append("PSETLP2", ADOX.DataTypeEnum.adSingle)
-                    .Append("NSETLP1", ADOX.DataTypeEnum.adSingle)
-                    .Append("NSETLP2", ADOX.DataTypeEnum.adSingle)
-                    .Append("CHLAP", ADOX.DataTypeEnum.adSingle)
-                    .Append("SECCIP", ADOX.DataTypeEnum.adSingle)
-                    .Append("PND_NO3", ADOX.DataTypeEnum.adSingle)
-                    .Append("PND_SOLP", ADOX.DataTypeEnum.adSingle)
-                    .Append("PND_ORGN", ADOX.DataTypeEnum.adSingle)
-                    .Append("PND_ORGP", ADOX.DataTypeEnum.adSingle)
-                    .Append("IPND1", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IPND2", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("WET_FR", ADOX.DataTypeEnum.adSingle)
-                    .Append("WET_NSA", ADOX.DataTypeEnum.adDouble)
-                    .Append("WET_NVOL", ADOX.DataTypeEnum.adDouble)
-                    .Append("WET_MXSA", ADOX.DataTypeEnum.adDouble)
-                    .Append("WET_MXVOL", ADOX.DataTypeEnum.adDouble)
-                    .Append("WET_VOL", ADOX.DataTypeEnum.adSingle)
-                    .Append("WET_SED", ADOX.DataTypeEnum.adSingle)
-                    .Append("WET_NSED", ADOX.DataTypeEnum.adSingle)
-                    .Append("WET_K", ADOX.DataTypeEnum.adSingle)
-                    .Append("PSETLW1", ADOX.DataTypeEnum.adSingle)
-                    .Append("PSETLW2", ADOX.DataTypeEnum.adSingle)
-                    .Append("NSETLW1", ADOX.DataTypeEnum.adSingle)
-                    .Append("NSETLW2", ADOX.DataTypeEnum.adSingle)
-                    .Append("CHLAW", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("SECCIW", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("WET_NO3", ADOX.DataTypeEnum.adSingle)
-                    .Append("WET_SOLP", ADOX.DataTypeEnum.adDouble)
-                    .Append("WET_ORGN", ADOX.DataTypeEnum.adDouble)
-                    .Append("WET_ORGP", ADOX.DataTypeEnum.adDouble)
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql, lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try

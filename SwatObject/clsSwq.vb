@@ -93,65 +93,25 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As String = _
+                    "CREATE TABLE " & pTableName & " (" &
+                    "OID INTEGER PRIMARY KEY AUTOINCREMENT, " &
+                    "SUBBASIN REAL, RS1 REAL, RS2 REAL, RS3 REAL, RS4 REAL, RS5 REAL, RS6 REAL, RS7 REAL, RK1 REAL, RK2 REAL, RK3 REAL, RK4 REAL, RK5 REAL, RK6 REAL, BC1 REAL, BC2 REAL, BC3 REAL, BC4 REAL, CHPST_REA REAL, CHPST_VOL REAL, CHPST_KOC REAL, CHPST_STL REAL, CHPST_RSP REAL, CHPST_MIX REAL, SEDPST_CONC REAL, SEDPST_REA REAL, SEDPST_BRY REAL, SEDPST_ACT REAL" &
+                    ");"
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("SUBBASIN", ADOX.DataTypeEnum.adDouble)
-                    .Append("RS1", ADOX.DataTypeEnum.adSingle)
-                    .Append("RS2", ADOX.DataTypeEnum.adSingle)
-                    .Append("RS3", ADOX.DataTypeEnum.adSingle)
-                    .Append("RS4", ADOX.DataTypeEnum.adSingle)
-                    .Append("RS5", ADOX.DataTypeEnum.adSingle)
-                    .Append("RS6", ADOX.DataTypeEnum.adSingle)
-                    .Append("RS7", ADOX.DataTypeEnum.adSingle)
-                    .Append("RK1", ADOX.DataTypeEnum.adSingle)
-                    .Append("RK2", ADOX.DataTypeEnum.adSingle)
-                    .Append("RK3", ADOX.DataTypeEnum.adSingle)
-                    .Append("RK4", ADOX.DataTypeEnum.adSingle)
-                    .Append("RK5", ADOX.DataTypeEnum.adSingle)
-                    .Append("RK6", ADOX.DataTypeEnum.adSingle)
-                    .Append("BC1", ADOX.DataTypeEnum.adSingle)
-                    .Append("BC2", ADOX.DataTypeEnum.adSingle)
-                    .Append("BC3", ADOX.DataTypeEnum.adSingle)
-                    .Append("BC4", ADOX.DataTypeEnum.adSingle)
-                    .Append("CHPST_REA", ADOX.DataTypeEnum.adSingle)
-                    .Append("CHPST_VOL", ADOX.DataTypeEnum.adSingle)
-                    .Append("CHPST_KOC", ADOX.DataTypeEnum.adSingle)
-                    .Append("CHPST_STL", ADOX.DataTypeEnum.adSingle)
-                    .Append("CHPST_RSP", ADOX.DataTypeEnum.adSingle)
-                    .Append("CHPST_MIX", ADOX.DataTypeEnum.adSingle)
-                    .Append("SEDPST_CONC", ADOX.DataTypeEnum.adSingle)
-                    .Append("SEDPST_REA", ADOX.DataTypeEnum.adSingle)
-                    .Append("SEDPST_BRY", ADOX.DataTypeEnum.adSingle)
-                    .Append("SEDPST_ACT", ADOX.DataTypeEnum.adSingle)
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql, lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try

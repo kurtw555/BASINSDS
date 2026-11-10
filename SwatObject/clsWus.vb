@@ -63,50 +63,37 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As New Text.StringBuilder
+                lCreateSql.Append("CREATE TABLE " & pTableName & " (")
+                lCreateSql.Append("OID INTEGER PRIMARY KEY AUTOINCREMENT, SUBBASIN REAL, ")
+                Append12DBColumnsReal(lCreateSql, "WUPND")
+                Append12DBColumnsReal(lCreateSql, "WURCH")
+                Append12DBColumnsReal(lCreateSql, "WUSHAL")
+                Append12DBColumnsReal(lCreateSql, "WUDEEP")
+                lCreateSql.Length -= 2
+                lCreateSql.Append(");")
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("SUBBASIN", ADOX.DataTypeEnum.adDouble)
-                    Append12DBColumnsDouble(lTable.Columns, "WUPND")
-                    Append12DBColumnsDouble(lTable.Columns, "WURCH")
-                    Append12DBColumnsDouble(lTable.Columns, "WUSHAL")
-                    Append12DBColumnsDouble(lTable.Columns, "WUDEEP")
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql.ToString(), lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try
         End Function
 
-        Private Sub Append12DBColumnsDouble(ByVal aColumns As ADOX.Columns, ByVal aSection As String)
+        Private Sub Append12DBColumnsReal(ByVal aSql As Text.StringBuilder, ByVal aSection As String)
             For i As Integer = 1 To 12
-                aColumns.Append(aSection & i, ADOX.DataTypeEnum.adDouble)
+                aSql.Append(aSection & i & " REAL, ")
             Next
         End Sub
 

@@ -229,65 +229,28 @@ Partial Class SwatInput
             Try
                 DropTable(pTable1Name, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As String = _
+                    "CREATE TABLE " & pTable1Name & " (" &
+                    "OID INTEGER PRIMARY KEY AUTOINCREMENT, " &
+                    "SUBBASIN REAL, HRU REAL, LANDUSE TEXT, SOIL TEXT, SLOPE_CD TEXT, " &
+                    "IGRO INTEGER, PLANT_ID INTEGER, LAI_INIT REAL, BIO_INIT REAL, PHU_PLT REAL, BIOMIX REAL, CN2 REAL, USLE_P REAL, BIO_MIN REAL, FILTERW REAL, " &
+                    "IURBAN INTEGER, URBLU INTEGER, IRRSC INTEGER, IRRNO INTEGER, FLOWMIN REAL, DIVMAX REAL, FLOWFR REAL, DDRAIN REAL, TDRAIN REAL, GDRAIN REAL, " &
+                    "NROT INTEGER, HUSC INTEGER, ISCROP INTEGER" &
+                    ");"
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTable1Name
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("SUBBASIN", ADOX.DataTypeEnum.adDouble)
-                    .Append("HRU", ADOX.DataTypeEnum.adDouble)
-                    .Append("LANDUSE", ADOX.DataTypeEnum.adVarWChar, 4)
-                    .Append("SOIL", ADOX.DataTypeEnum.adVarWChar, 40)
-                    .Append("SLOPE_CD", ADOX.DataTypeEnum.adVarWChar, 20)
-                    .Append("IGRO", ADOX.DataTypeEnum.adInteger)
-                    .Append("PLANT_ID", ADOX.DataTypeEnum.adInteger)
-                    .Append("LAI_INIT", ADOX.DataTypeEnum.adSingle)
-                    .Append("BIO_INIT", ADOX.DataTypeEnum.adSingle)
-                    .Append("PHU_PLT", ADOX.DataTypeEnum.adSingle)
-                    .Append("BIOMIX", ADOX.DataTypeEnum.adSingle)
-                    .Append("CN2", ADOX.DataTypeEnum.adSingle)
-                    .Append("USLE_P", ADOX.DataTypeEnum.adSingle)
-                    .Append("BIO_MIN", ADOX.DataTypeEnum.adSingle)
-                    .Append("FILTERW", ADOX.DataTypeEnum.adSingle)
-                    .Append("IURBAN", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("URBLU", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IRRSC", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IRRNO", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("FLOWMIN", ADOX.DataTypeEnum.adSingle)
-                    .Append("DIVMAX", ADOX.DataTypeEnum.adSingle)
-                    .Append("FLOWFR", ADOX.DataTypeEnum.adSingle)
-                    .Append("DDRAIN", ADOX.DataTypeEnum.adSingle)
-                    .Append("TDRAIN", ADOX.DataTypeEnum.adSingle)
-                    .Append("GDRAIN", ADOX.DataTypeEnum.adSingle)
-                    .Append("NROT", ADOX.DataTypeEnum.adInteger)
-                    .Append("HUSC", ADOX.DataTypeEnum.adInteger)
-                    .Append("ISCROP", ADOX.DataTypeEnum.adInteger)
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql, lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try
@@ -298,108 +261,29 @@ Partial Class SwatInput
             Try
                 DropTable(pTable2Name, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As String = _
+                    "CREATE TABLE " & pTable2Name & " (" &
+                    "OID INTEGER PRIMARY KEY AUTOINCREMENT, " &
+                    "SUBBASIN REAL, HRU REAL, LANDUSE TEXT, SOIL TEXT, SLOPE_CD TEXT, CROP TEXT, YEAR INTEGER, MONTH INTEGER, DAY INTEGER, " &
+                    "HUSC REAL, MGT_OP INTEGER, HEATUNITS REAL, PLANT_ID INTEGER, CURYR_MAT INTEGER, LAI_INIT REAL, BIO_INIT REAL, HI_TARG REAL, BIO_TARG REAL, CNOP REAL, " &
+                    "IRR_AMT REAL, FERT_ID INTEGER, FRT_KG REAL, FRT_SURFACE REAL, PEST_ID INTEGER, PST_KG REAL, TILLAGE_ID INTEGER, HARVEFF REAL, HI_OVR REAL, GRZ_DAYS INTEGER, " &
+                    "MANURE_ID INTEGER, BIO_EAT REAL, BIO_TRMP REAL, MANURE_KG REAL, WSTRS_ID INTEGER, AUTO_WSTRS REAL, AFERT_ID INTEGER, AUTO_NSTRS REAL, AUTO_NAPP REAL, AUTO_NYR INTEGER, " &
+                    "AUTO_EFF REAL, AFRT_SURFACE REAL, SWEEPEFF REAL, FR_CURB REAL, IMP_TRIG REAL, FERT_DAYS INTEGER, CFRT_ID INTEGER, IFRT_FREQ INTEGER, CFRT_KG REAL" &
+                    ");"
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTable2Name
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("SUBBASIN", ADOX.DataTypeEnum.adDouble)
-                    .Append("HRU", ADOX.DataTypeEnum.adDouble)
-                    .Append("LANDUSE", ADOX.DataTypeEnum.adVarWChar, 4)
-                    .Append("SOIL", ADOX.DataTypeEnum.adVarWChar, 40)
-                    .Append("SLOPE_CD", ADOX.DataTypeEnum.adVarWChar, 20)
-                    .Append("CROP", ADOX.DataTypeEnum.adVarWChar, 4)
-                    .Append("YEAR", ADOX.DataTypeEnum.adInteger)
-                    Dim clxMonth As New ADOX.Column
-                    With clxMonth
-                        .Name = "MONTH"
-                        .Type = ADOX.DataTypeEnum.adInteger
-                        .ParentCatalog = lCatalog
-                        .Properties("Nullable").Value = True
-                    End With
-                    .Append(clxMonth)
-
-                    Dim clxDay As New ADOX.Column
-                    With clxDay
-                        .Name = "DAY"
-                        .Type = ADOX.DataTypeEnum.adInteger
-                        .ParentCatalog = lCatalog
-                        .Properties("Nullable").Value = True
-                    End With
-                    .Append(clxDay)
-                    .Append("HUSC", ADOX.DataTypeEnum.adSingle)
-                    .Append("MGT_OP", ADOX.DataTypeEnum.adInteger)
-                    .Append("HEATUNITS", ADOX.DataTypeEnum.adSingle)
-                    .Append("PLANT_ID", ADOX.DataTypeEnum.adInteger)
-                    .Append("CURYR_MAT", ADOX.DataTypeEnum.adInteger)
-                    .Append("LAI_INIT", ADOX.DataTypeEnum.adSingle)
-                    .Append("BIO_INIT", ADOX.DataTypeEnum.adSingle)
-                    .Append("HI_TARG", ADOX.DataTypeEnum.adSingle)
-                    .Append("BIO_TARG", ADOX.DataTypeEnum.adSingle)
-                    .Append("CNOP", ADOX.DataTypeEnum.adDouble)
-                    .Append("IRR_AMT", ADOX.DataTypeEnum.adSingle)
-                    .Append("FERT_ID", ADOX.DataTypeEnum.adInteger)
-                    .Append("FRT_KG", ADOX.DataTypeEnum.adSingle)
-                    .Append("FRT_SURFACE", ADOX.DataTypeEnum.adSingle)
-                    .Append("PEST_ID", ADOX.DataTypeEnum.adInteger)
-                    .Append("PST_KG", ADOX.DataTypeEnum.adSingle)
-                    .Append("TILLAGE_ID", ADOX.DataTypeEnum.adInteger)
-                    .Append("HARVEFF", ADOX.DataTypeEnum.adSingle)
-                    .Append("HI_OVR", ADOX.DataTypeEnum.adSingle)
-                    .Append("GRZ_DAYS", ADOX.DataTypeEnum.adInteger)
-                    .Append("MANURE_ID", ADOX.DataTypeEnum.adInteger)
-                    .Append("BIO_EAT", ADOX.DataTypeEnum.adSingle)
-                    .Append("BIO_TRMP", ADOX.DataTypeEnum.adSingle)
-                    .Append("MANURE_KG", ADOX.DataTypeEnum.adSingle)
-                    .Append("WSTRS_ID", ADOX.DataTypeEnum.adInteger)
-                    .Append("AUTO_WSTRS", ADOX.DataTypeEnum.adSingle)
-                    .Append("AFERT_ID", ADOX.DataTypeEnum.adInteger)
-                    .Append("AUTO_NSTRS", ADOX.DataTypeEnum.adSingle)
-                    .Append("AUTO_NAPP", ADOX.DataTypeEnum.adSingle)
-                    .Append("AUTO_NYR", ADOX.DataTypeEnum.adInteger)
-                    .Append("AUTO_EFF", ADOX.DataTypeEnum.adSingle)
-                    .Append("AFRT_SURFACE", ADOX.DataTypeEnum.adSingle)
-                    .Append("SWEEPEFF", ADOX.DataTypeEnum.adSingle)
-                    .Append("FR_CURB", ADOX.DataTypeEnum.adSingle)
-                    .Append("IMP_TRIG", ADOX.DataTypeEnum.adDouble)
-                    .Append("FERT_DAYS", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("CFRT_ID", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IFRT_FREQ", ADOX.DataTypeEnum.adInteger, 4)
-
-                    Dim clxCFRT_KG As New ADOX.Column
-                    With clxCFRT_KG
-                        .Name = "CFRT_KG"
-                        .Type = ADOX.DataTypeEnum.adSingle
-                        .ParentCatalog = lCatalog
-                        .Properties("Nullable").Value = True
-                    End With
-                    .Append(clxCFRT_KG)
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql, lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try

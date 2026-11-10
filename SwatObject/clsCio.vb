@@ -83,72 +83,59 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As String = _
+                    "CREATE TABLE " & pTableName & " (" &
+                    "OBJECTID INTEGER PRIMARY KEY AUTOINCREMENT, " &
+                    "NBYR INTEGER, " &
+                    "IYR INTEGER, " &
+                    "IDAF INTEGER, " &
+                    "IDAL INTEGER, " &
+                    "IGEN INTEGER, " &
+                    "PCPSIM INTEGER, " &
+                    "IDT INTEGER, " &
+                    "IDIST INTEGER, " &
+                    "REXP REAL, " &
+                    "NRGAGE INTEGER, " &
+                    "NRTOT INTEGER, " &
+                    "NRGFIL INTEGER, " &
+                    "TMPSIM INTEGER, " &
+                    "NTGAGE INTEGER, " &
+                    "NTTOT INTEGER, " &
+                    "NTGFIL INTEGER, " &
+                    "SLRSIM INTEGER, " &
+                    "NSTOT INTEGER, " &
+                    "RHSIM INTEGER, " &
+                    "NHTOT INTEGER, " &
+                    "WNDSIM INTEGER, " &
+                    "NWTOT INTEGER, " &
+                    "FCSTYR INTEGER, " &
+                    "FCSTDAY INTEGER, " &
+                    "FCSTCYCLES INTEGER, " &
+                    "DATES TEXT, " &
+                    "DATEF TEXT, " &
+                    "FDATES TEXT, " &
+                    "ISPROJ INTEGER, " &
+                    "ICLB INTEGER, " &
+                    "IPRINT INTEGER, " &
+                    "NYSKIP INTEGER, " &
+                    "ILOG INTEGER, " &
+                    "IPRP INTEGER, " &
+                    "IPRS INTEGER" &
+                    ");"
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OBJECTID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("NBYR", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IYR", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IDAF", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IDAL", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IGEN", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("PCPSIM", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IDT", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IDIST", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("REXP", ADOX.DataTypeEnum.adDouble)
-                    .Append("NRGAGE", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("NRTOT", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("NRGFIL", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("TMPSIM", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("NTGAGE", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("NTTOT", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("NTGFIL", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("SLRSIM", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("NSTOT", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("RHSIM", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("NHTOT", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("WNDSIM", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("NWTOT", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("FCSTYR", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("FCSTDAY", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("FCSTCYCLES", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("DATES", ADOX.DataTypeEnum.adVarWChar, 12)
-                    .Append("DATEF", ADOX.DataTypeEnum.adVarWChar, 12)
-                    .Append("FDATES", ADOX.DataTypeEnum.adVarWChar, 12)
-                    .Append("ISPROJ", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("ICLB", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IPRINT", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("NYSKIP", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("ILOG", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IPRP", ADOX.DataTypeEnum.adInteger, 4)
-                    .Append("IPRS", ADOX.DataTypeEnum.adInteger, 4)
-                End With
-
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql, lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try

@@ -1,5 +1,5 @@
 Imports System.Data
-Imports Microsoft.Data.SQLite
+Imports Microsoft.Data.Sqlite
 Partial Class SwatInput
     ''' <summary>
     ''' SubBasin (SUB) input section
@@ -188,54 +188,47 @@ Partial Class SwatInput
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenSqliteConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
-
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    Dim lFieldNum As Integer = 0
-                    For Each lFieldName As String In FieldNames
-                        For lSameNameFieldIndex As Integer = 1 To FieldCounts(lFieldNum)
-                            Dim lUseName As String = lFieldName
-                            If FieldCounts(lFieldNum) > 1 Then lUseName &= lSameNameFieldIndex
-                            If FieldTypes(lFieldNum) = ADOX.DataTypeEnum.adInteger Then
-                                .Append(lUseName, FieldTypes(lFieldNum), 4)
-                            Else
-                                .Append(lUseName, FieldTypes(lFieldNum))
-                            End If
-                        Next
-                        lFieldNum += 1
+                Dim lCreateSql As New Text.StringBuilder
+                lCreateSql.Append("CREATE TABLE " & pTableName & " (")
+                lCreateSql.Append("OID INTEGER PRIMARY KEY AUTOINCREMENT, ")
+                Dim lFieldNum As Integer = 0
+                For Each lFieldName As String In FieldNames
+                    For lSameNameFieldIndex As Integer = 1 To FieldCounts(lFieldNum)
+                        Dim lUseName As String = lFieldName
+                        If FieldCounts(lFieldNum) > 1 Then lUseName &= lSameNameFieldIndex
+                        lCreateSql.Append(lUseName & " " & FieldTypeToSqliteType(FieldTypes(lFieldNum)) & ", ")
                     Next
-                    .Append("COMID", ADOX.DataTypeEnum.adInteger)
-                End With
+                    lFieldNum += 1
+                Next
+                lCreateSql.Append("COMID INTEGER);")
 
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql.ToString(), lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try
+        End Function
+
+        Private Function FieldTypeToSqliteType(ByVal aType As ADOX.DataTypeEnum) As String
+            Select Case aType
+                Case ADOX.DataTypeEnum.adInteger
+                    Return "INTEGER"
+                Case ADOX.DataTypeEnum.adVarWChar
+                    Return "TEXT"
+                Case Else
+                    Return "REAL"
+            End Select
         End Function
 
         Public Function Table() As DataTable

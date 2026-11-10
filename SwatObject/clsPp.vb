@@ -61,59 +61,25 @@
             Try
                 DropTable(pTableName, pSwatInput.CnSwatInput)
 
-                'Open the connection
-                Dim lConnection As SqliteConnection = pSwatInput.OpenADOConnection()
+                Dim lConnection As SqliteConnection = pSwatInput.CnSwatInput
+                Dim lCloseWhenDone As Boolean = False
+                If lConnection.State <> ConnectionState.Open Then
+                    lConnection.Open()
+                    lCloseWhenDone = True
+                End If
 
-                'Open the Catalog
-                Dim lCatalog As New ADOX.Catalog
-                lCatalog.ActiveConnection = lConnection
+                Dim lCreateSql As String = _
+                    "CREATE TABLE " & pTableName & " (" &
+                    "OID INTEGER PRIMARY KEY AUTOINCREMENT, " &
+                    "FLOCNST REAL, SEDCNST REAL, ORGNCNST REAL, ORGPCNST REAL, NO3CNST REAL, NH3CNST REAL, NO2CNST REAL, MINPCNST REAL, CBODCNST REAL, DISOXCNST REAL, CHLACNST REAL, SOLPSTCNST REAL, SRBPSTCNST REAL, BACTPCNST REAL, BACTLPCNST REAL, CMTL1CNST REAL, CMTL2CNST REAL, CMTL3CNST REAL, PCSIDS TEXT, ANNUALREC TEXT, MONTHLYREC TEXT, DAILYREC TEXT, TYPE INTEGER" &
+                    ");"
 
-                'Create the table
-                Dim lTable As New ADOX.Table
-                lTable.Name = pTableName
-
-                Dim lKeyColumn As New ADOX.Column
-                With lKeyColumn
-                    .Name = "OID"
-                    .Type = ADOX.DataTypeEnum.adInteger
-                    .ParentCatalog = lCatalog
-                    .Properties("AutoIncrement").Value = True
-                End With
-
-                With lTable.Columns
-                    .Append(lKeyColumn)
-                    .Append("FLOCNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("SEDCNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("ORGNCNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("ORGPCNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("NO3CNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("NH3CNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("NO2CNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("MINPCNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("CBODCNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("DISOXCNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("CHLACNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("SOLPSTCNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("SRBPSTCNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("BACTPCNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("BACTLPCNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("CMTL1CNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("CMTL2CNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("CMTL3CNST", ADOX.DataTypeEnum.adDouble)
-                    .Append("PCSIDS", ADOX.DataTypeEnum.adVarWChar, 254)
-                    .Append("ANNUALREC", ADOX.DataTypeEnum.adVarWChar, 254)
-                    .Append("MONTHLYREC", ADOX.DataTypeEnum.adVarWChar, 254)
-                    .Append("DAILYREC", ADOX.DataTypeEnum.adVarWChar, 254)
-                    .Append("TYPE", ADOX.DataTypeEnum.adInteger, 4)
-                End With
-                lTable.Keys.Append("PrimaryKey", ADOX.KeyTypeEnum.adKeyPrimary, lKeyColumn.Name)
-                lCatalog.Tables.Append(lTable)
-                lTable = Nothing
-                lCatalog = Nothing
-                lConnection.Close()
-                lConnection = Nothing
-                Return True
-            Catch lEx As ApplicationException
+                Dim lResult As Boolean = ExecuteNonQuery(lCreateSql, lConnection)
+                If lCloseWhenDone Then
+                    lConnection.Close()
+                End If
+                Return lResult
+            Catch lEx As Exception
                 Debug.Print(lEx.Message)
                 Return False
             End Try
